@@ -67,13 +67,14 @@ button{margin-top:10px;border:1px solid var(--line);background:var(--card);color
 <div><b id="n72">-</b><span>มม. ใน 72 ชม.</span></div>
 </div>
 <p class="note" id="up"></p>
+<p class="note" id="meas"></p>
 <p class="note" id="tide"></p>
 </div>
 
 <div class="card">
 <h2>เกณฑ์ที่ใช้ตัดสิน</h2>
 <p class="note" id="crit"></p>
-<p class="note">ข้อมูลฝนและน้ำทะเลมาจากแบบจำลอง Open-Meteo ส่วนระดับน้ำมาจากสถานีกรมชลประทานผ่าน ThaiWater (อัปเดตราวทุก 30 นาที) ใช้ประกอบการเฝ้าระวังเท่านั้น ไม่ใช่ประกาศทางการ กรุณาติดตามกรมอุตุนิยมวิทยา กรมชลประทาน และ ปภ. ด้วย</p>
+<p class="note">ฝนพยากรณ์และน้ำทะเลมาจากแบบจำลอง Open-Meteo ส่วนระดับน้ำและฝนวัดจริงมาจากสถานีของกรมชลประทาน กรมอุตุนิยมวิทยา กรมทรัพยากรน้ำ และ สสน. ผ่าน ThaiWater (อัปเดตราวทุก 30 นาที) ใช้ประกอบการเฝ้าระวังเท่านั้น ไม่ใช่ประกาศทางการ กรุณาติดตามกรมอุตุนิยมวิทยา กรมชลประทาน และ ปภ. ด้วย</p>
 </div>
 </main>
 <script>
@@ -81,6 +82,7 @@ var $=function(i){return document.getElementById(i)};
 // พิกัดพื้นที่ (ปัดเป็น 2 ตำแหน่ง ใจกลางเมืองหาดใหญ่)
 var LAT=7.01,LON=100.47,UP=[6.75,100.35],SEA=[7.2,100.7],H=3600000;
 var WURL="https://raw.githubusercontent.com/anchittha-sky/wison/main/water.json";
+var RURL="https://raw.githubusercontent.com/anchittha-sky/wison/main/rain_stations.json";
 // ===== ค่าที่ปรับได้ (แก้ตัวเลขตรงนี้ที่เดียว) =====
 // ฝน: [ระดับเหลือง, ระดับแดง] หน่วยมิลลิเมตร (null = ไม่ใช้ระดับนั้น)
 var CFG={
@@ -89,6 +91,7 @@ var CFG={
  up24:[100,200],  // ฝนต้นน้ำ 24 ชม.
  r72:[null,300],  // ฝนสะสม 72 ชม. (3 วัน)
  tide:0.5,        // น้ำทะเลหนุนสูง: สูงสุดใน 24 ชม. ข้างหน้า ≥ ค่านี้ (ม. จากระดับน้ำทะเลปานกลาง)
+ zoneLat:6.9,      // สถานีฝนที่ละติจูดต่ำกว่าค่านี้ นับเป็นฝนต้นน้ำ (แถบสะเดา) ที่เหลือนับเป็นฝนในเมือง/หาดใหญ่
  need2:true,      // true = ฝนเหลือง 2 ปัจจัย จะเป็นแดงก็ต่อเมื่อระดับน้ำคลองเริ่มสูงด้วย (ถ้าไม่มีข้อมูลระดับน้ำ จะเป็นแดงเลย)
  // ระดับน้ำคลอง ม.รทก. : y = เหลือง, r = แดง (เรียงจากต้นน้ำมาปลายน้ำ)
  wl:{
@@ -125,12 +128,25 @@ function readWater(w){
   out.push({code:code,name:c.n,v:v,pv:pv,t:t,bank:bank,lv:wlvl(v,c),age:(now-t)/H});
  });
  return out.length?out:null}
+// อ่านฝนวัดจริงจากสถานี (rain_stations.json) -> ค่าสูงสุดในเมือง/ต้นน้ำ (ข้อมูลไม่เกิน 6 ชม.)
+function readRain(rj){
+ if(!rj||!rj.stations)return null;var now=Date.now(),res={city:null,up:null,t:0};
+ rj.stations.forEach(function(s){
+  if(s.rain24==null||isNaN(s.rain24))return;
+  var t=Date.parse(String(s.time).replace(" ","T")+":00+07:00");
+  if(isNaN(t)||(now-t)/H>6)return;
+  var k=s.lat<CFG.zoneLat?"up":"city";
+  if(!res[k]||s.rain24>res[k].v){res[k]={v:s.rain24,name:s.name}}
+  if(t>res.t)res.t=t});
+ return(res.city||res.up)?res:null}
 function ic(){var s='<svg viewBox="0 0 40 40"><path d="M10 30a8 8 0 0 1 0-16a10 10 0 0 1 19-2a9 9 0 0 1 2 18z" fill="#fff" stroke="#27b0ae" stroke-width="2.5" stroke-linejoin="round"/><circle cx="15" cy="23" r="1.8" fill="#17525a"/><circle cx="25" cy="23" r="1.8" fill="#17525a"/><path d="M17 27q3 3 6 0" fill="none" stroke="#17525a" stroke-width="1.8" stroke-linecap="round"/><path d="M14 34q-2 3 0 4q2-1 0-4zM26 34q-2 3 0 4q2-1 0-4z" fill="#6fd6f2"/></svg>';$("ic1").innerHTML=s;$("ic2").innerHTML=s;$("ic3").innerHTML=s}
-function render(a,b,c2,w){
+function render(a,b,c2,w,rj){
  var A=prep(a),B=prep(b),now=Date.now(),tm=tideMax(c2),th=tm!==null&&tm>=CFG.tide,ws=readWater(w);
- var r24=back(A,24),r48=back(A,48),r72=back(A,72),u24=back(B,24);
+ var r24=back(A,24),r48=back(A,48),r72=back(A,72),u24=back(B,24),rr=readRain(rj),r24e=r24,u24e=u24;
+ if(rr){if(rr.city&&rr.city.v>r24e)r24e=Math.round(rr.city.v);if(rr.up&&rr.up.v>u24e)u24e=Math.round(rr.up.v)}
  $("n24").textContent=r24;$("n48").textContent=r48;$("n72").textContent=r72;
  $("up").textContent="ฝนต้นน้ำ (แถบสะเดา/สันกาลาคีรี) 24 ชม. ล่าสุด: "+u24+" มม.";
+ $("meas").textContent=rr?"ฝนวัดจริงจากสถานี (24 ชม. ล่าสุด): "+(rr.city?"ในเมือง สูงสุด "+rr.city.v+" มม. ("+rr.city.name+")":"ในเมือง ไม่มีข้อมูล")+" · "+(rr.up?"ต้นน้ำ สูงสุด "+rr.up.v+" มม. ("+rr.up.name+")":"ต้นน้ำ ไม่มีข้อมูล")+" (ข้อมูล "+tf(rr.t)+" น.) สถานะใช้ค่าที่สูงกว่าระหว่างฝนวัดจริงกับแบบจำลอง":"ยังไม่มีข้อมูลฝนวัดจริงจากสถานี (สถานะใช้ฝนจากแบบจำลองอย่างเดียว)";
  $("tide").textContent=tm===null?"น้ำทะเลหนุน: ยังไม่มีข้อมูล (ไม่ได้นำมาคำนวณ)":"น้ำทะเลอ่าวไทยหน้าสงขลา สูงสุดใน 24 ชม. ข้างหน้า: "+(tm>=0?"+":"")+tm.toFixed(2)+" ม. จากระดับน้ำทะเลปานกลาง ("+(th?"หนุนสูง":"ปกติ")+")";
  var Tn=Math.floor((now+25200000)/10800000)*10800000-25200000,vals=[],f48=0,c="";
  for(var j=0;j<18;j++){var ts=Tn+(j-2)*3*H,s=0;for(var k=0;k<A.ms.length;k++)if(A.ms[k]>ts&&A.ms[k]<=ts+3*H)s+=A.p[k];vals.push(s)}
@@ -154,7 +170,7 @@ function render(a,b,c2,w){
   $("wnote").textContent=stale?"ข้อมูลระดับน้ำบางสถานีล่าช้า (เกิน 3 ชม.) ถ้าเกิน 6 ชม. จะไม่นำมาคำนวณสถานะ":"ข้อมูลระดับน้ำใช้คำนวณสถานะร่วมกับฝน"}
  else{$("wlist").innerHTML="";$("wnote").textContent="ยังไม่มีข้อมูลระดับน้ำ (ไม่ได้นำมาคำนวณ สถานะใช้ข้อมูลฝนอย่างเดียว)"}
  // ตัดสินสถานะ
- var items=[["ฝนย้อนหลัง 24 ชม. "+r24+" มม.",lvl(r24,CFG.r24)],["ฝนพยากรณ์ 48 ชม. "+f48+" มม.",lvl(f48,CFG.f48)],["ฝนต้นน้ำ 24 ชม. "+u24+" มม.",lvl(u24,CFG.up24)],["ฝนสะสม 72 ชม. "+r72+" มม.",lvl(r72,CFG.r72)]];
+ var items=[["ฝนย้อนหลัง 24 ชม. "+r24e+" มม."+(r24e>r24?" (วัดจริง)":""),lvl(r24e,CFG.r24)],["ฝนพยากรณ์ 48 ชม. "+f48+" มม.",lvl(f48,CFG.f48)],["ฝนต้นน้ำ 24 ชม. "+u24e+" มม."+(u24e>u24?" (วัดจริง)":""),lvl(u24e,CFG.up24)],["ฝนสะสม 72 ชม. "+r72+" มม.",lvl(r72,CFG.r72)]];
  var top=0,ys=0;items.forEach(function(it){if(it[1]>top)top=it[1];if(it[1]==1)ys++});
  if(ys>=2&&top<2){if(CFG.need2&&wOK){if(wTop>=1)top=2}else top=2}
  if(th&&top==1)top=2;
@@ -166,15 +182,15 @@ function render(a,b,c2,w){
  if(th)w2.push("<li>น้ำทะเลหนุนสูง ระบายน้ำออกได้ช้าลง</li>");
  $("why").innerHTML=w2.length?w2.join(""):"<li>ทุกปัจจัยอยู่ในเกณฑ์ปกติ</li>";
  var adv=[];
- if(u24>=CFG.up24[0])adv.push("ฝนต้นน้ำหนัก: น้ำอาจหลากมาถึงตัวเมืองหาดใหญ่ในราว 6–8 ชม.");
- if(r24>=CFG.r24[0]||f48>=CFG.f48[0])adv.push("ฝนในเมืองหนัก: ระวังน้ำขังระบายไม่ทันในจุดต่ำ");
+ if(u24e>=CFG.up24[0])adv.push("ฝนต้นน้ำหนัก: น้ำอาจหลากมาถึงตัวเมืองหาดใหญ่ในราว 6–8 ชม.");
+ if(r24e>=CFG.r24[0]||f48>=CFG.f48[0])adv.push("ฝนในเมืองหนัก: ระวังน้ำขังระบายไม่ทันในจุดต่ำ");
  $("adv").innerHTML=adv.join("<br>");
  var wc=Object.keys(CFG.wl).map(function(k){var q=CFG.wl[k];return k+" "+q.y+" / "+q.r}).join(" · ");
  $("crit").textContent="ฝน เหลือง / แดง (มม.): 24 ชม. "+CFG.r24[0]+" / "+CFG.r24[1]+" · พยากรณ์ 48 ชม. "+CFG.f48[0]+" / "+CFG.f48[1]+" · ต้นน้ำ 24 ชม. "+CFG.up24[0]+" / "+CFG.up24[1]+" · สะสม 72 ชม. แดงที่ "+CFG.r72[1]+" ระดับน้ำคลอง เหลือง / แดง (ม.รทก.): "+wc+" · ฝนเหลือง 2 ปัจจัย"+(CFG.need2?" จะเป็นแดงเมื่อระดับน้ำคลองเริ่มสูงด้วย":" จะเป็นแดงทันที")+" · เหลืองขณะน้ำทะเลหนุนสูง (≥ "+CFG.tide+" ม.) จะเป็นแดง";
  $("upd").textContent="อัปเดตล่าสุด "+tf(now)+" น. (เวลาไทย)";
 }
 function load(){
- Promise.all([get(api(LAT,LON,3,4)),get(api(UP[0],UP[1],1,1)),get(tideUrl()).catch(function(){return null}),get(WURL+"?t="+Date.now()).catch(function(){return null})]).then(function(r){render(r[0],r[1],r[2],r[3])}).catch(function(){
+ Promise.all([get(api(LAT,LON,3,4)),get(api(UP[0],UP[1],1,1)),get(tideUrl()).catch(function(){return null}),get(WURL+"?t="+Date.now()).catch(function(){return null}),get(RURL+"?t="+Date.now()).catch(function(){return null})]).then(function(r){render(r[0],r[1],r[2],r[3],r[4])}).catch(function(){
   $("go").className="";$("go").textContent="ดึงข้อมูลไม่สำเร็จ";$("why").innerHTML="<li>ตรวจสอบอินเทอร์เน็ตแล้วกดรีเฟรชข้อมูล</li>";$("upd").textContent="ยังไม่ได้รับข้อมูลล่าสุด"})
 }
 $("re").addEventListener("click",load);

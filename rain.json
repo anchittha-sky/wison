@@ -1,0 +1,2183 @@
+{
+ "updated": "2026-10-26T21:43:49+00:00",
+ "endpoints": {
+  "rain_24h": {
+   "ok": true,
+   "count": 48,
+   "records": [
+    {
+     "id": 316338272,
+     "rain_24h": 19.5,
+     "rain_1h": 0,
+     "rainfall_datetime": "2026-10-27 03:00",
+     "station_type": "rainfall_24h",
+     "agency": {
+      "agency_name": {
+       "th": "กรมทรัพยากรน้ำ",
+       "en": "Department of Water Resources",
+       "jp": ""
+      },
+      "agency_shortname": {
+       "th": "ทน.",
+       "en": "DWR",
+       "jp": ""
+      }
+     },
+     "geocode": {
+      "warning_zone": "09",
+      "area_code": "5",
+      "area_name": {
+       "th": "ภาคใต้",
+       "en": "South"
+      },
+      "amphoe_name": {
+       "th": "สะเดา",
+       "en": "Sadao District"
+      },
+      "tumbon_name": {
+       "th": "ท่าโพธิ์",
+       "en": "Tha Pho"
+      },
+      "province_code": "90",
+      "province_name": {
+       "th": "สงขลา",
+       "en": "Songkhla"
+      }
+     },
+     "station": {
+      "id": 1081089,
+      "tele_station_name": {
+       "th": "บ้านสองพี่น้อง"
+      },
+      "tele_station_lat": 6.77487,
+      "tele_station_long": 100.422722,
+      "tele_station_oldcode": "STN1800",
+      "tele_station_type": "rainfall_24h",
+      "sub_basin_id": "2003"
+     },
+     "basin": {
+      "id": 24,
+      "basin_code": 20,
+      "basin_name": {
+       "th": "ลุ่มน้ำทะเลสาบสงขลา",
+       "en": "Thale Sap Songkhla Basin"
+      }
+     }
+    },
+    {
+     "id": 316338130,
+     "rain_24h": 16.5,
+     "rain_1h": 0,
+     "rainfall_datetime": "2026-10-27 03:00",
+     "station_type": "rainfall_24h",
+     "agency": {
+      "agency_name": {
+       "th": "กรมทรัพยากรน้ำ",
+       "en": "Department of Water Resources",
+       "jp": ""
+      },
+      "agency_shortname": {
+       "th": "ทน.",
+       "en": "DWR",
+       "jp": ""
+      }
+     },
+     "geocode": {
+      "warning_zone": "07",
+      "area_code": "2",
+      "area_name": {
+       "th": "ภาคกลาง",
+       "en": "Central"
+      },
+      "amphoe_name": {
+       "th": "เมืองกาญจนบุรี",
+       "en": "Mueang Kanchanaburi District"
+      },
+      "tumbon_name": {
+       "th": "ช่องสะเดา",
+       "en": "Chong Sadao"
+      },
+      "province_code": "71",
+      "province_name": {
+       "th": "กาญจนบุรี",
+       "en": "Kanchanaburi"
+      }
+     },
+     "station": {
+      "id": 1080920,
+      "tele_station_name": {
+       "th": "บ้านทับศิลา"
+      },
+      "tele_station_lat": 14.233617,
+      "tele_station_long": 99.155551,
+      "tele_station_oldcode": "STN1631",
+      "tele_station_type": "rainfall_24h",
+      "sub_basin_id": "1407"
+     },
+     "basin": {
+      "id": 15,
+      "basin_code": 14,
+      "basin_name": {
+       "th": "ลุ่มน้ำแม่กลอง",
+       "en": "Mae Klong Basin"
+      }
+     }
+    },
+    {
+     "id": 316336888,
+     "rain_24h": 15.6,
+     "rain_1h": 0.6,
+     "rainfall_datetime": "2026-10-27 04:00",
+     "station_type": "rainfall_24h",
+     "agency": {
+      "agency_name": {
+       "th": "สถาบันสารสนเทศทรัพยากรน้ำ (องค์การมหาชน)",
+       "en": "Hydro – Informatics Institute (Public Organization)",
+       "jp": ""
+      },
+      "agency_shortname": {
+       "th": "สสน.",
+       "en": "HII",
+       "jp": ""
+      }
+     },
+     "geocode": {
+      "warning_zone": "09",
+      "area_code": "5",
+      "area_name": {
+       "th": "ภาคใต้",
+       "en": "South"
+      },
+      "amphoe_name": {
+       "th": "สะเดา",
+       "en": "Sadao District"
+      },
+      "tumbon_name": {
+       "th": "ท่าโพธิ์",
+       "en": "Tha Pho"
+      },
+      "province_code": "90",
+      "province_name": {
+       "th": "สงขลา",
+       "en": "Songkhla"
+      }
+     },
+     "station": {
+      "id": 855,
+      "tele_station_name": {
+       "en": "Songkhla Lake 3",
+       "th": "สะเดา"
+      },
+      "tele_station_lat": 6.796687,
+      "tele_station_long": 100.44239,
+      "tele_station_oldcode": "SLA003",
+      "tele_station_type": "rainfall_24h",
+      "sub_basin_id": "2003"
+     },
+     "basin": {
+      "id": 24,
+      "basin_code": 20,
+      "basin_name": {
+       "th": "ลุ่มน้ำทะเลสาบสงขลา",
+       "en": "Thale Sap Songkhla Basin"
+      }
+     }
+    },
+    {
+     "id": 316337447,
+     "rain_24h": 14,
+     "rain_1h": 0,
+     "rainfall_datetime": "2026-10-27 03:00",
+     "station_type": "rainfall_24h",
+     "agency": {
+      "agency_name": {
+       "th": "กรมทรัพยากรน้ำ",
+       "en": "Department of Water Resources",
+       "jp": ""
+      },
+      "agency_shortname": {
+       "th": "ทน.",
+       "en": "DWR",
+       "jp": ""
+      }
+     },
+     "geocode": {
+      "warning_zone": "09",
+      "area_code": "5",
+      "area_name": {
+       "th": "ภาคใต้",
+       "en": "South"
+      },
+      "amphoe_name": {
+       "th": "สะเดา",
+       "en": "Sadao District"
+      },
+      "tumbon_name": {
+       "th": "ปาดังเบซาร์",
+       "en": "Padang Besar"
+      },
+      "province_code": "90",
+      "province_name": {
+       "th": "สงขลา",
+       "en": "Songkhla"
+      }
+     },
+     "station": {
+      "id": 2023,
+      "tele_station_name": {
+       "th": "บ้านปาดังเบซาร์"
+      },
+      "tele_station_lat": 6.665852,
+      "tele_station_long": 100.318786,
+      "tele_station_oldcode": "STN0581",
+      "tele_station_type": "rainfall_24h",
+      "sub_basin_id": "2003"
+     },
+     "basin": {
+      "id": 24,
+      "basin_code": 20,
+      "basin_name": {
+       "th": "ลุ่มน้ำทะเลสาบสงขลา",
+       "en": "Thale Sap Songkhla Basin"
+      }
+     }
+    },
+    {
+     "id": 316338271,
+     "rain_24h": 12,
+     "rain_1h": 0,
+     "rainfall_datetime": "2026-10-27 03:00",
+     "station_type": "rainfall_24h",
+     "agency": {
+      "agency_name": {
+       "th": "กรมทรัพยากรน้ำ",
+       "en": "Department of Water Resources",
+       "jp": ""
+      },
+      "agency_shortname": {
+       "th": "ทน.",
+       "en": "DWR",
+       "jp": ""
+      }
+     },
+     "geocode": {
+      "warning_zone": "09",
+      "area_code": "5",
+      "area_name": {
+       "th": "ภาคใต้",
+       "en": "South"
+      },
+      "amphoe_name": {
+       "th": "หาดใหญ่",
+       "en": "Hat Yai District"
+      },
+      "tumbon_name": {
+       "th": "พะตง",
+       "en": "Phatong"
+      },
+      "province_code": "90",
+      "province_name": {
+       "th": "สงขลา",
+       "en": "Songkhla"
+      }
+     },
+     "station": {
+      "id": 1081088,
+      "tele_station_name": {
+       "th": "บ้านควนเนียง"
+      },
+      "tele_station_lat": 6.835284,
+      "tele_station_long": 100.498648,
+      "tele_station_oldcode": "STN1799",
+      "tele_station_type": "rainfall_24h",
+      "sub_basin_id": "2003"
+     },
+     "basin": {
+      "id": 24,
+      "basin_code": 20,
+      "basin_name": {
+       "th": "ลุ่มน้ำทะเลสาบสงขลา",
+       "en": "Thale Sap Songkhla Basin"
+      }
+     }
+    },
+    {
+     "id": 316325568,
+     "rain_24h": 11.2,
+     "rainfall_datetime": "2026-10-27 01:00",
+     "station_type": "rainfall_24h",
+     "agency": {
+      "agency_name": {
+       "th": "กรมอุตุนิยมวิทยา ",
+       "en": "Thai Meteorological Department",
+       "jp": ""
+      },
+      "agency_shortname": {
+       "th": "อต.",
+       "en": "TMD",
+       "jp": ""
+      }
+     },
+     "geocode": {
+      "warning_zone": "09",
+      "area_code": "5",
+      "area_name": {
+       "th": "ภาคใต้",
+       "en": "South"
+      },
+      "amphoe_name": {
+       "th": "สะเดา",
+       "en": "Sadao District"
+      },
+      "tumbon_name": {
+       "th": "ท่าโพธิ์",
+       "en": "Tha Pho"
+      },
+      "province_code": "90",
+      "province_name": {
+       "th": "สงขลา",
+       "en": "Songkhla"
+      }
+     },
+     "station": {
+      "id": 3752,
+      "tele_station_name": {
+       "en": "SA DAO",
+       "th": "สะเดา"
+      },
+      "tele_station_lat": 6.79806,
+      "tele_station_long": 100.39056,
+      "tele_station_oldcode": "48574",
+      "tele_station_type": "rainfall_24h",
+      "sub_basin_id": "2003"
+     },
+     "basin": {
+      "id": 24,
+      "basin_code": 20,
+      "basin_name": {
+       "th": "ลุ่มน้ำทะเลสาบสงขลา",
+       "en": "Thale Sap Songkhla Basin"
+      }
+     }
+    },
+    {
+     "id": 316338109,
+     "rain_24h": 11,
+     "rain_1h": 0,
+     "rainfall_datetime": "2026-10-27 03:00",
+     "station_type": "rainfall_24h",
+     "agency": {
+      "agency_name": {
+       "th": "กรมทรัพยากรน้ำ",
+       "en": "Department of Water Resources",
+       "jp": ""
+      },
+      "agency_shortname": {
+       "th": "ทน.",
+       "en": "DWR",
+       "jp": ""
+      }
+     },
+     "geocode": {
+      "warning_zone": "09",
+      "area_code": "5",
+      "area_name": {
+       "th": "ภาคใต้",
+       "en": "South"
+      },
+      "amphoe_name": {
+       "th": "สะเดา",
+       "en": "Sadao District"
+      },
+      "tumbon_name": {
+       "th": "สำนักแต้ว",
+       "en": "Samnak Taeo"
+      },
+      "province_code": "90",
+      "province_name": {
+       "th": "สงขลา",
+       "en": "Songkhla"
+      }
+     },
+     "station": {
+      "id": 1080894,
+      "tele_station_name": {
+       "th": "บ้านหัวควน"
+      },
+      "tele_station_lat": 6.526957,
+      "tele_station_long": 100.512131,
+      "tele_station_oldcode": "STN1605",
+      "tele_station_type": "rainfall_24h",
+      "sub_basin_id": "2003"
+     },
+     "basin": {
+      "id": 24,
+      "basin_code": 20,
+      "basin_name": {
+       "th": "ลุ่มน้ำทะเลสาบสงขลา",
+       "en": "Thale Sap Songkhla Basin"
+      }
+     }
+    },
+    {
+     "id": 316334750,
+     "rain_24h": 9.6,
+     "rain_1h": 0,
+     "rainfall_datetime": "2026-10-27 04:00",
+     "station_type": "rainfall_24h",
+     "agency": {
+      "agency_name": {
+       "th": "มูลนิธิอาสาเพื่อนพึ่ง (ภาฯ) ยามยาก สภากาชาดไทย",
+       "en": "Friend in Need (of “Pa”) Volunteers Foundation",
+       "jp": ""
+      },
+      "agency_shortname": {
+       "th": "พพภ",
+       "en": "FOP",
+       "jp": ""
+      }
+     },
+     "geocode": {
+      "warning_zone": "08",
+      "area_code": "4",
+      "area_name": {
+       "th": "ภาคตะวันออกเฉียงเหนือ",
+       "en": "Northeast"
+      },
+      "amphoe_name": {
+       "th": "ครบุรี",
+       "en": "Khon Buri District"
+      },
+      "tumbon_name": {
+       "th": "บ้านใหม่",
+       "en": "Ban Mai"
+      },
+      "province_code": "30",
+      "province_name": {
+       "th": "นครราชสีมา",
+       "en": "Nakhon Ratchasima"
+      }
+     },
+     "station": {
+      "id": 8269975,
+      "tele_station_name": {
+       "en": "National Park Protection Unit at Highway 12 (Sap Sadao)",
+       "th": "หน่วยพิทักษ์อุทยานแห่งชาติที่ ทล.12 (ซับสะเดา)"
+      },
+      "tele_station_lat": 14.39858,
+      "tele_station_long": 102.16507,
+      "tele_station_oldcode": "MOU264",
+      "tele_station_type": "rainfall_24h",
+      "sub_basin_id": "0502",
+      "sponsor_by": "สำนักงานคณะกรรมการกิจการกระจายเสียง กิจการโทรทัศน์ และกิจการโทรคมนาคมแห่งชาติ"
+     },
+     "basin": {
+      "id": 5,
+      "basin_code": 5,
+      "basin_name": {
+       "th": "ลุ่มน้ำมูล",
+       "en": "Mun Basin"
+      }
+     }
+    },
+    {
+     "id": 316338492,
+     "rain_24h": 9.5,
+     "rain_1h": 0,
+     "rainfall_datetime": "2026-10-27 03:00",
+     "station_type": "rainfall_24h",
+     "agency": {
+      "agency_name": {
+       "th": "กรมทรัพยากรน้ำ",
+       "en": "Department of Water Resources",
+       "jp": ""
+      },
+      "agency_shortname": {
+       "th": "ทน.",
+       "en": "DWR",
+       "jp": ""
+      }
+     },
+     "geocode": {
+      "warning_zone": "09",
+      "area_code": "5",
+      "area_name": {
+       "th": "ภาคใต้",
+       "en": "South"
+      },
+      "amphoe_name": {
+       "th": "สะเดา",
+       "en": "Sadao District"
+      },
+      "tumbon_name": {
+       "th": "สำนักแต้ว",
+       "en": "Samnak Taeo"
+      },
+      "province_code": "90",
+      "province_name": {
+       "th": "สงขลา",
+       "en": "Songkhla"
+      }
+     },
+     "station": {
+      "id": 1123897,
+      "tele_station_name": {
+       "th": "บ้านน้ำลัด"
+      },
+      "tele_station_lat": 6.62954,
+      "tele_station_long": 100.442957,
+      "tele_station_oldcode": "STN2060",
+      "tele_station_type": "rainfall_24h",
+      "sub_basin_id": "2003"
+     },
+     "basin": {
+      "id": 24,
+      "basin_code": 20,
+      "basin_name": {
+       "th": "ลุ่มน้ำทะเลสาบสงขลา",
+       "en": "Thale Sap Songkhla Basin"
+      }
+     }
+    },
+    {
+     "id": 316334421,
+     "rain_24h": 7,
+     "rain_1h": 0.8,
+     "rainfall_datetime": "2026-10-27 04:00",
+     "station_type": "rainfall_24h",
+     "agency": {
+      "agency_name": {
+       "th": "มูลนิธิอาสาเพื่อนพึ่ง (ภาฯ) ยามยาก สภากาชาดไทย",
+       "en": "Friend in Need (of “Pa”) Volunteers Foundation",
+       "jp": ""
+      },
+      "agency_shortname": {
+       "th": "พพภ",
+       "en": "FOP",
+       "jp": ""
+      }
+     },
+     "geocode": {
+      "warning_zone": "09",
+      "area_code": "5",
+      "area_name": {
+       "th": "ภาคใต้",
+       "en": "South"
+      },
+      "amphoe_name": {
+       "th": "สะเดา",
+       "en": "Sadao District"
+      },
+      "tumbon_name": {
+       "th": "สำนักแต้ว",
+       "en": "Samnak Taeo"
+      },
+      "province_code": "90",
+      "province_name": {
+       "th": "สงขลา",
+       "en": "Songkhla"
+      }
+     },
+     "station": {
+      "id": 855528,
+      "tele_station_name": {
+       "en": "Khao Nam Khang National Park Office",
+       "th": "ที่ทำการอุทยานแห่งชาติเขาน้ำค้าง"
+      },
+      "tele_station_lat": 6.600056,
+      "tele_station_long": 100.58906,
+      "tele_station_oldcode": "MOU138",
+      "tele_station_type": "rainfall_24h",
+      "sub_basin_id": "2004",
+      "sponsor_by": "บริษัท ทรู คอร์ปอเรชั่น จำกัด (มหาชน)"
+     },
+     "basin": {
+      "id": 24,
+      "basin_code": 20,
+      "basin_name": {
+       "th": "ลุ่มน้ำทะเลสาบสงขลา",
+       "en": "Thale Sap Songkhla Basin"
+      }
+     }
+    },
+    {
+     "id": 316334210,
+     "rain_24h": 5,
+     "rain_1h": 0,
+     "rainfall_datetime": "2026-10-27 03:00",
+     "station_type": "rainfall_24h",
+     "agency": {
+      "agency_name": {
+       "th": "กรมชลประทาน ",
+       "en": "Royal Irrigation Department",
+       "jp": ""
+      },
+      "agency_shortname": {
+       "th": "ชป.",
+       "en": "RID",
+       "jp": ""
+      }
+     },
+     "geocode": {
+      "warning_zone": "09",
+      "area_code": "5",
+      "area_name": {
+       "th": "ภาคใต้",
+       "en": "South"
+      },
+      "amphoe_name": {
+       "th": "สะเดา",
+       "en": "Sadao District"
+      },
+      "tumbon_name": {
+       "th": "สำนักแต้ว",
+       "en": "Samnak Taeo"
+      },
+      "province_code": "90",
+      "province_name": {
+       "th": "สงขลา",
+       "en": "Songkhla"
+      }
+     },
+     "station": {
+      "id": 1317083,
+      "tele_station_name": {
+       "th": "สถานีอ่างเก็บน้ำสะเดา"
+      },
+      "tele_station_lat": 6.58059,
+      "tele_station_long": 100.496473,
+      "tele_station_oldcode": "ridtele_STN13",
+      "tele_station_type": "rainfall_24h",
+      "sub_basin_id": "2003"
+     },
+     "basin": {
+      "id": 24,
+      "basin_code": 20,
+      "basin_name": {
+       "th": "ลุ่มน้ำทะเลสาบสงขลา",
+       "en": "Thale Sap Songkhla Basin"
+      }
+     }
+    },
+    {
+     "id": 316336887,
+     "rain_24h": 4.6,
+     "rain_1h": 0,
+     "rainfall_datetime": "2026-10-27 04:00",
+     "station_type": "rainfall_24h",
+     "agency": {
+      "agency_name": {
+       "th": "สถาบันสารสนเทศทรัพยากรน้ำ (องค์การมหาชน)",
+       "en": "Hydro – Informatics Institute (Public Organization)",
+       "jp": ""
+      },
+      "agency_shortname": {
+       "th": "สสน.",
+       "en": "HII",
+       "jp": ""
+      }
+     },
+     "geocode": {
+      "warning_zone": "09",
+      "area_code": "5",
+      "area_name": {
+       "th": "ภาคใต้",
+       "en": "South"
+      },
+      "amphoe_name": {
+       "th": "สะเดา",
+       "en": "Sadao District"
+      },
+      "tumbon_name": {
+       "th": "สะเดา",
+       "en": "Sadao"
+      },
+      "province_code": "90",
+      "province_name": {
+       "th": "สงขลา",
+       "en": "Songkhla"
+      }
+     },
+     "station": {
+      "id": 854,
+      "tele_station_name": {
+       "en": "Sa Dao",
+       "th": "ทม.สะเดา"
+      },
+      "tele_station_lat": 6.63837,
+      "tele_station_long": 100.42479,
+      "tele_station_oldcode": "TSDO",
+      "tele_station_type": "rainfall_24h",
+      "sub_basin_id": "2003"
+     },
+     "basin": {
+      "id": 24,
+      "basin_code": 20,
+      "basin_name": {
+       "th": "ลุ่มน้ำทะเลสาบสงขลา",
+       "en": "Thale Sap Songkhla Basin"
+      }
+     }
+    },
+    {
+     "id": 316334221,
+     "rain_24h": 4,
+     "rain_1h": 0,
+     "rainfall_datetime": "2026-10-27 03:00",
+     "station_type": "rainfall_24h",
+     "agency": {
+      "agency_name": {
+       "th": "กรมชลประทาน ",
+       "en": "Royal Irrigation Department",
+       "jp": ""
+      },
+      "agency_shortname": {
+       "th": "ชป.",
+       "en": "RID",
+       "jp": ""
+      }
+     },
+     "geocode": {
+      "warning_zone": "09",
+      "area_code": "5",
+      "area_name": {
+       "th": "ภาคใต้",
+       "en": "South"
+      },
+      "amphoe_name": {
+       "th": "หาดใหญ่",
+       "en": "Hat Yai District"
+      },
+      "tumbon_name": {
+       "th": "พะตง",
+       "en": "Phatong"
+      },
+      "province_code": "90",
+      "province_name": {
+       "th": "สงขลา",
+       "en": "Songkhla"
+      }
+     },
+     "station": {
+      "id": 1317104,
+      "tele_station_name": {
+       "th": "วัดควนเนียง"
+      },
+      "tele_station_lat": 6.833256,
+      "tele_station_long": 100.498853,
+      "tele_station_oldcode": "ridtele_TSL23",
+      "tele_station_type": "rainfall_24h",
+      "sub_basin_id": "2003"
+     },
+     "basin": {
+      "id": 24,
+      "basin_code": 20,
+      "basin_name": {
+       "th": "ลุ่มน้ำทะเลสาบสงขลา",
+       "en": "Thale Sap Songkhla Basin"
+      }
+     }
+    },
+    {
+     "id": 316334209,
+     "rain_24h": 4,
+     "rain_1h": 0,
+     "rainfall_datetime": "2026-10-27 03:00",
+     "station_type": "rainfall_24h",
+     "agency": {
+      "agency_name": {
+       "th": "กรมชลประทาน ",
+       "en": "Royal Irrigation Department",
+       "jp": ""
+      },
+      "agency_shortname": {
+       "th": "ชป.",
+       "en": "RID",
+       "jp": ""
+      }
+     },
+     "geocode": {
+      "warning_zone": "09",
+      "area_code": "5",
+      "area_name": {
+       "th": "ภาคใต้",
+       "en": "South"
+      },
+      "amphoe_name": {
+       "th": "สะเดา",
+       "en": "Sadao District"
+      },
+      "tumbon_name": {
+       "th": "สะเดา",
+       "en": "Sadao"
+      },
+      "province_code": "90",
+      "province_name": {
+       "th": "สงขลา",
+       "en": "Songkhla"
+      }
+     },
+     "station": {
+      "id": 1317082,
+      "tele_station_name": {
+       "th": "สถานี X.113"
+      },
+      "tele_station_lat": 6.635309,
+      "tele_station_long": 100.393967,
+      "tele_station_oldcode": "ridtele_STN12",
+      "tele_station_type": "rainfall_24h",
+      "sub_basin_id": "2003"
+     },
+     "basin": {
+      "id": 24,
+      "basin_code": 20,
+      "basin_name": {
+       "th": "ลุ่มน้ำทะเลสาบสงขลา",
+       "en": "Thale Sap Songkhla Basin"
+      }
+     }
+    },
+    {
+     "id": 316335618,
+     "rain_24h": 4,
+     "rain_1h": 0,
+     "rainfall_datetime": "2026-10-27 03:00",
+     "station_type": "rainfall_24h",
+     "agency": {
+      "agency_name": {
+       "th": "การไฟฟ้าฝ่ายผลิตแห่งประเทศไทย",
+       "en": "Electricity Generating Authority of Thailand",
+       "jp": ""
+      },
+      "agency_shortname": {
+       "th": "กฟผ.",
+       "en": "EGAT",
+       "jp": ""
+      }
+     },
+     "geocode": {
+      "warning_zone": "07",
+      "area_code": "2",
+      "area_name": {
+       "th": "ภาคกลาง",
+       "en": "Central"
+      },
+      "amphoe_name": {
+       "th": "เมืองกาญจนบุรี",
+       "en": "Mueang Kanchanaburi District"
+      },
+      "tumbon_name": {
+       "th": "ช่องสะเดา",
+       "en": "Chong Sadao"
+      },
+      "province_code": "71",
+      "province_name": {
+       "th": "กาญจนบุรี",
+       "en": "Kanchanaburi"
+      }
+     },
+     "station": {
+      "id": 700551,
+      "tele_station_name": {
+       "th": "เขื่อนท่าทุ่งนา"
+      },
+      "tele_station_lat": 14.233779,
+      "tele_station_long": 99.235022,
+      "tele_station_oldcode": "MKSND01",
+      "tele_station_type": "rainfall_24h",
+      "sub_basin_id": "1407"
+     },
+     "basin": {
+      "id": 15,
+      "basin_code": 14,
+      "basin_name": {
+       "th": "ลุ่มน้ำแม่กลอง",
+       "en": "Mae Klong Basin"
+      }
+     }
+    }
+   ]
+  },
+  "rain_3d": {
+   "ok": false,
+   "error": "HTTP Error 404: Not Found"
+  },
+  "rain_today": {
+   "ok": true,
+   "count": 34,
+   "records": [
+    {
+     "id": 435,
+     "rainfall_value": 4.6,
+     "rainfall_datetime": "2026-10-27 04:30",
+     "station_type": "rainfall_daily",
+     "agency": {
+      "agency_name": {
+       "th": "สถาบันสารสนเทศทรัพยากรน้ำ (องค์การมหาชน)",
+       "en": "Hydro – Informatics Institute (Public Organization)",
+       "jp": ""
+      },
+      "agency_shortname": {
+       "th": "สสน.",
+       "en": "HII",
+       "jp": ""
+      }
+     },
+     "geocode": {
+      "amphoe_name": {
+       "th": "สะเดา",
+       "en": "Sadao District"
+      },
+      "tumbon_name": {
+       "th": "สะเดา",
+       "en": "Sadao"
+      },
+      "province_code": "90",
+      "province_name": {
+       "th": "สงขลา",
+       "en": "Songkhla"
+      }
+     },
+     "station": {
+      "id": 854,
+      "tele_station_name": {
+       "en": "Sa Dao",
+       "th": "ทม.สะเดา"
+      },
+      "tele_station_lat": 6.63837,
+      "tele_station_long": 100.42479,
+      "tele_station_oldcode": "TSDO",
+      "tele_station_type": "",
+      "sub_basin_id": "2003"
+     },
+     "basin": {
+      "id": 24,
+      "basin_code": 20,
+      "basin_name": {
+       "th": "ลุ่มน้ำทะเลสาบสงขลา",
+       "en": "Thale Sap Songkhla Basin"
+      }
+     }
+    },
+    {
+     "id": 61573,
+     "rainfall_value": 0,
+     "rainfall_datetime": "2026-10-27 04:30",
+     "station_type": "rainfall_daily",
+     "agency": {
+      "agency_name": {
+       "th": "สถาบันสารสนเทศทรัพยากรน้ำ (องค์การมหาชน)",
+       "en": "Hydro – Informatics Institute (Public Organization)",
+       "jp": ""
+      },
+      "agency_shortname": {
+       "th": "สสน.",
+       "en": "HII",
+       "jp": ""
+      }
+     },
+     "geocode": {
+      "amphoe_name": {
+       "th": "คลองหอยโข่ง",
+       "en": "Khlong Hoi Khong District"
+      },
+      "tumbon_name": {
+       "th": "ทุ่งลาน",
+       "en": "Thung Lan"
+      },
+      "province_code": "90",
+      "province_name": {
+       "th": "สงขลา",
+       "en": "Songkhla"
+      }
+     },
+     "station": {
+      "id": 860,
+      "tele_station_name": {
+       "en": "Song Khla Lake 2",
+       "th": "คลองหอยโข่ง"
+      },
+      "tele_station_lat": 6.931234,
+      "tele_station_long": 100.43985,
+      "tele_station_oldcode": "SLA002",
+      "tele_station_type": "",
+      "sub_basin_id": "2003"
+     },
+     "basin": {
+      "id": 24,
+      "basin_code": 20,
+      "basin_name": {
+       "th": "ลุ่มน้ำทะเลสาบสงขลา",
+       "en": "Thale Sap Songkhla Basin"
+      }
+     }
+    },
+    {
+     "id": 47698770,
+     "rainfall_value": 0,
+     "rainfall_datetime": "2026-01-09 07:15",
+     "station_type": "rainfall_daily",
+     "agency": {
+      "agency_name": {
+       "th": "กรมทรัพยากรน้ำ",
+       "en": "Department of Water Resources",
+       "jp": ""
+      },
+      "agency_shortname": {
+       "th": "ทน.",
+       "en": "DWR",
+       "jp": ""
+      }
+     },
+     "geocode": {
+      "amphoe_name": {
+       "th": "หาดใหญ่",
+       "en": "Hat Yai District"
+      },
+      "tumbon_name": {
+       "th": "ทุ่งตำเสา",
+       "en": "Thung Tam Sao"
+      },
+      "province_code": "90",
+      "province_name": {
+       "th": "สงขลา",
+       "en": "Songkhla"
+      }
+     },
+     "station": {
+      "id": 2030,
+      "tele_station_name": {
+       "th": "บ้านโฮ๊ะ"
+      },
+      "tele_station_lat": 6.961809,
+      "tele_station_long": 100.317857,
+      "tele_station_oldcode": "STN1026",
+      "tele_station_type": "",
+      "sub_basin_id": "2003"
+     },
+     "basin": {
+      "id": 24,
+      "basin_code": 20,
+      "basin_name": {
+       "th": "ลุ่มน้ำทะเลสาบสงขลา",
+       "en": "Thale Sap Songkhla Basin"
+      }
+     }
+    },
+    {
+     "id": 61364,
+     "rainfall_value": 15.4,
+     "rainfall_datetime": "2026-10-27 04:30",
+     "station_type": "rainfall_daily",
+     "agency": {
+      "agency_name": {
+       "th": "สถาบันสารสนเทศทรัพยากรน้ำ (องค์การมหาชน)",
+       "en": "Hydro – Informatics Institute (Public Organization)",
+       "jp": ""
+      },
+      "agency_shortname": {
+       "th": "สสน.",
+       "en": "HII",
+       "jp": ""
+      }
+     },
+     "geocode": {
+      "amphoe_name": {
+       "th": "สะเดา",
+       "en": "Sadao District"
+      },
+      "tumbon_name": {
+       "th": "ท่าโพธิ์",
+       "en": "Tha Pho"
+      },
+      "province_code": "90",
+      "province_name": {
+       "th": "สงขลา",
+       "en": "Songkhla"
+      }
+     },
+     "station": {
+      "id": 855,
+      "tele_station_name": {
+       "en": "Songkhla Lake 3",
+       "th": "สะเดา"
+      },
+      "tele_station_lat": 6.796687,
+      "tele_station_long": 100.44239,
+      "tele_station_oldcode": "SLA003",
+      "tele_station_type": "",
+      "sub_basin_id": "2003"
+     },
+     "basin": {
+      "id": 24,
+      "basin_code": 20,
+      "basin_name": {
+       "th": "ลุ่มน้ำทะเลสาบสงขลา",
+       "en": "Thale Sap Songkhla Basin"
+      }
+     }
+    },
+    {
+     "id": 38433559,
+     "rainfall_value": 2.4,
+     "rainfall_datetime": "2026-10-27 04:30",
+     "station_type": "rainfall_daily",
+     "agency": {
+      "agency_name": {
+       "th": "สถาบันสารสนเทศทรัพยากรน้ำ (องค์การมหาชน)",
+       "en": "Hydro – Informatics Institute (Public Organization)",
+       "jp": ""
+      },
+      "agency_shortname": {
+       "th": "สสน.",
+       "en": "HII",
+       "jp": ""
+      }
+     },
+     "geocode": {
+      "amphoe_name": {
+       "th": "อุทัย",
+       "en": "Uthai District"
+      },
+      "tumbon_name": {
+       "th": "อุทัย",
+       "en": "Uthai"
+      },
+      "province_code": "14",
+      "province_name": {
+       "th": "พระนครศรีอยุธยา",
+       "en": "Phra Nakhon Si Ayutthaya"
+      }
+     },
+     "station": {
+      "id": 471583,
+      "tele_station_name": {
+       "en": "Chong Sa Dao",
+       "th": "คลองช่องสะเดา"
+      },
+      "tele_station_lat": 14.344762,
+      "tele_station_long": 100.670105,
+      "tele_station_oldcode": "HDA004",
+      "tele_station_type": "",
+      "sub_basin_id": "1002"
+     },
+     "basin": {
+      "id": 10,
+      "basin_code": 10,
+      "basin_name": {
+       "th": "ลุ่มน้ำเจ้าพระยา",
+       "en": "Chao Phraya Basin"
+      }
+     }
+    },
+    {
+     "id": 46728373,
+     "rainfall_value": 0,
+     "rainfall_datetime": "2026-04-06 07:15",
+     "station_type": "rainfall_daily",
+     "agency": {
+      "agency_name": {
+       "th": "กรมทรัพยากรน้ำ",
+       "en": "Department of Water Resources",
+       "jp": ""
+      },
+      "agency_shortname": {
+       "th": "ทน.",
+       "en": "DWR",
+       "jp": ""
+      }
+     },
+     "geocode": {
+      "amphoe_name": {
+       "th": "หาดใหญ่",
+       "en": "Hat Yai District"
+      },
+      "tumbon_name": {
+       "th": "ทุ่งตำเสา",
+       "en": "Thung Tam Sao"
+      },
+      "province_code": "90",
+      "province_name": {
+       "th": "สงขลา",
+       "en": "Songkhla"
+      }
+     },
+     "station": {
+      "id": 2028,
+      "tele_station_name": {
+       "th": "บ้านวังพา"
+      },
+      "tele_station_lat": 6.898464,
+      "tele_station_long": 100.262261,
+      "tele_station_oldcode": "STN0155",
+      "tele_station_type": "",
+      "sub_basin_id": "2003"
+     },
+     "basin": {
+      "id": 24,
+      "basin_code": 20,
+      "basin_name": {
+       "th": "ลุ่มน้ำทะเลสาบสงขลา",
+       "en": "Thale Sap Songkhla Basin"
+      }
+     }
+    },
+    {
+     "id": 156891880,
+     "rainfall_value": 0,
+     "rainfall_datetime": "2026-10-27 04:30",
+     "station_type": "rainfall_daily",
+     "agency": {
+      "agency_name": {
+       "th": "สถาบันสารสนเทศทรัพยากรน้ำ (องค์การมหาชน)",
+       "en": "Hydro – Informatics Institute (Public Organization)",
+       "jp": ""
+      },
+      "agency_shortname": {
+       "th": "สสน.",
+       "en": "HII",
+       "jp": ""
+      }
+     },
+     "geocode": {
+      "amphoe_name": {
+       "th": "หาดใหญ่",
+       "en": "Hat Yai District"
+      },
+      "tumbon_name": {
+       "th": "คูเต่า",
+       "en": "Khu Tao"
+      },
+      "province_code": "90",
+      "province_name": {
+       "th": "สงขลา",
+       "en": "Songkhla"
+      }
+     },
+     "station": {
+      "id": 1109526,
+      "tele_station_name": {
+       "en": "Khlong U Taphao Bridge",
+       "th": "สะพานข้ามคลองอู่ตะเภา"
+      },
+      "tele_station_lat": 7.134997,
+      "tele_station_long": 100.45321,
+      "tele_station_oldcode": "ONE037",
+      "tele_station_type": "",
+      "sub_basin_id": "2003"
+     },
+     "basin": {
+      "id": 24,
+      "basin_code": 20,
+      "basin_name": {
+       "th": "ลุ่มน้ำทะเลสาบสงขลา",
+       "en": "Thale Sap Songkhla Basin"
+      }
+     }
+    },
+    {
+     "id": 275091260,
+     "rainfall_value": 0,
+     "rainfall_datetime": "2026-08-06 07:15",
+     "station_type": "rainfall_daily",
+     "agency": {
+      "agency_name": {
+       "th": "กรมทรัพยากรน้ำ",
+       "en": "Department of Water Resources",
+       "jp": ""
+      },
+      "agency_shortname": {
+       "th": "ทน.",
+       "en": "DWR",
+       "jp": ""
+      }
+     },
+     "geocode": {
+      "amphoe_name": {
+       "th": "สะเดา",
+       "en": "Sadao District"
+      },
+      "tumbon_name": {
+       "th": "ปาดังเบซาร์",
+       "en": "Padang Besar"
+      },
+      "province_code": "90",
+      "province_name": {
+       "th": "สงขลา",
+       "en": "Songkhla"
+      }
+     },
+     "station": {
+      "id": 2022,
+      "tele_station_name": {
+       "th": "บ้านบาโรย"
+      },
+      "tele_station_lat": 6.774554,
+      "tele_station_long": 100.230542,
+      "tele_station_oldcode": "STN0152",
+      "tele_station_type": "",
+      "sub_basin_id": "2003"
+     },
+     "basin": {
+      "id": 24,
+      "basin_code": 20,
+      "basin_name": {
+       "th": "ลุ่มน้ำทะเลสาบสงขลา",
+       "en": "Thale Sap Songkhla Basin"
+      }
+     }
+    },
+    {
+     "id": 192083422,
+     "rainfall_value": 0,
+     "rainfall_datetime": "2026-08-06 07:15",
+     "station_type": "rainfall_daily",
+     "agency": {
+      "agency_name": {
+       "th": "กรมทรัพยากรน้ำ",
+       "en": "Department of Water Resources",
+       "jp": ""
+      },
+      "agency_shortname": {
+       "th": "ทน.",
+       "en": "DWR",
+       "jp": ""
+      }
+     },
+     "geocode": {
+      "amphoe_name": {
+       "th": "หาดใหญ่",
+       "en": "Hat Yai District"
+      },
+      "tumbon_name": {
+       "th": "ควนลัง",
+       "en": "Khuan Lang"
+      },
+      "province_code": "90",
+      "province_name": {
+       "th": "สงขลา",
+       "en": "Songkhla"
+      }
+     },
+     "station": {
+      "id": 1459077,
+      "tele_station_name": {
+       "th": "ชุมชนวัดเกาะ"
+      },
+      "tele_station_lat": 6.974349,
+      "tele_station_long": 100.397919,
+      "tele_station_oldcode": "STN2212",
+      "tele_station_type": "",
+      "sub_basin_id": "2003"
+     },
+     "basin": {
+      "id": 24,
+      "basin_code": 20,
+      "basin_name": {
+       "th": "ลุ่มน้ำทะเลสาบสงขลา",
+       "en": "Thale Sap Songkhla Basin"
+      }
+     }
+    },
+    {
+     "id": 275079030,
+     "rainfall_value": 0,
+     "rainfall_datetime": "2026-08-06 07:15",
+     "station_type": "rainfall_daily",
+     "agency": {
+      "agency_name": {
+       "th": "กรมทรัพยากรน้ำ",
+       "en": "Department of Water Resources",
+       "jp": ""
+      },
+      "agency_shortname": {
+       "th": "ทน.",
+       "en": "DWR",
+       "jp": ""
+      }
+     },
+     "geocode": {
+      "amphoe_name": {
+       "th": "เมืองระยอง",
+       "en": "Mueang Rayong District"
+      },
+      "tumbon_name": {
+       "th": "สำนักทอง",
+       "en": "Samnak Thong"
+      },
+      "province_code": "21",
+      "province_name": {
+       "th": "ระยอง",
+       "en": "Rayong"
+      }
+     },
+     "station": {
+      "id": 1459069,
+      "tele_station_name": {
+       "th": "บ้านหาดใหญ่"
+      },
+      "tele_station_lat": 12.797868,
+      "tele_station_long": 101.4683,
+      "tele_station_oldcode": "STN2204",
+      "tele_station_type": "",
+      "sub_basin_id": "1703"
+     },
+     "basin": {
+      "id": 18,
+      "basin_code": 17,
+      "basin_name": {
+       "th": "ลุ่มน้ำชายฝั่งทะเลตะวันออก",
+       "en": "East Coast Gulf Basin"
+      }
+     }
+    },
+    {
+     "id": 47698059,
+     "rainfall_value": 0,
+     "rainfall_datetime": "2026-08-06 07:15",
+     "station_type": "rainfall_daily",
+     "agency": {
+      "agency_name": {
+       "th": "กรมทรัพยากรน้ำ",
+       "en": "Department of Water Resources",
+       "jp": ""
+      },
+      "agency_shortname": {
+       "th": "ทน.",
+       "en": "DWR",
+       "jp": ""
+      }
+     },
+     "geocode": {
+      "amphoe_name": {
+       "th": "สะเดา",
+       "en": "Sadao District"
+      },
+      "tumbon_name": {
+       "th": "เขามีเกียรติ",
+       "en": "Khao Mi Kiat"
+      },
+      "province_code": "90",
+      "province_name": {
+       "th": "สงขลา",
+       "en": "Songkhla"
+      }
+     },
+     "station": {
+      "id": 2024,
+      "tele_station_name": {
+       "th": "บ้านท่าโต้"
+      },
+      "tele_station_lat": 6.756746,
+      "tele_station_long": 100.533575,
+      "tele_station_oldcode": "STN1024",
+      "tele_station_type": "",
+      "sub_basin_id": "2003"
+     },
+     "basin": {
+      "id": 24,
+      "basin_code": 20,
+      "basin_name": {
+       "th": "ลุ่มน้ำทะเลสาบสงขลา",
+       "en": "Thale Sap Songkhla Basin"
+      }
+     }
+    },
+    {
+     "id": 47697980,
+     "rainfall_value": 0,
+     "rainfall_datetime": "2026-08-06 07:15",
+     "station_type": "rainfall_daily",
+     "agency": {
+      "agency_name": {
+       "th": "กรมทรัพยากรน้ำ",
+       "en": "Department of Water Resources",
+       "jp": ""
+      },
+      "agency_shortname": {
+       "th": "ทน.",
+       "en": "DWR",
+       "jp": ""
+      }
+     },
+     "geocode": {
+      "amphoe_name": {
+       "th": "สะเดา",
+       "en": "Sadao District"
+      },
+      "tumbon_name": {
+       "th": "ปาดังเบซาร์",
+       "en": "Padang Besar"
+      },
+      "province_code": "90",
+      "province_name": {
+       "th": "สงขลา",
+       "en": "Songkhla"
+      }
+     },
+     "station": {
+      "id": 2023,
+      "tele_station_name": {
+       "th": "บ้านปาดังเบซาร์"
+      },
+      "tele_station_lat": 6.665852,
+      "tele_station_long": 100.318786,
+      "tele_station_oldcode": "STN0581",
+      "tele_station_type": "",
+      "sub_basin_id": "2003"
+     },
+     "basin": {
+      "id": 24,
+      "basin_code": 20,
+      "basin_name": {
+       "th": "ลุ่มน้ำทะเลสาบสงขลา",
+       "en": "Thale Sap Songkhla Basin"
+      }
+     }
+    },
+    {
+     "id": 170992982,
+     "rainfall_value": 0,
+     "rainfall_datetime": "2026-08-06 07:15",
+     "station_type": "rainfall_daily",
+     "agency": {
+      "agency_name": {
+       "th": "กรมทรัพยากรน้ำ",
+       "en": "Department of Water Resources",
+       "jp": ""
+      },
+      "agency_shortname": {
+       "th": "ทน.",
+       "en": "DWR",
+       "jp": ""
+      }
+     },
+     "geocode": {
+      "amphoe_name": {
+       "th": "หาดใหญ่",
+       "en": "Hat Yai District"
+      },
+      "tumbon_name": {
+       "th": "บ้านพรุ",
+       "en": "Ban Phru"
+      },
+      "province_code": "90",
+      "province_name": {
+       "th": "สงขลา",
+       "en": "Songkhla"
+      }
+     },
+     "station": {
+      "id": 1123899,
+      "tele_station_name": {
+       "th": "บ้านชายคลอง"
+      },
+      "tele_station_lat": 6.963151,
+      "tele_station_long": 100.458623,
+      "tele_station_oldcode": "STN2062",
+      "tele_station_type": "",
+      "sub_basin_id": "2003"
+     },
+     "basin": {
+      "id": 24,
+      "basin_code": 20,
+      "basin_name": {
+       "th": "ลุ่มน้ำทะเลสาบสงขลา",
+       "en": "Thale Sap Songkhla Basin"
+      }
+     }
+    },
+    {
+     "id": 170992405,
+     "rainfall_value": 0,
+     "rainfall_datetime": "2026-08-06 07:15",
+     "station_type": "rainfall_daily",
+     "agency": {
+      "agency_name": {
+       "th": "กรมทรัพยากรน้ำ",
+       "en": "Department of Water Resources",
+       "jp": ""
+      },
+      "agency_shortname": {
+       "th": "ทน.",
+       "en": "DWR",
+       "jp": ""
+      }
+     },
+     "geocode": {
+      "amphoe_name": {
+       "th": "สะเดา",
+       "en": "Sadao District"
+      },
+      "tumbon_name": {
+       "th": "สำนักแต้ว",
+       "en": "Samnak Taeo"
+      },
+      "province_code": "90",
+      "province_name": {
+       "th": "สงขลา",
+       "en": "Songkhla"
+      }
+     },
+     "station": {
+      "id": 1123897,
+      "tele_station_name": {
+       "th": "บ้านน้ำลัด"
+      },
+      "tele_station_lat": 6.62954,
+      "tele_station_long": 100.442957,
+      "tele_station_oldcode": "STN2060",
+      "tele_station_type": "",
+      "sub_basin_id": "2003"
+     },
+     "basin": {
+      "id": 24,
+      "basin_code": 20,
+      "basin_name": {
+       "th": "ลุ่มน้ำทะเลสาบสงขลา",
+       "en": "Thale Sap Songkhla Basin"
+      }
+     }
+    },
+    {
+     "id": 47697771,
+     "rainfall_value": 0,
+     "rainfall_datetime": "2026-08-06 07:15",
+     "station_type": "rainfall_daily",
+     "agency": {
+      "agency_name": {
+       "th": "กรมทรัพยากรน้ำ",
+       "en": "Department of Water Resources",
+       "jp": ""
+      },
+      "agency_shortname": {
+       "th": "ทน.",
+       "en": "DWR",
+       "jp": ""
+      }
+     },
+     "geocode": {
+      "amphoe_name": {
+       "th": "หาดใหญ่",
+       "en": "Hat Yai District"
+      },
+      "tumbon_name": {
+       "th": "น้ำน้อย",
+       "en": "Nam Noi"
+      },
+      "province_code": "90",
+      "province_name": {
+       "th": "สงขลา",
+       "en": "Songkhla"
+      }
+     },
+     "station": {
+      "id": 2031,
+      "tele_station_name": {
+       "th": "บ้านท่าจีน"
+      },
+      "tele_station_lat": 7.097187,
+      "tele_station_long": 100.537102,
+      "tele_station_oldcode": "STN0710",
+      "tele_station_type": "",
+      "sub_basin_id": "2003"
+     },
+     "basin": {
+      "id": 24,
+      "basin_code": 20,
+      "basin_name": {
+       "th": "ลุ่มน้ำทะเลสาบสงขลา",
+       "en": "Thale Sap Songkhla Basin"
+      }
+     }
+    }
+   ]
+  },
+  "rain_yesterday": {
+   "ok": true,
+   "count": 4,
+   "records": [
+    {
+     "tele_station_id": 3749,
+     "tele_station_name": {
+      "en": "HAT YAI AIRPORT",
+      "th": "หาดใหญ่"
+     },
+     "rainfall_datetime": "2026-10-25 07:00",
+     "rainfall_value": 0,
+     "province_code": "90",
+     "province_name": {
+      "th": "สงขลา",
+      "en": "Songkhla"
+     },
+     "tele_station_lat": 6.91667,
+     "tele_station_long": 100.43333,
+     "amphoe_name": {
+      "th": "คลองหอยโข่ง",
+      "en": "Khlong Hoi Khong District"
+     },
+     "tumbon_name": {
+      "th": "ทุ่งลาน",
+      "en": "Thung Lan"
+     },
+     "agency_name": {
+      "th": "กรมอุตุนิยมวิทยา ",
+      "en": "Thai Meteorological Department",
+      "jp": ""
+     },
+     "warning_zone": "09",
+     "basin": {
+      "id": 24,
+      "basin_code": 20,
+      "basin_name": {
+       "th": "ลุ่มน้ำทะเลสาบสงขลา",
+       "en": "Thale Sap Songkhla Basin"
+      }
+     },
+     "sub_basin_id": "2003",
+     "id": 66973521,
+     "station_type": "rainfall_1d",
+     "tele_station_oldcode": "48569",
+     "agency": {
+      "agency_name": {
+       "th": "กรมอุตุนิยมวิทยา ",
+       "en": "Thai Meteorological Department",
+       "jp": ""
+      },
+      "agency_shortname": {
+       "th": "อต.",
+       "en": "TMD",
+       "jp": ""
+      }
+     },
+     "geocode": {
+      "area_code": "5",
+      "area_name": {},
+      "amphoe_name": {
+       "th": "คลองหอยโข่ง",
+       "en": "Khlong Hoi Khong District"
+      },
+      "tumbon_name": {
+       "th": "ทุ่งลาน",
+       "en": "Thung Lan"
+      },
+      "province_code": "90",
+      "province_name": {
+       "th": "สงขลา",
+       "en": "Songkhla"
+      }
+     },
+     "station": {
+      "id": 3749,
+      "tele_station_name": {
+       "en": "HAT YAI AIRPORT",
+       "th": "หาดใหญ่"
+      },
+      "tele_station_lat": 6.91667,
+      "tele_station_long": 100.43333,
+      "tele_station_oldcode": "48569",
+      "tele_station_type": "R",
+      "basin_id": "24"
+     }
+    },
+    {
+     "tele_station_id": 3752,
+     "tele_station_name": {
+      "en": "SA DAO",
+      "th": "สะเดา"
+     },
+     "rainfall_datetime": "2026-10-25 07:00",
+     "rainfall_value": 0,
+     "province_code": "90",
+     "province_name": {
+      "th": "สงขลา",
+      "en": "Songkhla"
+     },
+     "tele_station_lat": 6.79806,
+     "tele_station_long": 100.39056,
+     "amphoe_name": {
+      "th": "สะเดา",
+      "en": "Sadao District"
+     },
+     "tumbon_name": {
+      "th": "ท่าโพธิ์",
+      "en": "Tha Pho"
+     },
+     "agency_name": {
+      "th": "กรมอุตุนิยมวิทยา ",
+      "en": "Thai Meteorological Department",
+      "jp": ""
+     },
+     "warning_zone": "09",
+     "basin": {
+      "id": 24,
+      "basin_code": 20,
+      "basin_name": {
+       "th": "ลุ่มน้ำทะเลสาบสงขลา",
+       "en": "Thale Sap Songkhla Basin"
+      }
+     },
+     "sub_basin_id": "2003",
+     "id": 66973520,
+     "station_type": "rainfall_1d",
+     "tele_station_oldcode": "48574",
+     "agency": {
+      "agency_name": {
+       "th": "กรมอุตุนิยมวิทยา ",
+       "en": "Thai Meteorological Department",
+       "jp": ""
+      },
+      "agency_shortname": {
+       "th": "อต.",
+       "en": "TMD",
+       "jp": ""
+      }
+     },
+     "geocode": {
+      "area_code": "5",
+      "area_name": {},
+      "amphoe_name": {
+       "th": "สะเดา",
+       "en": "Sadao District"
+      },
+      "tumbon_name": {
+       "th": "ท่าโพธิ์",
+       "en": "Tha Pho"
+      },
+      "province_code": "90",
+      "province_name": {
+       "th": "สงขลา",
+       "en": "Songkhla"
+      }
+     },
+     "station": {
+      "id": 3752,
+      "tele_station_name": {
+       "en": "SA DAO",
+       "th": "สะเดา"
+      },
+      "tele_station_lat": 6.79806,
+      "tele_station_long": 100.39056,
+      "tele_station_oldcode": "48574",
+      "tele_station_type": "R",
+      "basin_id": "24"
+     }
+    },
+    {
+     "tele_station_id": 3751,
+     "tele_station_name": {
+      "en": "KHO HONG AGROMET.",
+      "th": "คอหงษ์ สกษ."
+     },
+     "rainfall_datetime": "2026-10-25 07:00",
+     "rainfall_value": 0,
+     "province_code": "90",
+     "province_name": {
+      "th": "สงขลา",
+      "en": "Songkhla"
+     },
+     "tele_station_lat": 7,
+     "tele_station_long": 100.5,
+     "amphoe_name": {
+      "th": "หาดใหญ่",
+      "en": "Hat Yai District"
+     },
+     "tumbon_name": {
+      "th": "คอหงส์",
+      "en": "Kho Hong"
+     },
+     "agency_name": {
+      "th": "กรมอุตุนิยมวิทยา ",
+      "en": "Thai Meteorological Department",
+      "jp": ""
+     },
+     "warning_zone": "09",
+     "basin": {
+      "id": 24,
+      "basin_code": 20,
+      "basin_name": {
+       "th": "ลุ่มน้ำทะเลสาบสงขลา",
+       "en": "Thale Sap Songkhla Basin"
+      }
+     },
+     "sub_basin_id": "2003",
+     "id": 66973519,
+     "station_type": "rainfall_1d",
+     "tele_station_oldcode": "48571",
+     "agency": {
+      "agency_name": {
+       "th": "กรมอุตุนิยมวิทยา ",
+       "en": "Thai Meteorological Department",
+       "jp": ""
+      },
+      "agency_shortname": {
+       "th": "อต.",
+       "en": "TMD",
+       "jp": ""
+      }
+     },
+     "geocode": {
+      "area_code": "5",
+      "area_name": {},
+      "amphoe_name": {
+       "th": "หาดใหญ่",
+       "en": "Hat Yai District"
+      },
+      "tumbon_name": {
+       "th": "คอหงส์",
+       "en": "Kho Hong"
+      },
+      "province_code": "90",
+      "province_name": {
+       "th": "สงขลา",
+       "en": "Songkhla"
+      }
+     },
+     "station": {
+      "id": 3751,
+      "tele_station_name": {
+       "en": "KHO HONG AGROMET.",
+       "th": "คอหงษ์ สกษ."
+      },
+      "tele_station_lat": 7,
+      "tele_station_long": 100.5,
+      "tele_station_oldcode": "48571",
+      "tele_station_type": "R",
+      "basin_id": "24"
+     }
+    },
+    {
+     "tele_station_id": 3703,
+     "tele_station_name": {
+      "en": "NANG RONG",
+      "th": "นางรอง"
+     },
+     "rainfall_datetime": "2026-10-25 07:00",
+     "rainfall_value": 0,
+     "province_code": "31",
+     "province_name": {
+      "th": "บุรีรัมย์",
+      "en": "Buri Ram"
+     },
+     "tele_station_lat": 14.58333,
+     "tele_station_long": 102.8,
+     "amphoe_name": {
+      "th": "นางรอง",
+      "en": "Nang Rong District"
+     },
+     "tumbon_name": {
+      "th": "สะเดา",
+      "en": "Sadao"
+     },
+     "agency_name": {
+      "th": "กรมอุตุนิยมวิทยา ",
+      "en": "Thai Meteorological Department",
+      "jp": ""
+     },
+     "warning_zone": "08",
+     "basin": {
+      "id": 5,
+      "basin_code": 5,
+      "basin_name": {
+       "th": "ลุ่มน้ำมูล",
+       "en": "Mun Basin"
+      }
+     },
+     "sub_basin_id": "0511",
+     "id": 66973500,
+     "station_type": "rainfall_1d",
+     "tele_station_oldcode": "48436",
+     "agency": {
+      "agency_name": {
+       "th": "กรมอุตุนิยมวิทยา ",
+       "en": "Thai Meteorological Department",
+       "jp": ""
+      },
+      "agency_shortname": {
+       "th": "อต.",
+       "en": "TMD",
+       "jp": ""
+      }
+     },
+     "geocode": {
+      "area_code": "4",
+      "area_name": {},
+      "amphoe_name": {
+       "th": "นางรอง",
+       "en": "Nang Rong District"
+      },
+      "tumbon_name": {
+       "th": "สะเดา",
+       "en": "Sadao"
+      },
+      "province_code": "31",
+      "province_name": {
+       "th": "บุรีรัมย์",
+       "en": "Buri Ram"
+      }
+     },
+     "station": {
+      "id": 3703,
+      "tele_station_name": {
+       "en": "NANG RONG",
+       "th": "นางรอง"
+      },
+      "tele_station_lat": 14.58333,
+      "tele_station_long": 102.8,
+      "tele_station_oldcode": "48436",
+      "tele_station_type": "R",
+      "basin_id": "5"
+     }
+    }
+   ]
+  },
+  "rain_load": {
+   "ok": true,
+   "count": 27,
+   "records": [
+    {
+     "tele_station_id": 1118287,
+     "tele_station_oldcode": "TA05",
+     "tele_station_name": {
+      "th": "บ้านเลขที่ 82 (นายปาน ทองปรุ) บ้านช่องสะเดา หมู่ 1"
+     },
+     "max_year": null,
+     "min_year": null
+    },
+    {
+     "tele_station_id": 1100855,
+     "tele_station_oldcode": "TA08",
+     "tele_station_name": {
+      "th": "องค์การบริหารส่วนตำบลช่องสะเดา หมู่ 6"
+     },
+     "max_year": null,
+     "min_year": null
+    },
+    {
+     "tele_station_id": 8268785,
+     "tele_station_oldcode": "MOU264",
+     "tele_station_name": {
+      "en": "National Park Protection Unit at Highway 12 (Sap Sadao)",
+      "th": "หน่วยพิทักษ์อุทยานแห่งชาติที่ ทล.12 (ซับสะเดา)"
+     },
+     "max_year": null,
+     "min_year": null
+    },
+    {
+     "tele_station_id": 8269975,
+     "tele_station_oldcode": "MOU264",
+     "tele_station_name": {
+      "en": "National Park Protection Unit at Highway 12 (Sap Sadao)",
+      "th": "หน่วยพิทักษ์อุทยานแห่งชาติที่ ทล.12 (ซับสะเดา)"
+     },
+     "max_year": 2026,
+     "min_year": 2026
+    },
+    {
+     "tele_station_id": 471583,
+     "tele_station_oldcode": "HDA004",
+     "tele_station_name": {
+      "en": "Chong Sa Dao",
+      "th": "คลองช่องสะเดา"
+     },
+     "max_year": 2026,
+     "min_year": 2019
+    },
+    {
+     "tele_station_id": 1459069,
+     "tele_station_oldcode": "STN2204",
+     "tele_station_name": {
+      "th": "บ้านหาดใหญ่"
+     },
+     "max_year": 2026,
+     "min_year": 2025
+    },
+    {
+     "tele_station_id": 709652,
+     "tele_station_oldcode": "SK_STN08",
+     "tele_station_name": {
+      "th": "คลองหอยโข่ง"
+     },
+     "max_year": null,
+     "min_year": null
+    },
+    {
+     "tele_station_id": 1129012,
+     "tele_station_oldcode": "568015",
+     "tele_station_name": {
+      "th": "คลองหอยโข่ง"
+     },
+     "max_year": null,
+     "min_year": null
+    },
+    {
+     "tele_station_id": 709685,
+     "tele_station_oldcode": "TSL31",
+     "tele_station_name": {
+      "th": "คลองหอยโข่ง(จำไหร)"
+     },
+     "max_year": null,
+     "min_year": null
+    },
+    {
+     "tele_station_id": 1317112,
+     "tele_station_oldcode": "ridtele_TSL31",
+     "tele_station_name": {
+      "th": "คลองหอยโข่ง(จำไหร)"
+     },
+     "max_year": null,
+     "min_year": null
+    },
+    {
+     "tele_station_id": 2591,
+     "tele_station_oldcode": "X.44",
+     "tele_station_name": {
+      "th": "บ้านหาดใหญ่ใน"
+     },
+     "max_year": null,
+     "min_year": null
+    },
+    {
+     "tele_station_id": 11689112,
+     "tele_station_oldcode": "ridhydro_X.44",
+     "tele_station_name": {
+      "th": "บ้านหาดใหญ่ใน"
+     },
+     "max_year": null,
+     "min_year": null
+    },
+    {
+     "tele_station_id": 709648,
+     "tele_station_oldcode": "SK_STN04",
+     "tele_station_name": {
+      "th": "บ้านหาดใหญ่ใน (X.44)"
+     },
+     "max_year": null,
+     "min_year": null
+    },
+    {
+     "tele_station_id": 1317078,
+     "tele_station_oldcode": "ridtele_STN08",
+     "tele_station_name": {
+      "th": "สถานี ชป.คลองหอยโข่ง"
+     },
+     "max_year": null,
+     "min_year": null
+    },
+    {
+     "tele_station_id": 1317083,
+     "tele_station_oldcode": "ridtele_STN13",
+     "tele_station_name": {
+      "th": "สถานีอ่างเก็บน้ำสะเดา"
+     },
+     "max_year": null,
+     "min_year": null
+    }
+   ]
+  },
+  "rain_hourly": {
+   "ok": false,
+   "error": "HTTP Error 404: Not Found"
+  }
+ }
+}

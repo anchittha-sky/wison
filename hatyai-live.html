@@ -46,6 +46,7 @@ button{margin-top:10px;border:1px solid var(--line);background:var(--card);color
 <div><b id="n72">-</b><span>มม. ใน 72 ชม.</span></div>
 </div>
 <p class="note" id="up"></p>
+<p class="note" id="tide"></p>
 </div>
 
 <div class="card">
@@ -58,13 +59,22 @@ button{margin-top:10px;border:1px solid var(--line);background:var(--card);color
 
 <div class="card">
 <h2>เกณฑ์ที่ใช้ตัดสิน</h2>
-<p class="note">เหลือง / แดง: ฝนย้อนหลัง 24 ชม. ≥ 90 / 200 มม. · ฝนพยากรณ์ 48 ชม. ≥ 100 / 200 มม. · ฝนต้นน้ำ 24 ชม. ≥ 100 / 200 มม. · ถ้ามี 2 ปัจจัยเป็นเหลืองพร้อมกัน จะยกเป็นแดง</p>
-<p class="note">ยังไม่รวมระดับน้ำในคลองและน้ำทะเลหนุน ข้อมูลฝนมาจากแบบจำลอง Open-Meteo ใช้ประกอบการเฝ้าระวังเท่านั้น ไม่ใช่ประกาศทางการ กรุณาติดตามกรมอุตุนิยมวิทยาและ ปภ. ด้วย</p>
+<p class="note" id="crit"></p>
+<p class="note">ยังไม่รวมระดับน้ำในคลอง ข้อมูลฝนและน้ำทะเลมาจากแบบจำลอง Open-Meteo ใช้ประกอบการเฝ้าระวังเท่านั้น ไม่ใช่ประกาศทางการ กรุณาติดตามกรมอุตุนิยมวิทยาและ ปภ. ด้วย</p>
 </div>
 </main>
 <script>
 var $=function(i){return document.getElementById(i)};
-var LAT=7.0086,LON=100.4747,UP=[6.75,100.35],H=3600000;
+var LAT=7.0086,LON=100.4747,UP=[6.75,100.35],SEA=[7.2,100.7],H=3600000;
+// ===== ค่าที่ปรับได้ (แก้ตัวเลขตรงนี้ที่เดียว) =====
+// แต่ละคู่คือ [ระดับเหลือง, ระดับแดง] หน่วยมิลลิเมตร
+var CFG={
+ r24:[90,200],   // ฝนย้อนหลัง 24 ชม.
+ f48:[100,200],  // ฝนพยากรณ์ 48 ชม. ข้างหน้า
+ up24:[100,200], // ฝนต้นน้ำ 24 ชม.
+ tide:0.5        // น้ำทะเลหนุนสูง เมื่อสูงสุดใน 24 ชม. ข้างหน้า ≥ ค่านี้ (เมตร จากระดับน้ำทะเลปานกลาง)
+};
+// ==============================================
 var TZ={timeZone:"Asia/Bangkok"};
 function tf(t){return new Date(t).toLocaleTimeString("th-TH",{hour:"2-digit",minute:"2-digit",hourCycle:"h23",timeZone:"Asia/Bangkok"})}
 function df(t){return new Date(t).toLocaleDateString("th-TH",{day:"numeric",month:"short",timeZone:"Asia/Bangkok"})}
@@ -74,13 +84,18 @@ function prep(d){var off=d.utc_offset_seconds,ms=d.hourly.time.map(function(t){r
  for(var i=0;i<ms.length;i++)if(ms[i]<=now)idx=i;
  return{ms:ms,p:p,idx:idx}}
 function back(o,n){var s=0;for(var i=Math.max(0,o.idx-n+1);i<=o.idx;i++)s+=o.p[i];return Math.round(s)}
+function tideUrl(){return "https://marine-api.open-meteo.com/v1/marine?latitude="+SEA[0]+"&longitude="+SEA[1]+"&hourly=sea_level_height_msl&forecast_days=3&timezone=Asia%2FBangkok"}
+function tideMax(d){if(!d||!d.hourly||!d.hourly.sea_level_height_msl)return null;var off=d.utc_offset_seconds,now=Date.now(),mx=-99,ok=0;
+ d.hourly.time.forEach(function(t,i){var ms=Date.parse(t+":00Z")-off*1000,v=d.hourly.sea_level_height_msl[i];if(ms>=now&&ms<=now+24*H&&v!=null){ok=1;if(v>mx)mx=v}});
+ return ok?mx:null}
 function lvl(v,y,r){return v>=r?2:v>=y?1:0}
 function ic(){var s='<svg viewBox="0 0 40 40"><path d="M10 30a8 8 0 0 1 0-16a10 10 0 0 1 19-2a9 9 0 0 1 2 18z" fill="#fff" stroke="#27b0ae" stroke-width="2.5" stroke-linejoin="round"/><circle cx="15" cy="23" r="1.8" fill="#17525a"/><circle cx="25" cy="23" r="1.8" fill="#17525a"/><path d="M17 27q3 3 6 0" fill="none" stroke="#17525a" stroke-width="1.8" stroke-linecap="round"/><path d="M14 34q-2 3 0 4q2-1 0-4zM26 34q-2 3 0 4q2-1 0-4z" fill="#6fd6f2"/></svg>';$("ic1").innerHTML=s;$("ic2").innerHTML=s}
-function render(a,b){
- var A=prep(a),B=prep(b),now=Date.now();
+function render(a,b,c2){
+ var A=prep(a),B=prep(b),now=Date.now(),tm=tideMax(c2),th=tm!==null&&tm>=CFG.tide;
  var r24=back(A,24),r48=back(A,48),r72=back(A,72),u24=back(B,24);
  $("n24").textContent=r24;$("n48").textContent=r48;$("n72").textContent=r72;
  $("up").textContent="ฝนต้นน้ำ (แถบสะเดา/สันกาลาคีรี) 24 ชม. ล่าสุด: "+u24+" มม.";
+ $("tide").textContent=tm===null?"น้ำทะเลหนุน: ยังไม่มีข้อมูล (ไม่ได้นำมาคำนวณ)":"น้ำทะเลอ่าวไทยหน้าสงขลา สูงสุดใน 24 ชม. ข้างหน้า: "+(tm>=0?"+":"")+tm.toFixed(2)+" ม. จากระดับน้ำทะเลปานกลาง ("+(th?"หนุนสูง":"ปกติ")+")";
  var t0=Math.ceil((now+25200000)/10800000)*10800000-25200000,vals=[],tot=0;
  for(var i=0;i<16;i++){var s=0;for(var k=0;k<A.ms.length;k++)if(A.ms[k]>t0+i*3*H&&A.ms[k]<=t0+(i+1)*3*H)s+=A.p[k];vals.push(s);tot+=s}
  var f48=Math.round(tot),mx=Math.max.apply(null,vals.concat([5])),c="";
@@ -92,17 +107,20 @@ function render(a,b){
  $("chart").innerHTML=c;
  $("today").textContent="วันนี้ "+new Date().toLocaleDateString("th-TH",{weekday:"long",day:"numeric",month:"long",year:"numeric",timeZone:"Asia/Bangkok"});
  $("fsum").textContent="รวมประมาณ "+f48+" มม. ใน 48 ชม. (แท่งสูงสุด ≈ "+Math.round(mx)+" มม./3 ชม.)";
- var items=[["ฝนย้อนหลัง 24 ชม. "+r24+" มม.",lvl(r24,90,200)],["ฝนพยากรณ์ 48 ชม. "+f48+" มม.",lvl(f48,100,200)],["ฝนต้นน้ำ 24 ชม. "+u24+" มม.",lvl(u24,100,200)]];
+ var items=[["ฝนย้อนหลัง 24 ชม. "+r24+" มม.",lvl(r24,CFG.r24[0],CFG.r24[1])],["ฝนพยากรณ์ 48 ชม. "+f48+" มม.",lvl(f48,CFG.f48[0],CFG.f48[1])],["ฝนต้นน้ำ 24 ชม. "+u24+" มม.",lvl(u24,CFG.up24[0],CFG.up24[1])]];
  var top=0,ys=0;items.forEach(function(it){if(it[1]>top)top=it[1];if(it[1]==1)ys++});
  if(ys>=2&&top<2)top=2;
+ if(th&&top==1)top=2;
  var n=["เขียว","เหลือง","แดง"],cl=["g","y","r"],msg=["ปกติ ยังไม่ต้องกังวล","เฝ้าระวัง ติดตามข่าวและเตรียมของ","อันตราย เตรียมอพยพ/ยกของขึ้นที่สูง"];
  $("go").className=cl[top];$("go").textContent="ระดับ"+n[top]+" · "+msg[top];
  var w=items.filter(function(it){return it[1]>0}).map(function(it){return "<li>"+it[0]+" ("+(it[1]==2?"ระดับแดง":"ระดับเหลือง")+")</li>"});
+ if(th)w.push("<li>น้ำทะเลหนุนสูง ระบายน้ำออกได้ช้าลง</li>");
  $("why").innerHTML=w.length?w.join(""):"<li>ทุกปัจจัยอยู่ในเกณฑ์ปกติ</li>";
+ $("crit").textContent="เหลือง / แดง: ฝนย้อนหลัง 24 ชม. ≥ "+CFG.r24[0]+" / "+CFG.r24[1]+" มม. · ฝนพยากรณ์ 48 ชม. ≥ "+CFG.f48[0]+" / "+CFG.f48[1]+" มม. · ฝนต้นน้ำ 24 ชม. ≥ "+CFG.up24[0]+" / "+CFG.up24[1]+" มม. · ถ้ามี 2 ปัจจัยเป็นเหลืองพร้อมกัน หรือเป็นเหลืองขณะน้ำทะเลหนุนสูง (≥ "+CFG.tide+" ม.) จะยกเป็นแดง";
  $("upd").textContent="อัปเดตล่าสุด "+tf(now)+" น. (เวลาไทย)";
 }
 function load(){
- Promise.all([get(api(LAT,LON,3,4)),get(api(UP[0],UP[1],1,1))]).then(function(r){render(r[0],r[1])}).catch(function(){
+ Promise.all([get(api(LAT,LON,3,4)),get(api(UP[0],UP[1],1,1)),get(tideUrl()).catch(function(){return null})]).then(function(r){render(r[0],r[1],r[2])}).catch(function(){
   $("go").className="";$("go").textContent="ดึงข้อมูลไม่สำเร็จ";$("why").innerHTML="<li>ตรวจสอบอินเทอร์เน็ตแล้วกดรีเฟรชข้อมูล</li>";$("upd").textContent="ยังไม่ได้รับข้อมูลล่าสุด"})
 }
 $("re").addEventListener("click",load);

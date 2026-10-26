@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>เฝ้าระวังน้ำท่วมหาดใหญ่</title>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#e6f8f4;--card:#fff;--ink:#0f3b3f;--mute:#4a7779;--line:#bfe5de;--bar:#27b0ae;--g:#138a55;--y:#f5b301;--r:#dc3d3d;--n:#6b8795}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0c2a2c;--card:#133b3e;--ink:#e4f7f3;--mute:#8fbdb8;--line:#215357;--bar:#4fd3cf}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Prompt",system-ui,sans-serif;line-height:1.6;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+main{max-width:560px;margin:0 auto;padding:16px}
+h1{font-size:1.25rem;margin:4px 0 2px;font-weight:800}
+.sub{color:var(--mute);font-size:.85rem;margin:0 0 14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:14px;margin-bottom:12px}
+h2{font-size:1rem;margin:0 0 8px;font-weight:600}
+#go{border-radius:999px;padding:18px;font:800 1.2rem "Prompt",sans-serif;color:#fff;background:var(--n);text-align:center}
+#go.g{background:var(--g)}#go.y{background:var(--y);color:#2b2000}#go.r{background:var(--r)}
+#why{margin:10px 0 0;padding-left:1.1rem;font-size:.9rem}
+.nums{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
+.nums b{display:block;font-size:1.5rem;font-weight:800}
+.nums span{font-size:.78rem;color:var(--mute)}
+.svgwrap{overflow-x:auto}
+svg text{fill:var(--mute);font-size:10px;font-family:inherit}
+.note{font-size:.78rem;color:var(--mute);margin:8px 0 0}
+.ic svg{width:30px;height:30px;vertical-align:-9px;margin-right:6px}
+button{margin-top:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:8px 16px;font:600 .85rem "Prompt",sans-serif;cursor:pointer}
+</style>
+</head>
+<body>
+<main>
+<h1>เฝ้าระวังน้ำท่วม อ.หาดใหญ่</h1>
+<p class="sub" id="upd">กำลังดึงข้อมูล...</p>
+
+<div class="card">
+<div id="go" role="status" aria-live="polite">กำลังตรวจสอบ...</div>
+<ul id="why"></ul>
+</div>
+
+<div class="card">
+<h2><span class="ic" id="ic1"></span>ฝนสะสมย้อนหลัง (หาดใหญ่)</h2>
+<div class="nums">
+<div><b id="n24">-</b><span>มม. ใน 24 ชม.</span></div>
+<div><b id="n48">-</b><span>มม. ใน 48 ชม.</span></div>
+<div><b id="n72">-</b><span>มม. ใน 72 ชม.</span></div>
+</div>
+<p class="note" id="up"></p>
+</div>
+
+<div class="card">
+<h2><span class="ic" id="ic2"></span>พยากรณ์ฝน 48 ชม. ข้างหน้า (ทุก 3 ชม.)</h2>
+<p id="today" style="margin:0 0 6px;font-weight:600"></p>
+<div class="svgwrap"><svg id="chart" viewBox="0 0 320 130" width="100%" role="img" aria-label="กราฟพยากรณ์ฝน 48 ชั่วโมง"></svg></div>
+<p class="note" id="fsum"></p>
+<button id="re" type="button">รีเฟรชข้อมูล</button>
+</div>
+
+<div class="card">
+<h2>เกณฑ์ที่ใช้ตัดสิน</h2>
+<p class="note">เหลือง / แดง: ฝนย้อนหลัง 24 ชม. ≥ 90 / 200 มม. · ฝนพยากรณ์ 48 ชม. ≥ 100 / 200 มม. · ฝนต้นน้ำ 24 ชม. ≥ 100 / 200 มม. · ถ้ามี 2 ปัจจัยเป็นเหลืองพร้อมกัน จะยกเป็นแดง</p>
+<p class="note">ยังไม่รวมระดับน้ำในคลองและน้ำทะเลหนุน ข้อมูลฝนมาจากแบบจำลอง Open-Meteo ใช้ประกอบการเฝ้าระวังเท่านั้น ไม่ใช่ประกาศทางการ กรุณาติดตามกรมอุตุนิยมวิทยาและ ปภ. ด้วย</p>
+</div>
+</main>
+<script>
+var $=function(i){return document.getElementById(i)};
+var LAT=7.0086,LON=100.4747,UP=[6.75,100.35],H=3600000;
+var TZ={timeZone:"Asia/Bangkok"};
+function tf(t){return new Date(t).toLocaleTimeString("th-TH",{hour:"2-digit",minute:"2-digit",hourCycle:"h23",timeZone:"Asia/Bangkok"})}
+function df(t){return new Date(t).toLocaleDateString("th-TH",{day:"numeric",month:"short",timeZone:"Asia/Bangkok"})}
+function api(la,lo,past,fwd){return "https://api.open-meteo.com/v1/forecast?latitude="+la+"&longitude="+lo+"&hourly=precipitation&past_days="+past+"&forecast_days="+fwd+"&timezone=Asia%2FBangkok"}
+function get(u){return fetch(u).then(function(r){if(!r.ok)throw new Error("http");return r.json()})}
+function prep(d){var off=d.utc_offset_seconds,ms=d.hourly.time.map(function(t){return Date.parse(t+":00Z")-off*1000}),p=d.hourly.precipitation.map(function(v){return v||0}),now=Date.now(),idx=0;
+ for(var i=0;i<ms.length;i++)if(ms[i]<=now)idx=i;
+ return{ms:ms,p:p,idx:idx}}
+function back(o,n){var s=0;for(var i=Math.max(0,o.idx-n+1);i<=o.idx;i++)s+=o.p[i];return Math.round(s)}
+function lvl(v,y,r){return v>=r?2:v>=y?1:0}
+function ic(){var s='<svg viewBox="0 0 40 40"><path d="M10 30a8 8 0 0 1 0-16a10 10 0 0 1 19-2a9 9 0 0 1 2 18z" fill="#fff" stroke="#27b0ae" stroke-width="2.5" stroke-linejoin="round"/><circle cx="15" cy="23" r="1.8" fill="#17525a"/><circle cx="25" cy="23" r="1.8" fill="#17525a"/><path d="M17 27q3 3 6 0" fill="none" stroke="#17525a" stroke-width="1.8" stroke-linecap="round"/><path d="M14 34q-2 3 0 4q2-1 0-4zM26 34q-2 3 0 4q2-1 0-4z" fill="#6fd6f2"/></svg>';$("ic1").innerHTML=s;$("ic2").innerHTML=s}
+function render(a,b){
+ var A=prep(a),B=prep(b),now=Date.now();
+ var r24=back(A,24),r48=back(A,48),r72=back(A,72),u24=back(B,24);
+ $("n24").textContent=r24;$("n48").textContent=r48;$("n72").textContent=r72;
+ $("up").textContent="ฝนต้นน้ำ (แถบสะเดา/สันกาลาคีรี) 24 ชม. ล่าสุด: "+u24+" มม.";
+ var t0=Math.ceil((now+25200000)/10800000)*10800000-25200000,vals=[],tot=0;
+ for(var i=0;i<16;i++){var s=0;for(var k=0;k<A.ms.length;k++)if(A.ms[k]>t0+i*3*H&&A.ms[k]<=t0+(i+1)*3*H)s+=A.p[k];vals.push(s);tot+=s}
+ var f48=Math.round(tot),mx=Math.max.apply(null,vals.concat([5])),c="";
+ for(i=0;i<16;i++){var h=vals[i]/mx*90,x=14+i*19,tt=t0+i*3*H,hh=+new Date(tt).toLocaleTimeString("en-GB",{hour:"2-digit",hourCycle:"h23",timeZone:"Asia/Bangkok"}).slice(0,2);
+  c+='<rect x="'+x+'" y="'+(100-h)+'" width="14" height="'+Math.max(h,1)+'" rx="2" fill="var(--bar)"/>';
+  if(hh%6==0)c+='<text x="'+(x+7)+'" y="114" text-anchor="middle">'+tf(tt)+'</text>';
+  if(hh==0)c+='<path d="M'+(x-2.5)+' 14V118" stroke="var(--bar)" stroke-dasharray="3 3"/><text x="'+(x+1)+'" y="126">'+df(tt)+'</text>'}
+ c+='<line x1="8" y1="100" x2="316" y2="100" stroke="var(--line)"/>';
+ $("chart").innerHTML=c;
+ $("today").textContent="วันนี้ "+new Date().toLocaleDateString("th-TH",{weekday:"long",day:"numeric",month:"long",year:"numeric",timeZone:"Asia/Bangkok"});
+ $("fsum").textContent="รวมประมาณ "+f48+" มม. ใน 48 ชม. (แท่งสูงสุด ≈ "+Math.round(mx)+" มม./3 ชม.)";
+ var items=[["ฝนย้อนหลัง 24 ชม. "+r24+" มม.",lvl(r24,90,200)],["ฝนพยากรณ์ 48 ชม. "+f48+" มม.",lvl(f48,100,200)],["ฝนต้นน้ำ 24 ชม. "+u24+" มม.",lvl(u24,100,200)]];
+ var top=0,ys=0;items.forEach(function(it){if(it[1]>top)top=it[1];if(it[1]==1)ys++});
+ if(ys>=2&&top<2)top=2;
+ var n=["เขียว","เหลือง","แดง"],cl=["g","y","r"],msg=["ปกติ ยังไม่ต้องกังวล","เฝ้าระวัง ติดตามข่าวและเตรียมของ","อันตราย เตรียมอพยพ/ยกของขึ้นที่สูง"];
+ $("go").className=cl[top];$("go").textContent="ระดับ"+n[top]+" · "+msg[top];
+ var w=items.filter(function(it){return it[1]>0}).map(function(it){return "<li>"+it[0]+" ("+(it[1]==2?"ระดับแดง":"ระดับเหลือง")+")</li>"});
+ $("why").innerHTML=w.length?w.join(""):"<li>ทุกปัจจัยอยู่ในเกณฑ์ปกติ</li>";
+ $("upd").textContent="อัปเดตล่าสุด "+tf(now)+" น. (เวลาไทย)";
+}
+function load(){
+ Promise.all([get(api(LAT,LON,3,4)),get(api(UP[0],UP[1],1,1))]).then(function(r){render(r[0],r[1])}).catch(function(){
+  $("go").className="";$("go").textContent="ดึงข้อมูลไม่สำเร็จ";$("why").innerHTML="<li>ตรวจสอบอินเทอร์เน็ตแล้วกดรีเฟรชข้อมูล</li>";$("upd").textContent="ยังไม่ได้รับข้อมูลล่าสุด"})
+}
+$("re").addEventListener("click",load);
+ic();load();setInterval(load,600000);
+</script>
+</body>
+</html>

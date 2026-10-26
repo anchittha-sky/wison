@@ -22,7 +22,9 @@ h2{font-size:1rem;margin:0 0 8px;font-weight:600}
 .nums b{display:block;font-size:1.5rem;font-weight:800}
 .nums span{font-size:.78rem;color:var(--mute)}
 .svgwrap{overflow-x:auto}
-svg text{fill:var(--mute);font-size:10px;font-family:inherit}
+svg text{fill:var(--mute);font-size:11px;font-family:inherit}
+.lg{display:flex;gap:16px;font-size:.78rem;color:var(--mute);margin-bottom:4px}
+.lg i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px}
 .note{font-size:.78rem;color:var(--mute);margin:8px 0 0}
 .ic svg{width:30px;height:30px;vertical-align:-9px;margin-right:6px}
 .wl{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-top:1px solid var(--line);font-size:.9rem}
@@ -43,6 +45,15 @@ button{margin-top:10px;border:1px solid var(--line);background:var(--card);color
 </div>
 
 <div class="card">
+<h2><span class="ic" id="ic2"></span>พยากรณ์ฝน 48 ชม. ข้างหน้า (ทุก 3 ชม.)</h2>
+<p id="today" style="margin:0 0 6px;font-weight:600"></p>
+<div class="lg"><span><i style="background:var(--n)"></i>ย้อนหลัง 2 แท่ง</span><span><i style="background:var(--bar)"></i>พยากรณ์</span></div>
+<div class="svgwrap"><svg id="chart" viewBox="0 0 320 140" width="100%" role="img" aria-label="กราฟพยากรณ์ฝน 48 ชั่วโมง"></svg></div>
+<p class="note" id="fsum"></p>
+<button id="re" type="button">รีเฟรชข้อมูล</button>
+</div>
+
+<div class="card">
 <h2><span class="ic" id="ic3"></span>ระดับน้ำคลอง (สถานีกรมชลประทาน)</h2>
 <div id="wlist"></div>
 <p class="note" id="wnote"></p>
@@ -57,14 +68,6 @@ button{margin-top:10px;border:1px solid var(--line);background:var(--card);color
 </div>
 <p class="note" id="up"></p>
 <p class="note" id="tide"></p>
-</div>
-
-<div class="card">
-<h2><span class="ic" id="ic2"></span>พยากรณ์ฝน 48 ชม. ข้างหน้า (ทุก 3 ชม.)</h2>
-<p id="today" style="margin:0 0 6px;font-weight:600"></p>
-<div class="svgwrap"><svg id="chart" viewBox="0 0 320 130" width="100%" role="img" aria-label="กราฟพยากรณ์ฝน 48 ชั่วโมง"></svg></div>
-<p class="note" id="fsum"></p>
-<button id="re" type="button">รีเฟรชข้อมูล</button>
 </div>
 
 <div class="card">
@@ -129,17 +132,18 @@ function render(a,b,c2,w){
  $("n24").textContent=r24;$("n48").textContent=r48;$("n72").textContent=r72;
  $("up").textContent="ฝนต้นน้ำ (แถบสะเดา/สันกาลาคีรี) 24 ชม. ล่าสุด: "+u24+" มม.";
  $("tide").textContent=tm===null?"น้ำทะเลหนุน: ยังไม่มีข้อมูล (ไม่ได้นำมาคำนวณ)":"น้ำทะเลอ่าวไทยหน้าสงขลา สูงสุดใน 24 ชม. ข้างหน้า: "+(tm>=0?"+":"")+tm.toFixed(2)+" ม. จากระดับน้ำทะเลปานกลาง ("+(th?"หนุนสูง":"ปกติ")+")";
- var t0=Math.ceil((now+25200000)/10800000)*10800000-25200000,vals=[],tot=0;
- for(var i=0;i<16;i++){var s=0;for(var k=0;k<A.ms.length;k++)if(A.ms[k]>t0+i*3*H&&A.ms[k]<=t0+(i+1)*3*H)s+=A.p[k];vals.push(s);tot+=s}
- var f48=Math.round(tot),mx=Math.max.apply(null,vals.concat([5])),c="";
- for(i=0;i<16;i++){var h=vals[i]/mx*90,x=14+i*19,tt=t0+i*3*H,hh=+new Date(tt).toLocaleTimeString("en-GB",{hour:"2-digit",hourCycle:"h23",timeZone:"Asia/Bangkok"}).slice(0,2);
-  c+='<rect x="'+x+'" y="'+(100-h)+'" width="14" height="'+Math.max(h,1)+'" rx="2" fill="var(--bar)"/>';
-  if(hh%6==0)c+='<text x="'+(x+7)+'" y="114" text-anchor="middle">'+tf(tt)+'</text>';
-  if(hh==0)c+='<path d="M'+(x-2.5)+' 14V118" stroke="var(--bar)" stroke-dasharray="3 3"/><text x="'+(x+1)+'" y="126">'+df(tt)+'</text>'}
- c+='<line x1="8" y1="100" x2="316" y2="100" stroke="var(--line)"/>';
+ var Tn=Math.floor((now+25200000)/10800000)*10800000-25200000,vals=[],f48=0,c="";
+ for(var j=0;j<18;j++){var ts=Tn+(j-2)*3*H,s=0;for(var k=0;k<A.ms.length;k++)if(A.ms[k]>ts&&A.ms[k]<=ts+3*H)s+=A.p[k];vals.push(s)}
+ for(var k2=0;k2<A.ms.length;k2++)if(A.ms[k2]>now&&A.ms[k2]<=now+48*H)f48+=A.p[k2];
+ f48=Math.round(f48);var past6=Math.round(vals[0]+vals[1]),mx=Math.max.apply(null,vals.concat([5]));
+ for(j=0;j<18;j++){var h=vals[j]/mx*90,x=8+j*17,tt=Tn+(j-2)*3*H,hh=+new Date(tt).toLocaleTimeString("en-GB",{hour:"2-digit",hourCycle:"h23",timeZone:"Asia/Bangkok"}).slice(0,2);
+  c+='<rect x="'+x+'" y="'+(104-h)+'" width="14" height="'+Math.max(h,1)+'" rx="2" fill="'+(j<2?"var(--n)":"var(--bar)")+'"/>';
+  if(hh%6==0)c+='<text x="'+(x+7)+'" y="118" text-anchor="middle">'+tf(tt)+'</text>';
+  if(hh==0)c+='<path d="M'+(x-1.5)+' 16V122" stroke="var(--bar)" stroke-dasharray="3 3"/><text x="'+(x+1)+'" y="134">'+df(tt)+'</text>'}
+ c+='<line x1="4" y1="104" x2="316" y2="104" stroke="var(--line)"/><path d="M40.5 16V104" stroke="var(--mute)" stroke-dasharray="3 3"/><text x="40.5" y="11" text-anchor="middle" style="font-weight:600">ตอนนี้</text>';
  $("chart").innerHTML=c;
  $("today").textContent="วันนี้ "+new Date().toLocaleDateString("th-TH",{weekday:"long",day:"numeric",month:"long",year:"numeric",timeZone:"Asia/Bangkok"});
- $("fsum").textContent="รวมประมาณ "+f48+" มม. ใน 48 ชม. (แท่งสูงสุด ≈ "+Math.round(mx)+" มม./3 ชม.)";
+ $("fsum").textContent="ฝนย้อนหลัง 6 ชม. รวม "+past6+" มม. · พยากรณ์ 48 ชม. รวม "+f48+" มม. (แท่งสูงสุด ≈ "+Math.round(mx)+" มม./3 ชม.)";
  // ระดับน้ำคลอง
  var wTop=0,wOK=false,col=["var(--g)","var(--y)","var(--r)"],wh="",stale=false;
  if(ws){ws.forEach(function(s){
@@ -155,7 +159,7 @@ function render(a,b,c2,w){
  if(ys>=2&&top<2){if(CFG.need2&&wOK){if(wTop>=1)top=2}else top=2}
  if(th&&top==1)top=2;
  if(wTop>top)top=wTop;
- var n=["เขียว","เหลือง","แดง"],cl=["g","y","r"],msg=["ปกติ ยังไม่ต้องกังวล","เฝ้าระวัง ติดตามข่าวและเตรียมของ","อันตราย เตรียมอพยพ/ยกของขึ้นที่สูง"];
+ var n=["เขียว","เหลือง","แดง"],cl=["g","y","r"],msg=["ปกติ","เฝ้าระวัง","อันตราย"];
  $("go").className=cl[top];$("go").textContent="ระดับ"+n[top]+" · "+msg[top];
  var w2=items.filter(function(it){return it[1]>0}).map(function(it){return "<li>"+it[0]+" ("+(it[1]==2?"ระดับแดง":"ระดับเหลือง")+")</li>"});
  if(ws)ws.forEach(function(s){if(s.age<=6&&s.lv>0)w2.push("<li>ระดับน้ำ "+s.name+" "+s.v.toFixed(2)+" ม. ("+(s.lv==2?"ระดับแดง":"ระดับเหลือง")+")</li>")});

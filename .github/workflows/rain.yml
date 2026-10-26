@@ -1,0 +1,18 @@
+name: probe-rain
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch rain data
+        run: python fetch_rain.py
+      - name: Commit result
+        run: |
+          git config user.name "water-bot"
+          git config user.email "water-bot@users.noreply.github.com"
+          git add rain.json
+          git diff --cached --quiet || (git commit -m "probe rain data" && git push)

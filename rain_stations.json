@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-28T03:50:08+00:00",
+ "updated": "2026-10-28T04:18:43+00:00",
  "source": "https://api-v3.thaiwater.net/api/v1/thaiwater30/public/rain_24h",
  "count": 62,
  "stations": [
@@ -11,7 +11,9 @@
    "rain24": 82,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ทน."
+   "agency": "ทน.",
+   "amphoe": "เมืองสงขลา",
+   "zone": null
   },
   {
    "code": "ONE038",
@@ -21,7 +23,9 @@
    "rain24": 73.6,
    "rain1": 0,
    "time": "2026-10-28 10:00",
-   "agency": "สสน."
+   "agency": "สสน.",
+   "amphoe": "สิงหนคร",
+   "zone": null
   },
   {
    "code": "TH26",
@@ -31,7 +35,9 @@
    "rain24": 63.5,
    "rain1": null,
    "time": "2026-10-28 09:50",
-   "agency": "ปภ."
+   "agency": "ปภ.",
+   "amphoe": "สิงหนคร",
+   "zone": null
   },
   {
    "code": "48568",
@@ -41,7 +47,9 @@
    "rain24": 61.4,
    "rain1": null,
    "time": "2026-10-28 10:00",
-   "agency": "อต."
+   "agency": "อต.",
+   "amphoe": "เมืองสงขลา",
+   "zone": null
   },
   {
    "code": "STN0709",
@@ -51,7 +59,9 @@
    "rain24": 26.5,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ทน."
+   "agency": "ทน.",
+   "amphoe": "จะนะ",
+   "zone": null
   },
   {
    "code": "TF43",
@@ -61,7 +71,9 @@
    "rain24": 24.9,
    "rain1": null,
    "time": "2026-10-28 09:50",
-   "agency": "ปภ."
+   "agency": "ปภ.",
+   "amphoe": "สะเดา",
+   "zone": null
   },
   {
    "code": "STN0211",
@@ -71,7 +83,9 @@
    "rain24": 23.5,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ทน."
+   "agency": "ทน.",
+   "amphoe": "เมืองสงขลา",
+   "zone": null
   },
   {
    "code": "STN1714",
@@ -81,7 +95,9 @@
    "rain24": 23,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ทน."
+   "agency": "ทน.",
+   "amphoe": "นาทวี",
+   "zone": null
   },
   {
    "code": "STN0152",
@@ -91,7 +107,9 @@
    "rain24": 18,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ทน."
+   "agency": "ทน.",
+   "amphoe": "สะเดา",
+   "zone": null
   },
   {
    "code": "STN0710",
@@ -101,7 +119,9 @@
    "rain24": 15.5,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ทน."
+   "agency": "ทน.",
+   "amphoe": "หาดใหญ่",
+   "zone": "city"
   },
   {
    "code": "STN0063",
@@ -111,7 +131,9 @@
    "rain24": 13.5,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ทน."
+   "agency": "ทน.",
+   "amphoe": "รัตภูมิ",
+   "zone": null
   },
   {
    "code": "KAOP",
@@ -121,7 +143,9 @@
    "rain24": 13,
    "rain1": 0,
    "time": "2026-10-28 10:00",
-   "agency": "สสน."
+   "agency": "สสน.",
+   "amphoe": "รัตภูมิ",
+   "zone": null
   },
   {
    "code": "MOU138",
@@ -131,7 +155,9 @@
    "rain24": 9.4,
    "rain1": 0.2,
    "time": "2026-10-28 10:00",
-   "agency": "พพภ"
+   "agency": "พพภ",
+   "amphoe": "สะเดา",
+   "zone": null
   },
   {
    "code": "STN2059",
@@ -141,7 +167,9 @@
    "rain24": 8,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ทน."
+   "agency": "ทน.",
+   "amphoe": "รัตภูมิ",
+   "zone": null
   },
   {
    "code": "STN0212",
@@ -151,7 +179,9 @@
    "rain24": 8,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ทน."
+   "agency": "ทน.",
+   "amphoe": "จะนะ",
+   "zone": null
   },
   {
    "code": "STN0155",
@@ -161,7 +191,9 @@
    "rain24": 6.5,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ทน."
+   "agency": "ทน.",
+   "amphoe": "หาดใหญ่",
+   "zone": "city"
   },
   {
    "code": "48569",
@@ -171,7 +203,9 @@
    "rain24": 5.4,
    "rain1": null,
    "time": "2026-10-28 10:00",
-   "agency": "อต."
+   "agency": "อต.",
+   "amphoe": "คลองหอยโข่ง",
+   "zone": null
   },
   {
    "code": "STN1605",
@@ -181,7 +215,9 @@
    "rain24": 5,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ทน."
+   "agency": "ทน.",
+   "amphoe": "สะเดา",
+   "zone": null
   },
   {
    "code": "STN1692",
@@ -191,7 +227,9 @@
    "rain24": 4,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ทน."
+   "agency": "ทน.",
+   "amphoe": "นาทวี",
+   "zone": null
   },
   {
    "code": "ridtele_TSL22",
@@ -201,7 +239,9 @@
    "rain24": 4,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ชป."
+   "agency": "ชป.",
+   "amphoe": "รัตภูมิ",
+   "zone": null
   },
   {
    "code": "MOU502",
@@ -211,7 +251,9 @@
    "rain24": 3.8,
    "rain1": 0,
    "time": "2026-10-28 10:00",
-   "agency": "พพภ"
+   "agency": "พพภ",
+   "amphoe": "หาดใหญ่",
+   "zone": "city"
   },
   {
    "code": "STN0220",
@@ -221,7 +263,9 @@
    "rain24": 3.5,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ทน."
+   "agency": "ทน.",
+   "amphoe": "จะนะ",
+   "zone": null
   },
   {
    "code": "STN0708",
@@ -231,17 +275,9 @@
    "rain24": 3.5,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ทน."
-  },
-  {
-   "code": "STN1026",
-   "name": "บ้านโฮ๊ะ",
-   "lat": 6.961809,
-   "lon": 100.317857,
-   "rain24": 2.5,
-   "rain1": 0,
-   "time": "2026-10-28 09:00",
-   "agency": "ทน."
+   "agency": "ทน.",
+   "amphoe": "นาทวี",
+   "zone": null
   },
   {
    "code": "STN0134",
@@ -251,7 +287,21 @@
    "rain24": 2.5,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ทน."
+   "agency": "ทน.",
+   "amphoe": "นาหม่อม",
+   "zone": null
+  },
+  {
+   "code": "STN1026",
+   "name": "บ้านโฮ๊ะ",
+   "lat": 6.961809,
+   "lon": 100.317857,
+   "rain24": 2.5,
+   "rain1": 0,
+   "time": "2026-10-28 09:00",
+   "agency": "ทน.",
+   "amphoe": "หาดใหญ่",
+   "zone": "city"
   },
   {
    "code": "NPCT",
@@ -261,7 +311,9 @@
    "rain24": 1.8,
    "rain1": 0,
    "time": "2026-10-28 10:00",
-   "agency": "สสน."
+   "agency": "สสน.",
+   "amphoe": "นาหม่อม",
+   "zone": null
   },
   {
    "code": "SLA007",
@@ -271,17 +323,9 @@
    "rain24": 1.6,
    "rain1": 0,
    "time": "2026-10-28 10:00",
-   "agency": "สสน."
-  },
-  {
-   "code": "STN0580",
-   "name": "บ้านพรุเตาะนอก",
-   "lat": 7.040102,
-   "lon": 100.536696,
-   "rain24": 1.5,
-   "rain1": 0,
-   "time": "2026-10-28 09:00",
-   "agency": "ทน."
+   "agency": "สสน.",
+   "amphoe": "บางกล่ำ",
+   "zone": null
   },
   {
    "code": "STN2060",
@@ -291,7 +335,21 @@
    "rain24": 1.5,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ทน."
+   "agency": "ทน.",
+   "amphoe": "สะเดา",
+   "zone": null
+  },
+  {
+   "code": "STN0580",
+   "name": "บ้านพรุเตาะนอก",
+   "lat": 7.040102,
+   "lon": 100.536696,
+   "rain24": 1.5,
+   "rain1": 0,
+   "time": "2026-10-28 09:00",
+   "agency": "ทน.",
+   "amphoe": "หาดใหญ่",
+   "zone": "city"
   },
   {
    "code": "G09006-TA200308",
@@ -301,27 +359,9 @@
    "rain24": 1.5,
    "rain1": 0,
    "time": "2026-10-28 10:00",
-   "agency": "ทน."
-  },
-  {
-   "code": "48571",
-   "name": "คอหงษ์ สกษ.",
-   "lat": 7,
-   "lon": 100.5,
-   "rain24": 1,
-   "rain1": null,
-   "time": "2026-10-28 10:00",
-   "agency": "อต."
-  },
-  {
-   "code": "STN2213",
-   "name": "บ้านควนจง",
-   "lat": 6.968613,
-   "lon": 100.51886,
-   "rain24": 1,
-   "rain1": 0,
-   "time": "2026-10-28 09:00",
-   "agency": "ทน."
+   "agency": "ทน.",
+   "amphoe": "รัตภูมิ",
+   "zone": null
   },
   {
    "code": "ridtele_STN03",
@@ -331,7 +371,21 @@
    "rain24": 1,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ชป."
+   "agency": "ชป.",
+   "amphoe": "หาดใหญ่",
+   "zone": "city"
+  },
+  {
+   "code": "48571",
+   "name": "คอหงษ์ สกษ.",
+   "lat": 7,
+   "lon": 100.5,
+   "rain24": 1,
+   "rain1": null,
+   "time": "2026-10-28 10:00",
+   "agency": "อต.",
+   "amphoe": "หาดใหญ่",
+   "zone": "city"
   },
   {
    "code": "STN0581",
@@ -341,7 +395,9 @@
    "rain24": 1,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ทน."
+   "agency": "ทน.",
+   "amphoe": "สะเดา",
+   "zone": null
   },
   {
    "code": "ridtele_TSL26",
@@ -351,7 +407,21 @@
    "rain24": 1,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ชป."
+   "agency": "ชป.",
+   "amphoe": "หาดใหญ่",
+   "zone": "city"
+  },
+  {
+   "code": "STN2213",
+   "name": "บ้านควนจง",
+   "lat": 6.968613,
+   "lon": 100.51886,
+   "rain24": 1,
+   "rain1": 0,
+   "time": "2026-10-28 09:00",
+   "agency": "ทน.",
+   "amphoe": "นาหม่อม",
+   "zone": null
   },
   {
    "code": "TSDO",
@@ -361,7 +431,9 @@
    "rain24": 0.6,
    "rain1": 0,
    "time": "2026-10-28 10:00",
-   "agency": "สสน."
+   "agency": "สสน.",
+   "amphoe": "สะเดา",
+   "zone": null
   },
   {
    "code": "STN1800",
@@ -371,7 +443,9 @@
    "rain24": 0.5,
    "rain1": 0.5,
    "time": "2026-10-28 09:00",
-   "agency": "ทน."
+   "agency": "ทน.",
+   "amphoe": "สะเดา",
+   "zone": null
   },
   {
    "code": "STN1025",
@@ -381,7 +455,9 @@
    "rain24": 0.5,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ทน."
+   "agency": "ทน.",
+   "amphoe": "หาดใหญ่",
+   "zone": "city"
   },
   {
    "code": "STN0015",
@@ -391,7 +467,9 @@
    "rain24": 0.5,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ทน."
+   "agency": "ทน.",
+   "amphoe": "นาหม่อม",
+   "zone": null
   },
   {
    "code": "SLA001",
@@ -401,17 +479,9 @@
    "rain24": 0.4,
    "rain1": 0,
    "time": "2026-10-28 10:00",
-   "agency": "สสน."
-  },
-  {
-   "code": "SLA003",
-   "name": "สะเดา",
-   "lat": 6.796687,
-   "lon": 100.44239,
-   "rain24": 0.4,
-   "rain1": 0,
-   "time": "2026-10-28 10:00",
-   "agency": "สสน."
+   "agency": "สสน.",
+   "amphoe": "หาดใหญ่",
+   "zone": "city"
   },
   {
    "code": "ONE037",
@@ -421,7 +491,21 @@
    "rain24": 0.4,
    "rain1": 0,
    "time": "2026-10-28 10:00",
-   "agency": "สสน."
+   "agency": "สสน.",
+   "amphoe": "หาดใหญ่",
+   "zone": "city"
+  },
+  {
+   "code": "SLA003",
+   "name": "สะเดา",
+   "lat": 6.796687,
+   "lon": 100.44239,
+   "rain24": 0.4,
+   "rain1": 0,
+   "time": "2026-10-28 10:00",
+   "agency": "สสน.",
+   "amphoe": "สะเดา",
+   "zone": null
   },
   {
    "code": "SLA002",
@@ -431,7 +515,9 @@
    "rain24": 0.2,
    "rain1": 0,
    "time": "2026-10-28 10:00",
-   "agency": "สสน."
+   "agency": "สสน.",
+   "amphoe": "คลองหอยโข่ง",
+   "zone": null
   },
   {
    "code": "STN2062",
@@ -441,7 +527,9 @@
    "rain24": 0,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ทน."
+   "agency": "ทน.",
+   "amphoe": "หาดใหญ่",
+   "zone": "city"
   },
   {
    "code": "ridtele_STN04",
@@ -451,7 +539,9 @@
    "rain24": 0,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ชป."
+   "agency": "ชป.",
+   "amphoe": "หาดใหญ่",
+   "zone": "city"
   },
   {
    "code": "ridtele_STN06",
@@ -461,7 +551,9 @@
    "rain24": 0,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ชป."
+   "agency": "ชป.",
+   "amphoe": "หาดใหญ่",
+   "zone": "city"
   },
   {
    "code": "ridtele_STN09",
@@ -471,7 +563,9 @@
    "rain24": 0,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ชป."
+   "agency": "ชป.",
+   "amphoe": "สะเดา",
+   "zone": null
   },
   {
    "code": "ridtele_STN12",
@@ -481,7 +575,9 @@
    "rain24": 0,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ชป."
+   "agency": "ชป.",
+   "amphoe": "สะเดา",
+   "zone": null
   },
   {
    "code": "ridtele_STN13",
@@ -491,7 +587,9 @@
    "rain24": 0,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ชป."
+   "agency": "ชป.",
+   "amphoe": "สะเดา",
+   "zone": null
   },
   {
    "code": "ridtele_TSL23",
@@ -501,7 +599,9 @@
    "rain24": 0,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ชป."
+   "agency": "ชป.",
+   "amphoe": "หาดใหญ่",
+   "zone": "city"
   },
   {
    "code": "ridtele_TSL25",
@@ -511,7 +611,9 @@
    "rain24": 0,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ชป."
+   "agency": "ชป.",
+   "amphoe": "หาดใหญ่",
+   "zone": "city"
   },
   {
    "code": "ridtele_TSL30",
@@ -521,7 +623,9 @@
    "rain24": 0,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ชป."
+   "agency": "ชป.",
+   "amphoe": "คลองหอยโข่ง",
+   "zone": null
   },
   {
    "code": "STN2211",
@@ -531,7 +635,9 @@
    "rain24": 0,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ทน."
+   "agency": "ทน.",
+   "amphoe": "หาดใหญ่",
+   "zone": "city"
   },
   {
    "code": "STN2212",
@@ -541,7 +647,9 @@
    "rain24": 0,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ทน."
+   "agency": "ทน.",
+   "amphoe": "หาดใหญ่",
+   "zone": "city"
   },
   {
    "code": "STN2214",
@@ -551,7 +659,9 @@
    "rain24": 0,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ทน."
+   "agency": "ทน.",
+   "amphoe": "ควนเนียง",
+   "zone": null
   },
   {
    "code": "G09006-TA200303",
@@ -561,7 +671,9 @@
    "rain24": 0,
    "rain1": 0,
    "time": "2026-10-28 10:00",
-   "agency": "ทน."
+   "agency": "ทน.",
+   "amphoe": "หาดใหญ่",
+   "zone": "city"
   },
   {
    "code": "STN1024",
@@ -571,7 +683,9 @@
    "rain24": 0,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ทน."
+   "agency": "ทน.",
+   "amphoe": "สะเดา",
+   "zone": null
   },
   {
    "code": "48574",
@@ -581,7 +695,9 @@
    "rain24": 0,
    "rain1": null,
    "time": "2026-10-28 10:00",
-   "agency": "อต."
+   "agency": "อต.",
+   "amphoe": "สะเดา",
+   "zone": null
   },
   {
    "code": "STN1595",
@@ -591,7 +707,9 @@
    "rain24": 0,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ทน."
+   "agency": "ทน.",
+   "amphoe": "สะเดา",
+   "zone": null
   },
   {
    "code": "STN1621",
@@ -601,7 +719,9 @@
    "rain24": 0,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ทน."
+   "agency": "ทน.",
+   "amphoe": "หาดใหญ่",
+   "zone": "city"
   },
   {
    "code": "STN1799",
@@ -611,7 +731,9 @@
    "rain24": 0,
    "rain1": 0,
    "time": "2026-10-28 09:00",
-   "agency": "ทน."
+   "agency": "ทน.",
+   "amphoe": "หาดใหญ่",
+   "zone": "city"
   },
   {
    "code": "G09006-TA200304",
@@ -621,7 +743,9 @@
    "rain24": 0,
    "rain1": 0,
    "time": "2026-10-28 10:00",
-   "agency": "ทน."
+   "agency": "ทน.",
+   "amphoe": "หาดใหญ่",
+   "zone": "city"
   }
  ]
 }

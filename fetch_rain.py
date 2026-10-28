@@ -1,12 +1,15 @@
 # ดึงฝนวัดจริง + ระดับทะเลสาบสงขลา และเก็บประวัติย้อนหลัง (ใช้คู่กับ fetch_water.py)
 import json
+import math
 import os
 import urllib.request
 from datetime import datetime, timezone, timedelta
 
 BASE = "https://api-v3.thaiwater.net/api/v1/thaiwater30/public/"
 LAT_MIN, LAT_MAX, LON_MIN, LON_MAX = 6.45, 7.20, 100.15, 100.65
-ZONE_LAT = 6.9          # ต่ำกว่านี้ = ต้นน้ำ (แถบสะเดา)
+AMPHOE = "หาดใหญ่"                          # ฝนในเมือง = สถานีใน อ.หาดใหญ่
+UP_ST = {"X.173A": "ม่วงก็อง", "X.90": "บางศาลา"}   # ฝนต้นน้ำ = 2 สถานีนี้ (ใช้ค่าที่มากกว่า)
+CITY_C, CITY_KM = (7.005, 100.47), 10      # สำรอง: ถ้าไม่มีชื่ออำเภอ ใช้รัศมี 10 กม. จากใจกลางหาดใหญ่
 LAKE_CODES = ["SLA005", "TA200306", "G09006-TA200306", "ONE038"]
 LAKE_NAMES = ["ปากรอ", "ปากทะเลสาบสงขลา"]
 KEEP_HOURS = 96
@@ -30,6 +33,17 @@ def walk(o, key):
     elif isinstance(o, list):
         for e in o:
             yield from walk(e, key)
+
+
+def zone(s):
+    name = s.get("name") or ""
+    for code, key in UP_ST.items():
+        if s.get("code") == code or key in name:
+            return "up"
+    if s.get("amphoe"):
+        return "city" if AMPHOE in s["amphoe"] else None
+    d = math.hypot((s["lat"] - CITY_C[0]) * 111.0, (s["lon"] - CITY_C[1]) * 110.4)
+    return "city" if d <= CITY_KM else None
 
 
 def parse_th(s):
@@ -59,7 +73,9 @@ def rain_stations():
                 "rain24": it.get("rain_24h"), "rain1": it.get("rain_1h"),
                 "time": it.get("rainfall_datetime"),
                 "agency": ((it.get("agency") or {}).get("agency_shortname") or {}).get("th"),
+                "amphoe": (geo.get("amphoe_name") or {}).get("th"),
             })
+            stations[-1]["zone"] = zone(stations[-1])
         stations.sort(key=lambda s: -(s["rain24"] or 0))
         out["count"] = len(stations)
         out["stations"] = stations
@@ -94,18 +110,18 @@ def lake_level():
 
 
 def zone_max(rs, now):
-    # ค่าฝนของแต่ละโซน = ค่าสูงสุดอันดับ 2 (กันเครื่องวัดเพี้ยนสถานีเดียว) ถ้ามีสถานีเดียวใช้ค่านั้น
+    # ในเมือง = ค่าสูงสุดอันดับ 2 (กันเครื่องวัดเพี้ยนสถานีเดียว) · ต้นน้ำ = ค่าที่มากกว่าของ X.173A / X.90
     vals = {"city": [], "up": []}
     for s in rs.get("stations") or []:
         t = parse_th(s.get("time"))
         if s.get("rain24") is None or t is None or (now - t).total_seconds() > 6 * 3600:
             continue
-        vals["up" if s["lat"] < ZONE_LAT else "city"].append(s["rain24"])
-    res = {}
-    for k, v in vals.items():
-        v.sort(reverse=True)
-        res[k] = v[1] if len(v) >= 2 else (v[0] if v else None)
-    return res
+        z = zone(s)
+        if z:
+            vals[z].append(s["rain24"])
+    c = sorted(vals["city"], reverse=True)
+    return {"city": c[1] if len(c) >= 2 else (c[0] if c else None),   # ในเมือง: อันดับ 2
+            "up": max(vals["up"]) if vals["up"] else None}            # ต้นน้ำ: ค่ามากสุดของ 2 สถานี
 
 
 def main():

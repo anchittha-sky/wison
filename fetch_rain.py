@@ -38,7 +38,7 @@ def walk(o, key):
 def zone(s):
     name = s.get("name") or ""
     for code, key in UP_ST.items():
-        if s.get("code") == code or key in name:
+        if s.get("code") == code or key in name or ("สถานี " + code) == name.strip():   # ThaiWater ตั้งชื่อว่า "สถานี X.90"
             return "up"
     if s.get("amphoe"):
         return "city" if AMPHOE in s["amphoe"] else None

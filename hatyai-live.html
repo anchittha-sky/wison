@@ -73,7 +73,6 @@ button{margin-top:10px;border:1px solid var(--line);background:var(--card);color
 <div class="svgwrap"><svg id="chart" viewBox="0 0 320 140" width="100%" role="img" aria-label="กราฟพยากรณ์ฝน 48 ชั่วโมง"></svg></div>
 <p class="note" id="fsum"></p>
 <p class="note" id="fsrc"></p>
-<p class="note">⚠️ กราฟนี้มาจากแบบจำลองคอมพิวเตอร์ ไม่ใช่เครื่องวัดฝน ทั้งแท่งย้อนหลังและแท่งพยากรณ์ ฝนฟ้าคะนองในหาดใหญ่มักตกเฉพาะจุด ปริมาณและเวลาจึงคลาดเคลื่อนได้มาก ให้ดูโอกาสฝนตกประกอบ ส่วนฝนที่วัดได้จริงดูที่การ์ด "ฝนที่ตกจริง"</p>
 <button id="re" type="button">รีเฟรชข้อมูล</button>
 </div>
 
@@ -195,8 +194,8 @@ function readRain(rj){
   if(isNaN(t)||(now-t)/H>6)return;
   var zn=zoneOf(s);if(!zn)return;
   var nm=s.name+(s.amphoe?" (อ."+s.amphoe+")":"");
-  z[zn].push({v:s.rain24,name:nm,r1:(s.rain1!=null&&!isNaN(s.rain1)&&(now-t)/H<=2)?+s.rain1:null});
-  if(s.rain1!=null&&!isNaN(s.rain1)&&(now-t)/H<=2)z1[zn].push(+s.rain1);
+  z[zn].push({v:s.rain24,name:nm,r1:(s.rain1!=null&&!isNaN(s.rain1)&&(now-t)/H<=3)?+s.rain1:null});
+  if(s.rain1!=null&&!isNaN(s.rain1)&&(now-t)/H<=3)z1[zn].push(+s.rain1);
   if(t>res.t)res.t=t});
  ["city","up"].forEach(function(k){var a=z1[k].sort(function(x,y){return y-x});res[k+"1"]=a.length?(k=="up"?a[0]:(a.length>1?a[1]:a[0])):null});
  ["city","up"].forEach(function(k){var a=z[k].sort(function(x,y){return y.v-x.v});
@@ -204,7 +203,7 @@ function readRain(rj){
   res[k]={v:u.v,name:u.name,top:a[0],n:a.length,all:a,rank2:k=="city"}});
  return(res.city||res.up)?res:null}
 function zoneOf(s){var nm=String(s.name||"");
- for(var k in CFG.upSt)if(s.code===k||nm.indexOf(CFG.upSt[k])>=0)return "up";
+ for(var k in CFG.upSt)if(s.code===k||nm.indexOf(CFG.upSt[k])>=0||nm.replace(/^\s+|\s+$/g,"")==="สถานี "+k)return "up";   // ThaiWater ตั้งชื่อว่า "สถานี X.90"
  if(s.amphoe)return String(s.amphoe).indexOf(CFG.amphoe)>=0?"city":null;
  var c=CFG.cityC,d=Math.sqrt(Math.pow((s.lat-c[0])*111,2)+Math.pow((s.lon-c[1])*110.4,2));return d<=CFG.cityKm?"city":null}
 function rtxt(z,lab){if(!z)return lab+" ไม่มีข้อมูล";

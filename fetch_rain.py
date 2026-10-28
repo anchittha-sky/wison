@@ -94,14 +94,17 @@ def lake_level():
 
 
 def zone_max(rs, now):
-    res = {"city": None, "up": None}
+    # ค่าฝนของแต่ละโซน = ค่าสูงสุดอันดับ 2 (กันเครื่องวัดเพี้ยนสถานีเดียว) ถ้ามีสถานีเดียวใช้ค่านั้น
+    vals = {"city": [], "up": []}
     for s in rs.get("stations") or []:
         t = parse_th(s.get("time"))
         if s.get("rain24") is None or t is None or (now - t).total_seconds() > 6 * 3600:
             continue
-        k = "up" if s["lat"] < ZONE_LAT else "city"
-        if res[k] is None or s["rain24"] > res[k]:
-            res[k] = s["rain24"]
+        vals["up" if s["lat"] < ZONE_LAT else "city"].append(s["rain24"])
+    res = {}
+    for k, v in vals.items():
+        v.sort(reverse=True)
+        res[k] = v[1] if len(v) >= 2 else (v[0] if v else None)
     return res
 
 

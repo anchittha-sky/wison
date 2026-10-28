@@ -167,17 +167,19 @@ function readWater(w){
   out.push({code:code,name:c.n,v:v,pv:pv,t:t,bank:bank,lv:wlvl(v,c),age:(now-t)/H});
  });
  return out.length?out:null}
-// อ่านฝนวัดจริงจากสถานี (rain_stations.json) -> ค่าสูงสุดในเมือง/ต้นน้ำ (ข้อมูลไม่เกิน 6 ชม.)
+// อ่านฝนวัดจริงจากสถานี (rain_stations.json): ค่าที่ใช้ = สูงสุดอันดับ 2 ของแต่ละโซน (กันเครื่องวัดเพี้ยนสถานีเดียว) ข้อมูลไม่เกิน 6 ชม.
 function readRain(rj){
- if(!rj||!rj.stations)return null;var now=Date.now(),res={city:null,up:null,t:0};
+ if(!rj||!rj.stations)return null;var now=Date.now(),z={city:[],up:[]},res={city:null,up:null,t:0};
  rj.stations.forEach(function(s){
   if(s.rain24==null||isNaN(s.rain24))return;
   var t=Date.parse(String(s.time).replace(" ","T")+":00+07:00");
   if(isNaN(t)||(now-t)/H>6)return;
-  var k=s.lat<CFG.zoneLat?"up":"city";
-  if(!res[k]||s.rain24>res[k].v){res[k]={v:s.rain24,name:s.name}}
+  z[s.lat<CFG.zoneLat?"up":"city"].push({v:s.rain24,name:s.name});
   if(t>res.t)res.t=t});
+ ["city","up"].forEach(function(k){var a=z[k].sort(function(x,y){return y.v-x.v});
+  if(a.length)res[k]={v:(a[1]||a[0]).v,name:(a[1]||a[0]).name,top:a[0],n:a.length}});
  return(res.city||res.up)?res:null}
+function rtxt(z,lab){return z?lab+" "+z.v+" มม. ("+z.name+(z.n>1?" อันดับ 2 จาก "+z.n+" สถานี":"")+")"+(z.n>1&&z.top.v>z.v?" · สูงสุด "+z.top.v+" มม. ที่ "+z.top.name:""):lab+" ไม่มีข้อมูล"}
 var ACT=[
  ["ติดตามแอปนี้วันละครั้ง","เตรียมกระเป๋าฉุกเฉิน: ยา เอกสารสำคัญ ไฟฉาย พาวเวอร์แบงก์ น้ำดื่ม","บันทึกเบอร์ฉุกเฉินไว้ในโทรศัพท์"],
  ["เปิดดูแอปทุก 1–2 ชม. และติดตามประกาศเทศบาลนครหาดใหญ่","ย้ายรถไปจอดที่สูง","ยกของมีค่า เอกสาร และเครื่องใช้ไฟฟ้าขึ้นที่สูง","ชาร์จโทรศัพท์และพาวเวอร์แบงก์ เตรียมน้ำดื่มและอาหารแห้งอย่างน้อย 3 วัน","วางแผนว่าจะอพยพไปที่ไหน และไปอย่างไร"],
@@ -191,7 +193,7 @@ function render(a,b,hj,w,rj){
  var m72=rain3d(hj,now),r72e=m72!=null?m72:r72,r72m=m72!=null;
  $("n24").textContent=r24e;$("u24").textContent=u24e;$("n72").textContent=r72e;
  $("s24").textContent="มม. · "+(r24m?"วัดจริง":"แบบจำลอง");$("su24").textContent="มม. · "+(u24m?"วัดจริง":"แบบจำลอง");$("s72").textContent="มม. · "+(r72m?"วัดจริง≈":"แบบจำลอง");
- $("meas").textContent=(rr?"สถานีที่ฝนมากที่สุด: "+(rr.city?"ในเมือง "+rr.city.name+" "+rr.city.v+" มม.":"ในเมือง ไม่มีข้อมูล")+" · "+(rr.up?"ต้นน้ำ "+rr.up.name+" "+rr.up.v+" มม.":"ต้นน้ำ ไม่มีข้อมูล")+" (ข้อมูล "+tf(rr.t)+" น.)":"ยังไม่มีข้อมูลจากสถานีวัดฝน จึงแสดงค่าจากแบบจำลองแทน")+(r72m?" · ฝน 3 วันรวมจากค่าที่บันทึกไว้ทุกวัน":" · ฝน 3 วันจากสถานีจะแสดงเมื่อเก็บข้อมูลครบ 2 วัน");
+ $("meas").textContent=(rr?"ค่าที่ใช้ = ฝนมากเป็นอันดับ 2 ของแต่ละโซน กันเครื่องวัดเพี้ยนสถานีเดียว · "+rtxt(rr.city,"ในเมือง")+" · "+rtxt(rr.up,"ต้นน้ำ")+" (ข้อมูล "+tf(rr.t)+" น.)":"ยังไม่มีข้อมูลจากสถานีวัดฝน จึงแสดงค่าจากแบบจำลองแทน")+(r72m?" · ฝน 3 วันรวมจากค่าที่บันทึกไว้ทุกวัน":" · ฝน 3 วันจากสถานีจะแสดงเมื่อเก็บข้อมูลครบ 2 วัน");
  var Tn=Math.floor((now+25200000)/10800000)*10800000-25200000,vals=[],f48=0,c="";
  var probs=[],pTop=null;
  for(var j=0;j<18;j++){var ts=Tn+(j-2)*3*H,s=0,pm=null;for(var k=0;k<A.ms.length;k++)if(A.ms[k]>ts&&A.ms[k]<=ts+3*H){s+=A.p[k];var q=A.pp[k];if(q!=null&&(pm===null||q>pm))pm=q}vals.push(s);probs.push(pm);if(j>=2&&pm!==null&&(pTop===null||pm>pTop))pTop=pm}
@@ -251,7 +253,7 @@ function render(a,b,hj,w,rj){
  if(rise!=null&&rise>=CFG.rise)adv.push("ระดับน้ำกลางเมืองสูงขึ้นเร็ว "+rise.toFixed(2)+" ม. ใน 3 ชม. ติดตามใกล้ชิด");
  $("adv").innerHTML=adv.join("<br>");
  var wc=Object.keys(CFG.wl).map(function(k){var q=CFG.wl[k];return k+" "+q.y+" / "+q.r}).join(" · ");
- $("crit").textContent="ฝน เหลือง / แดง (มม.): 24 ชม. "+CFG.r24[0]+" / "+CFG.r24[1]+" · พยากรณ์ 48 ชม. "+CFG.f48[0]+" / "+CFG.f48[1]+" · ต้นน้ำ 24 ชม. "+CFG.up24[0]+" / "+CFG.up24[1]+" · สะสม 3 วัน แดงที่ "+CFG.r72[1]+" ระดับน้ำคลอง เหลือง / แดง (ม.รทก.): "+wc+" · ฝนเหลือง 2 ปัจจัย"+(CFG.need2?" จะเป็นแดงเมื่อระดับน้ำคลองเริ่มสูงด้วย":" จะเป็นแดงทันที")+" · เหลืองขณะทะเลสาบสงขลาสูง (≥ "+CFG.lake+" ม.รทก.) จะเป็นแดง · ฝนใช้ค่าวัดจริงจากสถานีเป็นหลัก ถ้าไม่มีจึงใช้แบบจำลอง";
+ $("crit").textContent="ฝน เหลือง / แดง (มม.): 24 ชม. "+CFG.r24[0]+" / "+CFG.r24[1]+" · พยากรณ์ 48 ชม. "+CFG.f48[0]+" / "+CFG.f48[1]+" · ต้นน้ำ 24 ชม. "+CFG.up24[0]+" / "+CFG.up24[1]+" · สะสม 3 วัน แดงที่ "+CFG.r72[1]+" ระดับน้ำคลอง เหลือง / แดง (ม.รทก.): "+wc+" · ฝนเหลือง 2 ปัจจัย"+(CFG.need2?" จะเป็นแดงเมื่อระดับน้ำคลองเริ่มสูงด้วย":" จะเป็นแดงทันที")+" · เหลืองขณะทะเลสาบสงขลาสูง (≥ "+CFG.lake+" ม.รทก.) จะเป็นแดง · ฝนใช้ค่าวัดจริงจากสถานีเป็นหลัก (ค่าสูงสุดอันดับ 2 ของแต่ละโซน) ถ้าไม่มีจึงใช้แบบจำลอง";
  $("upd").textContent="อัปเดตล่าสุด "+tf(now)+" น. (เวลาไทย)";
 }
 function load(){

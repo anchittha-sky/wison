@@ -6,13 +6,18 @@
 <title>เฝ้าระวังน้ำท่วมหาดใหญ่</title>
 <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#e6f8f4;--card:#fff;--ink:#0f3b3f;--mute:#4a7779;--line:#bfe5de;--bar:#27b0ae;--g:#138a55;--y:#f5b301;--r:#dc3d3d;--n:#6b8795}
-@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0c2a2c;--card:#133b3e;--ink:#e4f7f3;--mute:#8fbdb8;--line:#215357;--bar:#4fd3cf}}
+:root{--meas:#1f4e8c;--bg:#e6f8f4;--card:#fff;--ink:#0f3b3f;--mute:#4a7779;--line:#bfe5de;--bar:#27b0ae;--g:#138a55;--y:#f5b301;--r:#dc3d3d;--n:#6b8795}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0c2a2c;--card:#133b3e;--ink:#e4f7f3;--mute:#8fbdb8;--line:#215357;--bar:#4fd3cf;--meas:#8fb8ff}}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:"Prompt",system-ui,sans-serif;line-height:1.6;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
 main{max-width:560px;margin:0 auto;padding:16px}
 h1{font-size:1.25rem;margin:4px 0 2px;font-weight:800}
 .sub{color:var(--mute);font-size:.85rem;margin:0 0 14px}
+.top{display:flex;align-items:flex-start;gap:10px}.top>div:first-child{flex:1;min-width:0}
+#wx{flex:none;display:block;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:14px;padding:6px 10px;text-align:right;font-size:.75rem;line-height:1.35;margin-top:4px}
+#wx b{font-size:1.05rem;font-weight:800}
+#wx.g{background:var(--g);border-color:var(--g);color:#fff}#wx.y{background:var(--y);border-color:var(--y);color:#2b2000}#wx.r{background:var(--r);border-color:var(--r);color:#fff}
+#wx.g span,#wx.y span,#wx.r span{color:inherit!important}
 .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:14px;margin-bottom:12px}
 h2{font-size:1rem;margin:0 0 8px;font-weight:600}
 #go{border-radius:999px;padding:18px;font:800 1.2rem "Prompt",sans-serif;color:#fff;background:var(--n);text-align:center}
@@ -54,8 +59,12 @@ button{margin-top:10px;border:1px solid var(--line);background:var(--card);color
 </head>
 <body>
 <main>
+<div class="top"><div>
 <h1>เฝ้าระวังน้ำท่วม อ.หาดใหญ่</h1>
 <p class="sub" id="upd">กำลังดึงข้อมูล...</p>
+</div>
+<a id="wx" href="https://www.iqair.com/thailand/songkhla/hat-yai/hat-yai-municipality" target="_blank" rel="noopener" aria-label="ปริมาณฝุ่น PM2.5 หาดใหญ่ (เปิด IQAir)"><span style="color:var(--mute)">ฝุ่น PM2.5</span><br><span id="wx2">–</span></a>
+</div>
 
 <div class="card">
 <div id="go" role="status" aria-live="polite">กำลังตรวจสอบ...</div>
@@ -66,13 +75,17 @@ button{margin-top:10px;border:1px solid var(--line);background:var(--card);color
 </div>
 
 <div class="card">
-<h2><span class="ic" id="ic2"></span>พยากรณ์ฝน 48 ชม. ข้างหน้า (ทุก 3 ชม.)</h2>
+<h2><span class="ic" id="ic2"></span>พยากรณ์ฝน 24 ชม. ข้างหน้า (ทุก 3 ชม.)</h2>
 <p id="today" style="margin:0 0 6px;font-weight:600"></p>
-<div class="lg"><span><i style="background:var(--n)"></i>ย้อนหลัง 2 แท่ง</span><span><i style="background:var(--bar)"></i>พยากรณ์</span></div>
-<p class="note" style="margin:0 0 4px">ตัวเลขบนแท่ง = โอกาสฝนตก (%) · แท่งจาง = โอกาสต่ำ</p>
+<div class="lg" style="flex-wrap:wrap;gap:4px 14px"><span><i style="background:var(--meas)"></i>ย้อนหลัง (วัดจริง อ.หาดใหญ่)</span><span><i style="background:var(--bar)"></i>พยากรณ์</span></div>
+<p class="note" style="margin:0 0 4px">ตัวเลขบนแท่งพยากรณ์ = โอกาสฝนตก (%) · แท่งจาง = โอกาสต่ำ</p>
 <div class="svgwrap"><svg id="chart" viewBox="0 0 320 140" width="100%" role="img" aria-label="กราฟพยากรณ์ฝน 48 ชั่วโมง"></svg></div>
 <p class="note" id="fsum"></p>
 <p class="note" id="fsrc"></p>
+<h2 style="margin-top:14px">เรดาร์ฝนสทิงพระ (ภาพล่าสุด)</h2>
+<a id="radarlink" href="https://weather.tmd.go.th/stp.php" target="_blank" rel="noopener"><img id="radar" alt="ภาพเรดาร์ตรวจอากาศสทิงพระ กรมอุตุนิยมวิทยา" style="display:block;width:100%;height:auto;border-radius:12px;border:1px solid var(--line)" onerror="this.style.display='none';document.getElementById('radarerr').style.display='block'"></a>
+<p class="note" id="radarerr" style="display:none">เปิดภาพเรดาร์ไม่ได้ในตอนนี้ · <a href="https://weather.tmd.go.th/stp.php" target="_blank" rel="noopener">ดูที่เว็บกรมอุตุนิยมวิทยา</a></p>
+<p class="note">ภาพจากเรดาร์สทิงพระ กรมอุตุนิยมวิทยา แสดงกลุ่มฝนที่กำลังตกอยู่ตอนนี้ในรัศมี 240 กม. ใช้ดูว่ามีกลุ่มฝนกำลังเคลื่อนเข้าหาดใหญ่ใน 1–2 ชม. ข้างหน้าไหม ส่วนกราฟด้านบนใช้ดูแนวโน้ม 24 ชม. · เวลาบนภาพเป็นเวลาสากล (UTC) บวก 7 ชม. = เวลาไทย · กดที่ภาพเพื่อดูภาพเคลื่อนไหว</p>
 <button id="re" type="button">รีเฟรชข้อมูล</button>
 </div>
 
@@ -116,7 +129,7 @@ button{margin-top:10px;border:1px solid var(--line);background:var(--card);color
 <div class="card">
 <details><summary>ดูวิธีคำนวณและเกณฑ์</summary>
 <p class="note" id="crit"></p>
-<p class="note">ฝนพยากรณ์มาจากแบบจำลอง ECMWF (ศูนย์พยากรณ์อากาศระยะกลางแห่งยุโรป) ผ่านบริการ Open-Meteo ถ้าดึงไม่ได้จะใช้แบบจำลองที่ Open-Meteo เลือกให้แทน ส่วนระดับน้ำ ระดับทะเลสาบสงขลา และฝนวัดจริงมาจากสถานีของกรมชลประทาน กรมอุตุนิยมวิทยา กรมทรัพยากรน้ำ และ สสน. ผ่าน ThaiWater (อัปเดตราวทุก 30 นาที) ใช้ประกอบการเฝ้าระวังเท่านั้น ไม่ใช่ประกาศทางการ กรุณาติดตามกรมอุตุนิยมวิทยา กรมชลประทาน และ ปภ. ด้วย</p>
+<p class="note">ฝนพยากรณ์มาจากแบบจำลอง ECMWF (ศูนย์พยากรณ์อากาศระยะกลางแห่งยุโรป) ผ่านบริการ Open-Meteo ถ้าดึงไม่ได้จะใช้แบบจำลองที่ Open-Meteo เลือกให้แทน ส่วนระดับน้ำ ระดับทะเลสาบสงขลา และฝนวัดจริงมาจากสถานีของกรมชลประทาน กรมอุตุนิยมวิทยา กรมทรัพยากรน้ำ และ สสน. ผ่าน ThaiWater (อัปเดตราวทุก 30 นาที) มุมขวาบน: ปริมาณฝุ่น PM2.5 จากสถานีตรวจวัดของกรมควบคุมมลพิษใน อ.หาดใหญ่ (ถ้ามีเครื่องหมาย * คือค่าประมาณจากแบบจำลอง) กดเพื่อดูรายละเอียดที่ IQAir · ภาพเรดาร์จากเรดาร์สทิงพระ กรมอุตุนิยมวิทยา · ใช้ประกอบการเฝ้าระวังเท่านั้น ไม่ใช่ประกาศทางการ กรุณาติดตามกรมอุตุนิยมวิทยา กรมชลประทาน และ ปภ. ด้วย</p>
 </details>
 </div>
 </main>
@@ -126,6 +139,7 @@ var $=function(i){return document.getElementById(i)};
 var LAT=7.01,LON=100.47,UP=[6.75,100.35],SEA=[7.2,100.7],H=3600000;
 var WURL="https://raw.githubusercontent.com/anchittha-sky/wison/main/water.json";
 var RURL="https://raw.githubusercontent.com/anchittha-sky/wison/main/rain_stations.json";
+var AURL="https://raw.githubusercontent.com/anchittha-sky/wison/main/aqi.json";
 var HURL="https://raw.githubusercontent.com/anchittha-sky/wison/main/history.json";
 // ===== ค่าที่ปรับได้ (แก้ตัวเลขตรงนี้ที่เดียว) =====
 // ฝน: [ระดับเหลือง, ระดับแดง] หน่วยมิลลิเมตร (null = ไม่ใช้ระดับนั้น)
@@ -171,6 +185,10 @@ function back(o,n){var s=0;for(var i=Math.max(0,o.idx-n+1);i<=o.idx;i++)s+=o.p[i
 function ptAt(pts,t,tol){var best=null,bd=tol*H;pts.forEach(function(p){var d=Math.abs(Date.parse(p.t)-t);if(d<=bd){bd=d;best=p}});return best}
 function rain3d(h,now,key){key=key||"rc";if(!h||!h.points||!h.points.length)return null;var a=ptAt(h.points,now,6),b=ptAt(h.points,now-24*H,3),c=ptAt(h.points,now-48*H,3);
  if(!a||!b||!c||a[key]==null||b[key]==null||c[key]==null)return null;return Math.round(a[key]+b[key]+c[key])}
+// ฝนวัดจริงรวม 3 ชม. (จาก history.json "hr": ฝนรายชั่วโมงของแต่ละสถานีในเมือง) = ค่ามากเป็นอันดับ 2 ของสถานี
+function meas3(h,ws,we){if(!h||!h.hr)return null;var sums=[];
+ Object.keys(h.hr).forEach(function(code){var o=h.hr[code],sm=0,n=0;Object.keys(o).forEach(function(t){var tt=Date.parse(t.replace(" ","T")+":00+07:00");if(tt>ws&&tt<=we&&o[t]!=null){sm+=+o[t];n++}});if(n)sums.push(sm)});
+ if(!sums.length)return null;sums.sort(function(x,y){return y-x});return sums.length>1?sums[1]:sums[0]}
 function lvl(v,t){return (t[1]!==null&&v>=t[1])?2:(t[0]!==null&&v>=t[0])?1:0}
 function wlvl(v,c){return v>=c.r?2:v>=c.y?1:0}
 // อ่านระดับน้ำจาก water.json -> รายการสถานี (เรียงตาม CFG.wl)
@@ -228,21 +246,30 @@ function render(a,b,hj,w,rj){
  var f1=function(v){return v==null?"–":(v<10?(+v).toFixed(1):Math.round(v))};
  var sl=function(z,lab){return "<p style='margin:8px 0 2px'><b>"+lab+"</b></p>"+(z?z.all.map(function(x){return x.name+" "+x.v+" มม."+(x.r1!=null?" (1 ชม. "+f1(x.r1)+")":"")}).join(" · "):"ไม่มีข้อมูล")};
  $("slist").innerHTML="<p style='margin:6px 0 0'><b>วิธีคิด</b><br>ในเมือง = ค่ามากเป็นอันดับ 2 ของสถานีใน อ.หาดใหญ่ (กันเครื่องวัดเพี้ยนสถานีเดียว)<br>ต้นน้ำ = ค่าที่มากกว่าของบ้านม่วงก็อง (X.173A) กับบ้านบางศาลา (X.90)<br>3 วัน = รวมค่า 24 ชม. ที่บันทึกไว้วันนี้ เมื่อวาน และเมื่อวานซืน<br>ช่องที่เขียนว่า \"แบบจำลอง\" คือยังไม่มีค่าวัดจริง จึงใช้ค่าประมาณจากแบบจำลองแทน</p>"+(rr?(rr.city?"<p style='margin:6px 0 0'>"+rtxt(rr.city,"ในเมือง 24 ชม.")+"</p>":"")+sl(rr.city,"สถานีในเมือง (อ.หาดใหญ่)")+sl(rr.up,"สถานีต้นน้ำ")+"<p style='margin:6px 0 0'>สถานีอำเภออื่นไม่นำมาใช้</p>":"");
- var Tn=Math.floor((now+25200000)/10800000)*10800000-25200000,vals=[],f48=0,c="";
+ // กราฟ: ย้อนหลัง 4 แท่ง (แบบจำลอง + วัดจริง) + พยากรณ์ 24 ชม. 8 แท่ง
+ var Tn=Math.floor((now+25200000)/10800000)*10800000-25200000,vals=[],mv=[],f48=0,f24=0,c="",NP=4,NB=12;
  var probs=[],pTop=null;
- for(var j=0;j<18;j++){var ts=Tn+(j-2)*3*H,s=0,pm=null;for(var k=0;k<A.ms.length;k++)if(A.ms[k]>ts&&A.ms[k]<=ts+3*H){s+=A.p[k];var q=A.pp[k];if(q!=null&&(pm===null||q>pm))pm=q}vals.push(s);probs.push(pm);if(j>=2&&pm!==null&&(pTop===null||pm>pTop))pTop=pm}
- for(var k2=0;k2<A.ms.length;k2++)if(A.ms[k2]>now&&A.ms[k2]<=now+48*H)f48+=A.p[k2];
- f48=Math.round(f48);var past6=Math.round(vals[0]+vals[1]),mx=Math.max.apply(null,vals.concat([5]));
- for(j=0;j<18;j++){var h=vals[j]/mx*80,pr=probs[j],op=(j>=2&&pr!==null)?(0.3+0.7*pr/100).toFixed(2):"1",x=8+j*17,tt=Tn+(j-2)*3*H,hh=+new Date(tt).toLocaleTimeString("en-GB",{hour:"2-digit",hourCycle:"h23",timeZone:"Asia/Bangkok"}).slice(0,2);
-  c+='<rect x="'+x+'" y="'+(104-h)+'" width="14" height="'+Math.max(h,1)+'" rx="2" fill="'+(j<2?"var(--n)":"var(--bar)")+'" fill-opacity="'+op+'"/>';
-  if(j>=2&&pr!==null)c+='<text x="'+(x+7)+'" y="'+(101-h)+'" text-anchor="middle" style="font-size:9px">'+Math.round(pr)+'</text>';
-  if(hh%6==0)c+='<text x="'+(x+7)+'" y="118" text-anchor="middle">'+tf(tt)+'</text>';
-  if(hh==0)c+='<path d="M'+(x-1.5)+' 16V122" stroke="var(--bar)" stroke-dasharray="3 3"/><text x="'+(x+1)+'" y="134">'+df(tt)+'</text>'}
- c+='<line x1="4" y1="104" x2="316" y2="104" stroke="var(--line)"/><path d="M40.5 16V104" stroke="var(--mute)" stroke-dasharray="3 3"/><text x="40.5" y="11" text-anchor="middle" style="font-weight:600">ตอนนี้</text>';
+ for(var j=0;j<NB;j++){var ts=Tn+(j-NP)*3*H,s=0,pm=null;for(var k=0;k<A.ms.length;k++)if(A.ms[k]>ts&&A.ms[k]<=ts+3*H){s+=A.p[k];var q=A.pp[k];if(q!=null&&(pm===null||q>pm))pm=q}vals.push(s);probs.push(pm);if(j>=NP&&pm!==null&&(pTop===null||pm>pTop))pTop=pm;
+  mv.push(j<NP?meas3(hj,ts,ts+3*H):null)}
+ for(var k2=0;k2<A.ms.length;k2++)if(A.ms[k2]>now&&A.ms[k2]<=now+48*H){f48+=A.p[k2];if(A.ms[k2]<=now+24*H)f24+=A.p[k2]}
+ f48=Math.round(f48);f24=Math.round(f24);
+ var mx=Math.max.apply(null,vals.slice(NP).concat(mv.map(function(v){return v||0})).concat([5]));
+ for(j=0;j<NB;j++){var x=8+j*25.5,h=vals[j]/mx*80,pr=probs[j],tt=Tn+(j-NP)*3*H,hh=+new Date(tt).toLocaleTimeString("en-GB",{hour:"2-digit",hourCycle:"h23",timeZone:"Asia/Bangkok"}).slice(0,2);
+  if(j<NP){   // ย้อนหลัง = ฝนวัดจริงเท่านั้น
+   if(mv[j]!=null){var hm=mv[j]/mx*80;c+='<rect x="'+x+'" y="'+(104-hm)+'" width="21" height="'+Math.max(hm,1)+'" rx="2" fill="var(--meas)"/>';
+    if(mv[j]>=0.5)c+='<text x="'+(x+10.5)+'" y="'+(101-hm)+'" text-anchor="middle" style="font-size:9px">'+(mv[j]<10?mv[j].toFixed(1):Math.round(mv[j]))+'</text>'}
+   else c+='<text x="'+(x+10.5)+'" y="101" text-anchor="middle" style="font-size:9px">–</text>'}
+  else{var op=pr!==null?(0.3+0.7*pr/100).toFixed(2):"1";
+   c+='<rect x="'+x+'" y="'+(104-h)+'" width="21" height="'+Math.max(h,1)+'" rx="2" fill="var(--bar)" fill-opacity="'+op+'"/>';
+   if(pr!==null)c+='<text x="'+(x+10.5)+'" y="'+(101-h)+'" text-anchor="middle" style="font-size:9px">'+Math.round(pr)+'</text>'}
+  c+='<text x="'+(x+10.5)+'" y="118" text-anchor="middle" style="font-size:10.5px">'+(hh<10?"0":"")+hh+'</text>';
+  if(hh==0&&j>0)c+='<path d="M'+(x-2.5)+' 16V122" stroke="var(--bar)" stroke-dasharray="3 3"/><text x="'+x+'" y="134">'+df(tt)+'</text>'}
+ var xn=8+NP*25.5-2.5;
+ c+='<line x1="4" y1="104" x2="316" y2="104" stroke="var(--line)"/><path d="M'+xn+' 16V104" stroke="var(--mute)" stroke-dasharray="3 3"/><text x="'+xn+'" y="11" text-anchor="middle" style="font-weight:600">ตอนนี้</text>';
  $("chart").innerHTML=c;
- $("fsrc").textContent=a.src=="ECMWF"?"ที่มา: แบบจำลอง ECMWF ของศูนย์พยากรณ์อากาศระยะกลางแห่งยุโรป (ผ่าน Open-Meteo) ซึ่งเป็นแบบจำลองโลกที่ใช้อ้างอิงกันแพร่หลาย":"ที่มา: แบบจำลองที่ Open-Meteo เลือกให้ (ดึงข้อมูล ECMWF ไม่สำเร็จในรอบนี้)";
+ $("fsrc").innerHTML="ที่มา:<br>• แท่งพยากรณ์ = "+(a.src=="ECMWF"?"แบบจำลอง ECMWF ของศูนย์พยากรณ์อากาศระยะกลางแห่งยุโรป (ผ่าน Open-Meteo)":"แบบจำลองที่ Open-Meteo เลือกให้ (ดึงข้อมูล ECMWF ไม่สำเร็จในรอบนี้)")+"<br>• แท่งย้อนหลัง = เครื่องวัดฝนใน อ.หาดใหญ่ ผ่านคลังข้อมูลน้ำแห่งชาติ (ThaiWater) ใช้ค่ามากเป็นอันดับ 2 ของสถานี";
  $("today").textContent="วันนี้ "+new Date().toLocaleDateString("th-TH",{weekday:"long",day:"numeric",month:"long",year:"numeric",timeZone:"Asia/Bangkok"});
- $("fsum").textContent="ฝนย้อนหลัง 6 ชม. รวม "+past6+" มม. · พยากรณ์ 48 ชม. รวม "+f48+" มม. (แท่งสูงสุด ≈ "+Math.round(mx)+" มม./3 ชม.)"+(pTop!==null?" · โอกาสฝนตกสูงสุด "+Math.round(pTop)+"%":"");
+ $("fsum").textContent="พยากรณ์ 24 ชม. ข้างหน้า รวม "+f24+" มม."+(pTop!==null?" · โอกาสฝนตกสูงสุด "+Math.round(pTop)+"%":"");
  // ระดับน้ำคลอง
  var wTop=0,wOK=false,col=["var(--g)","var(--y)","var(--r)"],wh="",ch="",stale=false,latest=0;
  if(ws){ws.forEach(function(s){
@@ -293,7 +320,18 @@ function render(a,b,hj,w,rj){
  $("crit").textContent="ฝน เหลือง / แดง (มม.): 24 ชม. "+CFG.r24[0]+" / "+CFG.r24[1]+" · พยากรณ์ 48 ชม. "+CFG.f48[0]+" / "+CFG.f48[1]+" · ต้นน้ำ 24 ชม. "+CFG.up24[0]+" / "+CFG.up24[1]+" · สะสม 3 วัน แดงที่ "+CFG.r72[1]+" (ทั้งในเมืองและต้นน้ำ) · ฝนในเมือง 1 ชม. เหลืองที่ "+CFG.r1[0]+" ระดับน้ำคลอง เหลือง / แดง (ม.รทก.): "+wc+" · ฝนเหลือง 2 ปัจจัย"+(CFG.need2?" จะเป็นแดงเมื่อระดับน้ำคลองเริ่มสูงด้วย":" จะเป็นแดงทันที")+" · เหลืองขณะทะเลสาบสงขลาสูง (≥ "+CFG.lake+" ม.รทก.) จะเป็นแดง · ฝนใช้ค่าวัดจริงจากสถานีเป็นหลัก (ในเมือง = ค่าสูงสุดอันดับ 2 ของสถานีใน อ.หาดใหญ่ · ต้นน้ำ = ค่าที่มากกว่าของบ้านม่วงก็องกับบ้านบางศาลา) ถ้าไม่มีจึงใช้แบบจำลอง";
  $("upd").textContent="อัปเดตล่าสุด "+tf(now)+" น. (เวลาไทย)";
 }
+// ปริมาณฝุ่น PM2.5 (สถานีกรมควบคุมมลพิษ ผ่าน aqi.json ถ้าไม่มีใช้ค่าประมาณจาก Open-Meteo)
+// เกณฑ์ PM2.5 ของไทย (มคก./ลบ.ม.): ดีมาก ≤15 · ดี ≤25 · ปานกลาง ≤37.5 · เริ่มมีผลต่อสุขภาพ ≤75 · มีผลต่อสุขภาพ >75
+// สีกล่อง: เขียว = ดีมาก/ดี · เหลือง = ปานกลาง · แดง = เริ่มมีผล/มีผลต่อสุขภาพ
+var PMC=[[15,"ดีมาก","g"],[25,"ดี","g"],[37.5,"ปานกลาง","y"],[75,"เริ่มมีผล","r"],[1e9,"มีผลต่อสุขภาพ","r"]];
+function loadWx(){
+ var showPm=function(v,est){v=parseFloat(v);if(isNaN(v))return false;var k=0;while(v>PMC[k][0])k++;
+  $("wx").className=PMC[k][2];$("wx2").innerHTML="<b>"+v.toFixed(1)+"</b> µg/m³"+(est?"*":"")+"<br>"+PMC[k][1];return true};
+ get(AURL+"?t="+Date.now()).then(function(a){var st=a&&a.station,t=st?Date.parse(st.date+"T"+String(st.time).slice(0,5)+":00+07:00"):NaN;
+  if(!st||isNaN(t)||(Date.now()-t)/H>6||!showPm(st.pm25))throw new Error("no aqi")})
+ .catch(function(){get("https://air-quality-api.open-meteo.com/v1/air-quality?latitude="+LAT+"&longitude="+LON+"&current=pm2_5&timezone=Asia%2FBangkok").then(function(d){showPm(d.current.pm2_5,true)}).catch(function(){})})}
 function load(){
+ loadWx();$("radar").src="https://weather.tmd.go.th/stp/stp240_latest.jpg?t="+Date.now();
  Promise.all([fc(LAT,LON,3,4),fc(UP[0],UP[1],3,1),get(HURL+"?t="+Date.now()).catch(function(){return null}),get(WURL+"?t="+Date.now()).catch(function(){return null}),get(RURL+"?t="+Date.now()).catch(function(){return null})]).then(function(r){render(r[0],r[1],r[2],r[3],r[4])}).catch(function(){
   $("go").className="";$("go").textContent="ดึงข้อมูลไม่สำเร็จ";$("why").innerHTML="<li>ตรวจสอบอินเทอร์เน็ตแล้วกดรีเฟรชข้อมูล</li>";$("upd").textContent="ยังไม่ได้รับข้อมูลล่าสุด"})
 }

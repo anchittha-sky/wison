@@ -147,6 +147,17 @@ def main():
         except Exception:
             hist = {"points": []}
     zm = zone_max(rs, now)
+    # ฝนรายชั่วโมงของแต่ละสถานีในเมือง (ใช้ทำแท่ง "วัดจริง" ย้อนหลังในกราฟ) เก็บไว้ 30 ชม.
+    hr = hist.get("hr") or {}
+    for st in rs.get("stations") or []:
+        if st.get("zone") != "city" or st.get("rain1") is None or not st.get("time"):
+            continue
+        hr.setdefault(st.get("code") or st.get("name"), {})[str(st["time"])[:16]] = st["rain1"]
+    for code in list(hr):
+        hr[code] = {t: v for t, v in hr[code].items()
+                    if parse_th(t) and (now - parse_th(t)).total_seconds() < 30 * 3600}
+        if not hr[code]:
+            del hr[code]
     point = {"t": now.isoformat(timespec="minutes"), "wl": wl,
              "rc": zm["city"], "ru": zm["up"], "lake": lake["v"] if lake else None}
     pts = [p for p in hist.get("points", [])
@@ -156,9 +167,55 @@ def main():
     else:
         pts.append(point)
     out = {"updated": now.isoformat(timespec="minutes"),
-           "lake": lake or hist.get("lake"), "points": pts}
+           "lake": lake or hist.get("lake"), "points": pts, "hr": hr}
     with open("history.json", "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, separators=(",", ":"))
 
 
+
+AIR_URLS = ["http://air4thai.pcd.go.th/services/getNewAQI_JSON.php",
+            "https://air4thai.pcd.go.th/services/getNewAQI_JSON.php"]
+AIR_KEY = "หาดใหญ่"
+
+
+def air_quality():
+    # คุณภาพอากาศจากสถานีกรมควบคุมมลพิษ (Air4Thai) ใน อ.หาดใหญ่ -> aqi.json
+    out = {"updated": datetime.now(TH).isoformat(timespec="minutes"), "source": "Air4Thai"}
+    data = None
+    for u in AIR_URLS:
+        try:
+            req = urllib.request.Request(u, headers={"User-Agent": "Mozilla/5.0 (hatyai-flood-monitor)"})
+            with urllib.request.urlopen(req, timeout=60) as r:
+                data = json.loads(r.read().decode("utf-8-sig"))
+            break
+        except Exception as e:
+            out["error"] = str(e)[:200]
+    if data is None:
+        with open("aqi.json", "w", encoding="utf-8") as f:
+            json.dump(out, f, ensure_ascii=False, indent=1)
+        return
+    cands = []
+    for st in data.get("stations") or []:
+        text = (st.get("nameTH") or "") + " " + (st.get("areaTH") or "")
+        if AIR_KEY not in text:
+            continue
+        last = st.get("AQILast") or {}
+        pm = last.get("PM25") or {}
+        aqi = last.get("AQI") or {}
+        cands.append({"id": st.get("stationID"), "name": st.get("nameTH"), "area": st.get("areaTH"),
+                      "date": last.get("date"), "time": last.get("time"),
+                      "pm25": pm.get("value"), "pm25_color": pm.get("color_id"),
+                      "aqi": aqi.get("aqi"), "aqi_color": aqi.get("color_id")})
+    cands.sort(key=lambda c: 0 if "เทศบาลนคร" in (c["name"] or "") + (c["area"] or "") else 1)
+    out.pop("error", None)
+    out["station"] = cands[0] if cands else None
+    out["all"] = cands
+    with open("aqi.json", "w", encoding="utf-8") as f:
+        json.dump(out, f, ensure_ascii=False, indent=1)
+
+
 main()
+try:
+    air_quality()
+except Exception:
+    pass

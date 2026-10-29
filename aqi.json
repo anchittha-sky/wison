@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-29T14:51+07:00",
+ "updated": "2026-10-29T15:06+07:00",
  "source": "Air4Thai",
  "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1081)>"
 }

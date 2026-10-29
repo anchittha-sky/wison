@@ -63,7 +63,7 @@ button{margin-top:10px;border:1px solid var(--line);background:var(--card);color
 <h1>เฝ้าระวังน้ำท่วม อ.หาดใหญ่</h1>
 <p class="sub" id="upd">กำลังดึงข้อมูล...</p>
 </div>
-<a id="wx" href="https://www.iqair.com/thailand/songkhla/hat-yai/hat-yai-municipality" target="_blank" rel="noopener" aria-label="ปริมาณฝุ่น PM2.5 หาดใหญ่ (เปิด IQAir)"><span style="color:var(--mute)">ฝุ่น PM2.5</span><br><span id="wx2">–</span></a>
+<a id="wx" href="https://www.iqair.com/thailand/songkhla/hat-yai/hat-yai-municipality" target="_blank" rel="noopener" aria-label="ค่าฝุ่น US AQI หาดใหญ่ (เปิด IQAir)"><span style="color:var(--mute)">ฝุ่น US AQI</span><br><span id="wx2">–</span></a>
 </div>
 
 <div class="card">
@@ -129,7 +129,7 @@ button{margin-top:10px;border:1px solid var(--line);background:var(--card);color
 <div class="card">
 <details><summary>ดูวิธีคำนวณและเกณฑ์</summary>
 <p class="note" id="crit"></p>
-<p class="note">ฝนพยากรณ์มาจากแบบจำลอง ECMWF (ศูนย์พยากรณ์อากาศระยะกลางแห่งยุโรป) ผ่านบริการ Open-Meteo ถ้าดึงไม่ได้จะใช้แบบจำลองที่ Open-Meteo เลือกให้แทน ส่วนระดับน้ำ ระดับทะเลสาบสงขลา และฝนวัดจริงมาจากสถานีของกรมชลประทาน กรมอุตุนิยมวิทยา กรมทรัพยากรน้ำ และ สสน. ผ่าน ThaiWater (อัปเดตราวทุก 30 นาที) มุมขวาบน: ปริมาณฝุ่น PM2.5 จากสถานีตรวจวัดของกรมควบคุมมลพิษใน อ.หาดใหญ่ (ถ้ามีเครื่องหมาย * คือค่าประมาณจากแบบจำลอง) กดเพื่อดูรายละเอียดที่ IQAir · ภาพเรดาร์จากเรดาร์สทิงพระ กรมอุตุนิยมวิทยา · ใช้ประกอบการเฝ้าระวังเท่านั้น ไม่ใช่ประกาศทางการ กรุณาติดตามกรมอุตุนิยมวิทยา กรมชลประทาน และ ปภ. ด้วย</p>
+<p class="note">ฝนพยากรณ์มาจากแบบจำลอง ECMWF (ศูนย์พยากรณ์อากาศระยะกลางแห่งยุโรป) ผ่านบริการ Open-Meteo ถ้าดึงไม่ได้จะใช้แบบจำลองที่ Open-Meteo เลือกให้แทน ส่วนระดับน้ำ ระดับทะเลสาบสงขลา และฝนวัดจริงมาจากสถานีของกรมชลประทาน กรมอุตุนิยมวิทยา กรมทรัพยากรน้ำ และ สสน. ผ่าน ThaiWater (อัปเดตราวทุก 30 นาที) มุมขวาบน: ค่าฝุ่น US AQI คำนวณจาก PM2.5 ของสถานีตรวจวัดกรมควบคุมมลพิษใน อ.หาดใหญ่ ตามเกณฑ์ US EPA เหมือน IQAir (ถ้ามีเครื่องหมาย * คือค่าประมาณจากแบบจำลอง) กดเพื่อดูรายละเอียดที่ IQAir · ภาพเรดาร์จากเรดาร์สทิงพระ กรมอุตุนิยมวิทยา · ใช้ประกอบการเฝ้าระวังเท่านั้น ไม่ใช่ประกาศทางการ กรุณาติดตามกรมอุตุนิยมวิทยา กรมชลประทาน และ ปภ. ด้วย</p>
 </details>
 </div>
 </main>
@@ -320,13 +320,14 @@ function render(a,b,hj,w,rj){
  $("crit").textContent="ฝน เหลือง / แดง (มม.): 24 ชม. "+CFG.r24[0]+" / "+CFG.r24[1]+" · พยากรณ์ 48 ชม. "+CFG.f48[0]+" / "+CFG.f48[1]+" · ต้นน้ำ 24 ชม. "+CFG.up24[0]+" / "+CFG.up24[1]+" · สะสม 3 วัน แดงที่ "+CFG.r72[1]+" (ทั้งในเมืองและต้นน้ำ) · ฝนในเมือง 1 ชม. เหลืองที่ "+CFG.r1[0]+" ระดับน้ำคลอง เหลือง / แดง (ม.รทก.): "+wc+" · ฝนเหลือง 2 ปัจจัย"+(CFG.need2?" จะเป็นแดงเมื่อระดับน้ำคลองเริ่มสูงด้วย":" จะเป็นแดงทันที")+" · เหลืองขณะทะเลสาบสงขลาสูง (≥ "+CFG.lake+" ม.รทก.) จะเป็นแดง · ฝนใช้ค่าวัดจริงจากสถานีเป็นหลัก (ในเมือง = ค่าสูงสุดอันดับ 2 ของสถานีใน อ.หาดใหญ่ · ต้นน้ำ = ค่าที่มากกว่าของบ้านม่วงก็องกับบ้านบางศาลา) ถ้าไม่มีจึงใช้แบบจำลอง";
  $("upd").textContent="อัปเดตล่าสุด "+tf(now)+" น. (เวลาไทย)";
 }
-// ปริมาณฝุ่น PM2.5 (สถานีกรมควบคุมมลพิษ ผ่าน aqi.json ถ้าไม่มีใช้ค่าประมาณจาก Open-Meteo)
-// เกณฑ์ PM2.5 ของไทย (มคก./ลบ.ม.): ดีมาก ≤15 · ดี ≤25 · ปานกลาง ≤37.5 · เริ่มมีผลต่อสุขภาพ ≤75 · มีผลต่อสุขภาพ >75
-// สีกล่อง: เขียว = ดีมาก/ดี · เหลือง = ปานกลาง · แดง = เริ่มมีผล/มีผลต่อสุขภาพ
-var PMC=[[15,"ดีมาก","g"],[25,"ดี","g"],[37.5,"ปานกลาง","y"],[75,"เริ่มมีผล","r"],[1e9,"มีผลต่อสุขภาพ","r"]];
+// แปลงค่าฝุ่น PM2.5 (µg/m³) เป็น US AQI ตามเกณฑ์ US EPA (ปรับปรุงปี 2024 แบบเดียวกับที่ IQAir ใช้)
+var AQB=[[0,9,0,50],[9.1,35.4,51,100],[35.5,55.4,101,150],[55.5,125.4,151,200],[125.5,225.4,201,300],[225.5,325.4,301,500]];
+function usAqi(c){c=Math.floor(c*10)/10;for(var i=0;i<AQB.length;i++){var b=AQB[i];if(c<=b[1])return Math.round((b[3]-b[2])/(b[1]-b[0])*(Math.max(c,b[0])-b[0])+b[2])}return 500}
+// สีกล่อง: เขียว = ดี (0–50) · เหลือง = ปานกลาง (51–100) · แดง = มีผลต่อสุขภาพ (101 ขึ้นไป)
+var AQL=[[50,"ดี","g"],[100,"ปานกลาง","y"],[150,"มีผลต่อกลุ่มเสี่ยง","r"],[200,"มีผลต่อสุขภาพ","r"],[300,"มีผลต่อสุขภาพมาก","r"],[1e9,"อันตราย","r"]];
 function loadWx(){
- var showPm=function(v,est){v=parseFloat(v);if(isNaN(v))return false;var k=0;while(v>PMC[k][0])k++;
-  $("wx").className=PMC[k][2];$("wx2").innerHTML="<b>"+v.toFixed(1)+"</b> µg/m³"+(est?"*":"")+"<br>"+PMC[k][1];return true};
+ var showPm=function(v,est){v=parseFloat(v);if(isNaN(v))return false;var q=usAqi(v),k=0;while(q>AQL[k][0])k++;
+  $("wx").className=AQL[k][2];$("wx2").innerHTML="<b>"+q+"</b>"+(est?"*":"")+"<br>"+AQL[k][1];return true};
  get(AURL+"?t="+Date.now()).then(function(a){var st=a&&a.station,t=st?Date.parse(st.date+"T"+String(st.time).slice(0,5)+":00+07:00"):NaN;
   if(!st||isNaN(t)||(Date.now()-t)/H>6||!showPm(st.pm25))throw new Error("no aqi")})
  .catch(function(){get("https://air-quality-api.open-meteo.com/v1/air-quality?latitude="+LAT+"&longitude="+LON+"&current=pm2_5&timezone=Asia%2FBangkok").then(function(d){showPm(d.current.pm2_5,true)}).catch(function(){})})}

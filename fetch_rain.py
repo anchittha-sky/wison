@@ -2,6 +2,7 @@
 import json
 import math
 import os
+import ssl
 import urllib.request
 from datetime import datetime, timezone, timedelta
 
@@ -185,7 +186,10 @@ def air_quality():
     for u in AIR_URLS:
         try:
             req = urllib.request.Request(u, headers={"User-Agent": "Mozilla/5.0 (hatyai-flood-monitor)"})
-            with urllib.request.urlopen(req, timeout=60) as r:
+            # เว็บ Air4Thai ส่งใบรับรอง SSL ไม่ครบชุด เครื่องของ GitHub จึงตรวจไม่ผ่าน
+            # ข้อมูลนี้เป็นค่าฝุ่นสาธารณะแบบอ่านอย่างเดียว จึงยอมข้ามการตรวจใบรับรองเฉพาะแหล่งนี้
+            ctx = ssl._create_unverified_context()
+            with urllib.request.urlopen(req, timeout=60, context=ctx) as r:
                 data = json.loads(r.read().decode("utf-8-sig"))
             break
         except Exception as e:

@@ -1,5 +1,28 @@
 {
- "updated": "2026-10-29T17:53+07:00",
+ "updated": "2026-10-29T17:55+07:00",
  "source": "Air4Thai",
- "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1081)>"
+ "station": {
+  "id": "44t",
+  "name": "เทศบาลนครหาดใหญ่ ",
+  "area": "ต.หาดใหญ่ อ.หาดใหญ่, สงขลา",
+  "date": "2026-10-29",
+  "time": "17:00",
+  "pm25": "6.8",
+  "pm25_color": "1",
+  "aqi": "11",
+  "aqi_color": "1"
+ },
+ "all": [
+  {
+   "id": "44t",
+   "name": "เทศบาลนครหาดใหญ่ ",
+   "area": "ต.หาดใหญ่ อ.หาดใหญ่, สงขลา",
+   "date": "2026-10-29",
+   "time": "17:00",
+   "pm25": "6.8",
+   "pm25_color": "1",
+   "aqi": "11",
+   "aqi_color": "1"
+  }
+ ]
 }

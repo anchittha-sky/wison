@@ -1,17 +1,17 @@
 {
- "updated": "2026-10-31T07:34:30+00:00",
+ "updated": "2026-10-31T08:25:05+00:00",
  "source": "https://api-v3.thaiwater.net/api/v1/thaiwater30/public/waterlevel_load",
  "count": 4,
  "records": [
   {
-   "id": 1333926027,
-   "waterlevel_datetime": "2026-10-31 13:00",
+   "id": 1333947838,
+   "waterlevel_datetime": "2026-10-31 14:00",
    "waterlevel_m": null,
-   "waterlevel_msl": "10.74",
-   "waterlevel_msl_previous": "10.77",
+   "waterlevel_msl": "10.71",
+   "waterlevel_msl_previous": "10.74",
    "flow_rate": null,
-   "discharge": "17.10",
-   "storage_percent": "56.47",
+   "discharge": "16.65",
+   "storage_percent": "56.23",
    "sort_order": null,
    "station_type": "tele_waterlevel",
    "situation_level": 3,
@@ -82,14 +82,14 @@
      "en": "Songkhla"
     }
    },
-   "diff_wl_bank": "5.39",
+   "diff_wl_bank": "5.42",
    "diff_wl_bank_text": "ต่ำกว่าตลิ่ง (ม.)",
    "river_gid": 228362,
    "river_name": "คลองอู่ตะเภา"
   },
   {
-   "id": 1333926050,
-   "waterlevel_datetime": "2026-10-31 13:00",
+   "id": 1333947866,
+   "waterlevel_datetime": "2026-10-31 14:00",
    "waterlevel_m": null,
    "waterlevel_msl": "4.68",
    "waterlevel_msl_previous": "4.68",
@@ -172,14 +172,14 @@
    "river_name": "คลองหวะ"
   },
   {
-   "id": 1333926020,
-   "waterlevel_datetime": "2026-10-31 13:00",
+   "id": 1333947820,
+   "waterlevel_datetime": "2026-10-31 14:00",
    "waterlevel_m": null,
-   "waterlevel_msl": "2.72",
-   "waterlevel_msl_previous": "2.73",
+   "waterlevel_msl": "2.71",
+   "waterlevel_msl_previous": "2.72",
    "flow_rate": null,
-   "discharge": "36.00",
-   "storage_percent": "35.23",
+   "discharge": "35.50",
+   "storage_percent": "35.13",
    "sort_order": null,
    "station_type": "tele_waterlevel",
    "situation_level": 3,
@@ -250,14 +250,14 @@
      "en": "Songkhla"
     }
    },
-   "diff_wl_bank": "6.62",
+   "diff_wl_bank": "6.63",
    "diff_wl_bank_text": "ต่ำกว่าตลิ่ง (ม.)",
    "river_gid": 227685,
    "river_name": "คลองอู่ตะเภา"
   },
   {
-   "id": 1333926012,
-   "waterlevel_datetime": "2026-10-31 13:00",
+   "id": 1333947801,
+   "waterlevel_datetime": "2026-10-31 14:00",
    "waterlevel_m": null,
    "waterlevel_msl": "0.98",
    "waterlevel_msl_previous": "0.98",

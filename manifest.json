@@ -1,0 +1,13 @@
+{
+ "name": "Flood Watch หาดใหญ่",
+ "short_name": "Flood Watch",
+ "start_url": "hatyai-live.html",
+ "scope": "hatyai-live.html",
+ "display": "standalone",
+ "background_color": "#e6f8f4",
+ "theme_color": "#138a55",
+ "icons": [
+  {"src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+  {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"}
+ ]
+}

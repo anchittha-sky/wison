@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-01T19:43:48+00:00",
+ "updated": "2026-11-01T20:12:42+00:00",
  "source": "https://api-v3.thaiwater.net/api/v1/thaiwater30/public/waterlevel_load",
  "count": 4,
  "records": [
   {
-   "id": 1334690599,
-   "waterlevel_datetime": "2026-11-02 01:00",
+   "id": 1334708397,
+   "waterlevel_datetime": "2026-11-02 02:00",
    "waterlevel_m": null,
    "waterlevel_msl": "4.78",
    "waterlevel_msl_previous": "4.78",
@@ -88,14 +88,14 @@
    "river_name": "คลองหวะ"
   },
   {
-   "id": 1334690576,
-   "waterlevel_datetime": "2026-11-02 01:00",
+   "id": 1334708374,
+   "waterlevel_datetime": "2026-11-02 02:00",
    "waterlevel_m": null,
-   "waterlevel_msl": "10.24",
-   "waterlevel_msl_previous": "10.25",
+   "waterlevel_msl": "10.23",
+   "waterlevel_msl_previous": "10.24",
    "flow_rate": null,
-   "discharge": "9.60",
-   "storage_percent": "52.43",
+   "discharge": "9.45",
+   "storage_percent": "52.35",
    "sort_order": null,
    "station_type": "tele_waterlevel",
    "situation_level": 3,
@@ -166,20 +166,20 @@
      "en": "Songkhla"
     }
    },
-   "diff_wl_bank": "5.89",
+   "diff_wl_bank": "5.90",
    "diff_wl_bank_text": "ต่ำกว่าตลิ่ง (ม.)",
    "river_gid": 228362,
    "river_name": "คลองอู่ตะเภา"
   },
   {
-   "id": 1334690569,
-   "waterlevel_datetime": "2026-11-02 01:00",
+   "id": 1334708367,
+   "waterlevel_datetime": "2026-11-02 02:00",
    "waterlevel_m": null,
-   "waterlevel_msl": "2.85",
-   "waterlevel_msl_previous": "2.76",
+   "waterlevel_msl": "2.89",
+   "waterlevel_msl_previous": "2.85",
    "flow_rate": null,
-   "discharge": "42.50",
-   "storage_percent": "36.50",
+   "discharge": "44.50",
+   "storage_percent": "36.89",
    "sort_order": null,
    "station_type": "tele_waterlevel",
    "situation_level": 3,
@@ -250,17 +250,17 @@
      "en": "Songkhla"
     }
    },
-   "diff_wl_bank": "6.49",
+   "diff_wl_bank": "6.45",
    "diff_wl_bank_text": "ต่ำกว่าตลิ่ง (ม.)",
    "river_gid": 227685,
    "river_name": "คลองอู่ตะเภา"
   },
   {
-   "id": 1334690561,
-   "waterlevel_datetime": "2026-11-02 01:00",
+   "id": 1334708359,
+   "waterlevel_datetime": "2026-11-02 02:00",
    "waterlevel_m": null,
    "waterlevel_msl": "0.60",
-   "waterlevel_msl_previous": "0.61",
+   "waterlevel_msl_previous": "0.60",
    "flow_rate": null,
    "discharge": "23.00",
    "storage_percent": "29.98",

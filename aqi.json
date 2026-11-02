@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-02T12:05+07:00",
+ "updated": "2026-11-02T13:07+07:00",
  "source": "Air4Thai",
  "station": {
   "id": "44t",
@@ -10,7 +10,7 @@
   "pm25": "8.3",
   "pm25_color": "1",
   "aqi": "14",
-  "aqi_color": "1"
+  "aqi_color": "-1"
  },
  "all": [
   {
@@ -22,7 +22,7 @@
    "pm25": "8.3",
    "pm25_color": "1",
    "aqi": "14",
-   "aqi_color": "1"
+   "aqi_color": "-1"
   }
  ]
 }

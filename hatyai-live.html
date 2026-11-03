@@ -160,7 +160,7 @@ var CFG={
  lake:1.26,       // ทะเลสาบสงขลาสูง (ระบายน้ำช้า) เมื่อระดับ ≥ ค่านี้ ม.รทก. (ระดับวิกฤตของสถานีกรมทรัพยากรน้ำ ปากทะเลสาบสงขลา)
  trend:"X.44",    // สถานีที่แสดงกราฟแนวโน้ม 24 ชม.
  rise:0.3,        // เตือนเมื่อระดับน้ำสถานีด้านบนสูงขึ้นเกินค่านี้ (ม.) ภายใน 3 ชม.
- amphoe:"หาดใหญ่", // ฝนในเมือง = สถานีวัดฝนใน อ.หาดใหญ่ (ค่าสูงสุดอันดับ 2 กันเครื่องวัดเพี้ยน)
+ amphoe:"หาดใหญ่", // ฝนในเมือง = สถานีวัดฝนใน อ.หาดใหญ่ (ค่าเฉลี่ยของอันดับ 1 และ 2)
  upSt:{"X.173A":"ม่วงก็อง","X.90":"บางศาลา"}, // ฝนต้นน้ำ = เครื่องวัดฝนที่สถานีกรมชลประทาน 2 แห่งนี้ (ใช้ค่าที่มากกว่า)
  cityC:[7.005,100.47],cityKm:10,   // สำรอง: ถ้าสถานีไม่มีชื่ออำเภอ ใช้รัศมี 10 กม. จากใจกลางหาดใหญ่แทน
  need2:true,      // true = ฝนเหลือง 2 ปัจจัย จะเป็นแดงก็ต่อเมื่อระดับน้ำคลองเริ่มสูงด้วย (ถ้าไม่มีข้อมูลระดับน้ำ จะเป็นแดงเลย)
@@ -192,10 +192,10 @@ function back(o,n){var s=0;for(var i=Math.max(0,o.idx-n+1);i<=o.idx;i++)s+=o.p[i
 function ptAt(pts,t,tol){var best=null,bd=tol*H;pts.forEach(function(p){var d=Math.abs(Date.parse(p.t)-t);if(d<=bd){bd=d;best=p}});return best}
 function rain3d(h,now,key){key=key||"rc";if(!h||!h.points||!h.points.length)return null;var a=ptAt(h.points,now,6),b=ptAt(h.points,now-24*H,3),c=ptAt(h.points,now-48*H,3);
  if(!a||!b||!c||a[key]==null||b[key]==null||c[key]==null)return null;return Math.round(a[key]+b[key]+c[key])}
-// ฝนวัดจริงรวม 3 ชม. (จาก history.json "hr": ฝนรายชั่วโมงของแต่ละสถานีในเมือง) = ค่ามากเป็นอันดับ 2 ของสถานี
+// ฝนวัดจริงรวม 3 ชม. (จาก history.json "hr": ฝนรายชั่วโมงของแต่ละสถานีในเมือง) = ค่าเฉลี่ยของอันดับ 1 และ 2
 function meas3(h,ws,we){if(!h||!h.hr)return null;var sums=[];
  Object.keys(h.hr).forEach(function(code){var o=h.hr[code],sm=0,n=0;Object.keys(o).forEach(function(t){var tt=Date.parse(t.replace(" ","T")+":00+07:00");if(tt>ws&&tt<=we&&o[t]!=null){sm+=+o[t];n++}});if(n)sums.push(sm)});
- if(!sums.length)return null;sums.sort(function(x,y){return y-x});return sums.length>1?sums[1]:sums[0]}
+ if(!sums.length)return null;sums.sort(function(x,y){return y-x});return sums.length>1?Math.round((sums[0]+sums[1])/2*10)/10:sums[0]}
 function lvl(v,t){return (t[1]!==null&&v>=t[1])?2:(t[0]!==null&&v>=t[0])?1:0}
 function wlvl(v,c){return v>=c.r?2:v>=c.y?1:0}
 // อ่านระดับน้ำจาก water.json -> รายการสถานี (เรียงตาม CFG.wl)
@@ -210,7 +210,7 @@ function readWater(w){
   out.push({code:code,name:c.n,v:v,pv:pv,t:t,bank:bank,lv:wlvl(v,c),age:(now-t)/H});
  });
  return out.length?out:null}
-// อ่านฝนวัดจริงจากสถานี (rain_stations.json): ค่าที่ใช้ = สูงสุดอันดับ 2 ของแต่ละโซน (กันเครื่องวัดเพี้ยนสถานีเดียว) ข้อมูลไม่เกิน 6 ชม.
+// อ่านฝนวัดจริงจากสถานี (rain_stations.json): ในเมือง = ค่าเฉลี่ยของอันดับ 1 และ 2 · ต้นน้ำ = ค่ามากสุด ข้อมูลไม่เกิน 6 ชม.
 function readRain(rj){
  if(!rj||!rj.stations)return null;var now=Date.now(),z={city:[],up:[]},z1={city:[],up:[]},res={city:null,up:null,t:0};
  rj.stations.forEach(function(s){
@@ -222,10 +222,11 @@ function readRain(rj){
   z[zn].push({v:s.rain24,name:nm,r1:(s.rain1!=null&&!isNaN(s.rain1)&&(now-t)/H<=3)?+s.rain1:null});
   if(s.rain1!=null&&!isNaN(s.rain1)&&(now-t)/H<=3)z1[zn].push(+s.rain1);
   if(t>res.t)res.t=t});
- ["city","up"].forEach(function(k){var a=z1[k].sort(function(x,y){return y-x});res[k+"1"]=a.length?(k=="up"?a[0]:(a.length>1?a[1]:a[0])):null});
+ ["city","up"].forEach(function(k){var a=z1[k].sort(function(x,y){return y-x});res[k+"1"]=a.length?(k=="up"?a[0]:(a.length>1?Math.round((a[0]+a[1])/2*10)/10:a[0])):null});
  ["city","up"].forEach(function(k){var a=z[k].sort(function(x,y){return y.v-x.v});
-  if(!a.length)return;var u=k=="up"?a[0]:(a[1]||a[0]);   // ต้นน้ำใช้ค่ามากสุดของ 2 สถานี ในเมืองใช้อันดับ 2
-  res[k]={v:u.v,name:u.name,top:a[0],n:a.length,all:a,rank2:k=="city"}});
+  if(!a.length)return;var u=a[0];   // ต้นน้ำใช้ค่ามากสุดของ 2 สถานี ในเมืองใช้ค่าเฉลี่ยของอันดับ 1 และ 2
+  var v=(k=="city"&&a.length>1)?Math.round((a[0].v+a[1].v)/2*10)/10:u.v;
+  res[k]={v:v,name:u.name,top:a[0],sec:a[1],n:a.length,all:a,rank2:k=="city"}});
  return(res.city||res.up)?res:null}
 function zoneOf(s){var nm=String(s.name||"");
  for(var k in CFG.upSt)if(s.code===k||nm.indexOf(CFG.upSt[k])>=0||nm.replace(/^\s+|\s+$/g,"")==="สถานี "+k)return "up";   // ThaiWater ตั้งชื่อว่า "สถานี X.90"
@@ -233,7 +234,7 @@ function zoneOf(s){var nm=String(s.name||"");
  var c=CFG.cityC,d=Math.sqrt(Math.pow((s.lat-c[0])*111,2)+Math.pow((s.lon-c[1])*110.4,2));return d<=CFG.cityKm?"city":null}
 function rtxt(z,lab){if(!z)return lab+" ไม่มีข้อมูล";
  if(!z.rank2)return lab+" "+z.v+" มม. ("+z.name+(z.n>1?" ค่ามากกว่าของ "+z.n+" สถานี":"")+")";
- return lab+" "+z.v+" มม. ("+z.name+(z.n>1?" อันดับ 2 จาก "+z.n+" สถานี":"")+")"+(z.n>1&&z.top.v>z.v?" · สูงสุด "+z.top.v+" มม. ที่ "+z.top.name:"")}
+ return lab+" "+z.v+" มม. ("+(z.n>1?"เฉลี่ยของ "+z.top.name+" "+z.top.v+" มม. และ "+z.sec.name+" "+z.sec.v+" มม.":z.name)+")"}
 var ACT=[
  ["ติดตามแอปนี้วันละครั้ง","เตรียมกระเป๋าฉุกเฉิน: ยา เอกสารสำคัญ ไฟฉาย พาวเวอร์แบงก์ น้ำดื่ม","บันทึกเบอร์ฉุกเฉินไว้ในโทรศัพท์"],
  ["เปิดดูแอปทุก 1–2 ชม. และติดตามประกาศเทศบาลนครหาดใหญ่","ย้ายรถไปจอดที่สูง","ยกของมีค่า เอกสาร และเครื่องใช้ไฟฟ้าขึ้นที่สูง","ชาร์จโทรศัพท์และพาวเวอร์แบงก์ เตรียมน้ำดื่มและอาหารแห้งอย่างน้อย 3 วัน","วางแผนว่าจะอพยพไปที่ไหน และไปอย่างไร"],
@@ -252,7 +253,7 @@ function render(a,b,hj,w,rj){
  $("meas").textContent=rr?"ข้อมูลสถานี ณ "+tf(rr.t)+" น. · ในเมืองใช้ "+(rr.city?rr.city.n:0)+" สถานีใน อ.หาดใหญ่ · ต้นน้ำใช้ "+(rr.up?rr.up.n:0)+" สถานี"+((r72m&&u72m)?"":" · ช่อง 3 วันจะเป็นค่าวัดจริงเมื่อเก็บข้อมูลครบ 2 วัน"):"ยังไม่มีข้อมูลจากสถานีวัดฝน จึงแสดงค่าจากแบบจำลองแทน";
  var f1=function(v){return v==null?"–":(v<10?(+v).toFixed(1):Math.round(v))};
  var sl=function(z,lab){return "<p style='margin:8px 0 2px'><b>"+lab+"</b></p>"+(z?z.all.map(function(x){return x.name+" "+x.v+" มม."+(x.r1!=null?" (1 ชม. "+f1(x.r1)+")":"")}).join(" · "):"ไม่มีข้อมูล")};
- $("slist").innerHTML="<p style='margin:6px 0 0'><b>วิธีคิด</b><br>ในเมือง = ค่ามากเป็นอันดับ 2 ของสถานีใน อ.หาดใหญ่ (กันเครื่องวัดเพี้ยนสถานีเดียว)<br>ต้นน้ำ = ค่าที่มากกว่าของบ้านม่วงก็อง (X.173A) กับบ้านบางศาลา (X.90)<br>3 วัน = รวมค่า 24 ชม. ที่บันทึกไว้วันนี้ เมื่อวาน และเมื่อวานซืน<br>ช่องที่เขียนว่า \"แบบจำลอง\" คือยังไม่มีค่าวัดจริง จึงใช้ค่าประมาณจากแบบจำลองแทน</p>"+(rr?(rr.city?"<p style='margin:6px 0 0'>"+rtxt(rr.city,"ในเมือง 24 ชม.")+"</p>":"")+sl(rr.city,"สถานีในเมือง (อ.หาดใหญ่)")+sl(rr.up,"สถานีต้นน้ำ")+"<p style='margin:6px 0 0'>สถานีอำเภออื่นไม่นำมาใช้</p>":"");
+ $("slist").innerHTML="<p style='margin:6px 0 0'><b>วิธีคิด</b><br>ในเมือง = ค่าเฉลี่ยของ 2 สถานีที่ฝนตกมากที่สุดใน อ.หาดใหญ่ (อันดับ 1 และ 2)<br>ต้นน้ำ = ค่าที่มากกว่าของบ้านม่วงก็อง (X.173A) กับบ้านบางศาลา (X.90)<br>3 วัน = รวมค่า 24 ชม. ที่บันทึกไว้วันนี้ เมื่อวาน และเมื่อวานซืน<br>ช่องที่เขียนว่า \"แบบจำลอง\" คือยังไม่มีค่าวัดจริง จึงใช้ค่าประมาณจากแบบจำลองแทน</p>"+(rr?(rr.city?"<p style='margin:6px 0 0'>"+rtxt(rr.city,"ในเมือง 24 ชม.")+"</p>":"")+sl(rr.city,"สถานีในเมือง (อ.หาดใหญ่)")+sl(rr.up,"สถานีต้นน้ำ")+"<p style='margin:6px 0 0'>สถานีอำเภออื่นไม่นำมาใช้</p>":"");
  // กราฟ: ย้อนหลัง 4 แท่ง (แบบจำลอง + วัดจริง) + พยากรณ์ 24 ชม. 8 แท่ง
  var Tn=Math.floor((now+25200000)/10800000)*10800000-25200000,vals=[],mv=[],f48=0,f24=0,c="",NP=4,NB=12;
  var probs=[],pTop=null;
@@ -274,7 +275,7 @@ function render(a,b,hj,w,rj){
  var xn=8+NP*25.5-2.5;
  c+='<line x1="4" y1="104" x2="316" y2="104" stroke="var(--line)"/><path d="M'+xn+' 16V104" stroke="var(--mute)" stroke-dasharray="3 3"/><text x="'+xn+'" y="11" text-anchor="middle" style="font-weight:600">ตอนนี้</text>';
  $("chart").innerHTML=c;
- $("fsrc").innerHTML="ที่มา:<br>• แท่งพยากรณ์ = "+(a.src=="ECMWF"?"แบบจำลอง ECMWF ของศูนย์พยากรณ์อากาศระยะกลางแห่งยุโรป (ผ่าน Open-Meteo)":"แบบจำลองที่ Open-Meteo เลือกให้ (ดึงข้อมูล ECMWF ไม่สำเร็จในรอบนี้)")+"<br>• แท่งย้อนหลัง = เครื่องวัดฝนใน อ.หาดใหญ่ ผ่านคลังข้อมูลน้ำแห่งชาติ (ThaiWater) ใช้ค่ามากเป็นอันดับ 2 ของสถานี";
+ $("fsrc").innerHTML="ที่มา:<br>• แท่งพยากรณ์ = "+(a.src=="ECMWF"?"แบบจำลอง ECMWF ของศูนย์พยากรณ์อากาศระยะกลางแห่งยุโรป (ผ่าน Open-Meteo)":"แบบจำลองที่ Open-Meteo เลือกให้ (ดึงข้อมูล ECMWF ไม่สำเร็จในรอบนี้)")+"<br>• แท่งย้อนหลัง = เครื่องวัดฝนใน อ.หาดใหญ่ ผ่านคลังข้อมูลน้ำแห่งชาติ (ThaiWater) ใช้ค่าเฉลี่ยของ 2 สถานีที่ฝนตกมากที่สุด";
  $("today").textContent="วันนี้ "+new Date().toLocaleDateString("th-TH",{weekday:"long",day:"numeric",month:"long",year:"numeric",timeZone:"Asia/Bangkok"});
  $("fsum").textContent="พยากรณ์ 24 ชม. ข้างหน้า รวม "+f24+" มม."+(pTop!==null?" · โอกาสฝนตกสูงสุด "+Math.round(pTop)+"%":"");
  // ระดับน้ำคลอง
@@ -324,7 +325,7 @@ function render(a,b,hj,w,rj){
  if(rise!=null&&rise>=CFG.rise)adv.push("ระดับน้ำกลางเมืองสูงขึ้นเร็ว "+rise.toFixed(2)+" ม. ใน 3 ชม. ติดตามใกล้ชิด");
  $("adv").innerHTML=adv.join("<br>");
  var wc=Object.keys(CFG.wl).map(function(k){var q=CFG.wl[k];return k+" "+q.y+" / "+q.r}).join(" · ");
- $("crit").textContent="ฝน เหลือง / แดง (มม.): 24 ชม. "+CFG.r24[0]+" / "+CFG.r24[1]+" · พยากรณ์ 48 ชม. "+CFG.f48[0]+" / "+CFG.f48[1]+" · ต้นน้ำ 24 ชม. "+CFG.up24[0]+" / "+CFG.up24[1]+" · สะสม 3 วัน แดงที่ "+CFG.r72[1]+" (ทั้งในเมืองและต้นน้ำ) · ฝนในเมือง 1 ชม. เหลืองที่ "+CFG.r1[0]+" ระดับน้ำคลอง เหลือง / แดง (ม.รทก.): "+wc+" · ฝนเหลือง 2 ปัจจัย"+(CFG.need2?" จะเป็นแดงเมื่อระดับน้ำคลองเริ่มสูงด้วย":" จะเป็นแดงทันที")+" · เหลืองขณะทะเลสาบสงขลาสูง (≥ "+CFG.lake+" ม.รทก.) จะเป็นแดง · ฝนใช้ค่าวัดจริงจากสถานีเป็นหลัก (ในเมือง = ค่าสูงสุดอันดับ 2 ของสถานีใน อ.หาดใหญ่ · ต้นน้ำ = ค่าที่มากกว่าของบ้านม่วงก็องกับบ้านบางศาลา) ถ้าไม่มีจึงใช้แบบจำลอง";
+ $("crit").textContent="ฝน เหลือง / แดง (มม.): 24 ชม. "+CFG.r24[0]+" / "+CFG.r24[1]+" · พยากรณ์ 48 ชม. "+CFG.f48[0]+" / "+CFG.f48[1]+" · ต้นน้ำ 24 ชม. "+CFG.up24[0]+" / "+CFG.up24[1]+" · สะสม 3 วัน แดงที่ "+CFG.r72[1]+" (ทั้งในเมืองและต้นน้ำ) · ฝนในเมือง 1 ชม. เหลืองที่ "+CFG.r1[0]+" ระดับน้ำคลอง เหลือง / แดง (ม.รทก.): "+wc+" · ฝนเหลือง 2 ปัจจัย"+(CFG.need2?" จะเป็นแดงเมื่อระดับน้ำคลองเริ่มสูงด้วย":" จะเป็นแดงทันที")+" · เหลืองขณะทะเลสาบสงขลาสูง (≥ "+CFG.lake+" ม.รทก.) จะเป็นแดง · ฝนใช้ค่าวัดจริงจากสถานีเป็นหลัก (ในเมือง = ค่าเฉลี่ยของอันดับ 1 และ 2 ของสถานีใน อ.หาดใหญ่ · ต้นน้ำ = ค่าที่มากกว่าของบ้านม่วงก็องกับบ้านบางศาลา) ถ้าไม่มีจึงใช้แบบจำลอง";
  $("upd").textContent="อัปเดตล่าสุด "+tf(now)+" น. (เวลาไทย)";
 }
 // แปลงค่าฝุ่น PM2.5 (µg/m³) เป็น US AQI ตามเกณฑ์ US EPA (ปรับปรุงปี 2024 แบบเดียวกับที่ IQAir ใช้)

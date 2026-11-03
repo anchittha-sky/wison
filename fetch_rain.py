@@ -111,7 +111,7 @@ def lake_level():
 
 
 def zone_max(rs, now):
-    # ในเมือง = ค่าสูงสุดอันดับ 2 (กันเครื่องวัดเพี้ยนสถานีเดียว) · ต้นน้ำ = ค่าที่มากกว่าของ X.173A / X.90
+    # ในเมือง = ค่าเฉลี่ยของอันดับ 1 และ 2 · ต้นน้ำ = ค่าที่มากกว่าของ X.173A / X.90
     vals = {"city": [], "up": []}
     for s in rs.get("stations") or []:
         t = parse_th(s.get("time"))
@@ -121,7 +121,7 @@ def zone_max(rs, now):
         if z:
             vals[z].append(s["rain24"])
     c = sorted(vals["city"], reverse=True)
-    return {"city": c[1] if len(c) >= 2 else (c[0] if c else None),   # ในเมือง: อันดับ 2
+    return {"city": round((c[0] + c[1]) / 2, 1) if len(c) >= 2 else (c[0] if c else None),   # ในเมือง: เฉลี่ยอันดับ 1, 2
             "up": max(vals["up"]) if vals["up"] else None}            # ต้นน้ำ: ค่ามากสุดของ 2 สถานี
 
 

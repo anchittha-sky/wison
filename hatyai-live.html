@@ -85,7 +85,7 @@ button{margin-top:10px;border:1px solid var(--line);background:var(--card);color
 <h2><span class="ic" id="ic2"></span>พยากรณ์ฝน 24 ชม. ข้างหน้า (ทุก 3 ชม.)</h2>
 <p id="today" style="margin:0 0 6px;font-weight:600"></p>
 <div class="lg" style="flex-wrap:wrap;gap:4px 14px"><span><i style="background:var(--meas)"></i>ย้อนหลัง (วัดจริง อ.หาดใหญ่)</span><span><i style="background:var(--bar)"></i>พยากรณ์</span></div>
-<p class="note" style="margin:0 0 4px">ตัวเลขบนแท่งพยากรณ์ = โอกาสฝนตก (%) · แท่งจาง = โอกาสต่ำ</p>
+<p class="note" style="margin:0 0 4px">ตัวเลขบนแท่ง = ปริมาณฝน (มม.) ใน 3 ชม.</p>
 <div class="svgwrap"><svg id="chart" viewBox="0 0 320 140" width="100%" role="img" aria-label="กราฟพยากรณ์ฝน 48 ชั่วโมง"></svg></div>
 <p class="note" id="fsum"></p>
 <p class="note" id="fsrc"></p>
@@ -267,9 +267,9 @@ function render(a,b,hj,w,rj){
    if(mv[j]!=null){var hm=mv[j]/mx*80;c+='<rect x="'+x+'" y="'+(104-hm)+'" width="21" height="'+Math.max(hm,1)+'" rx="2" fill="var(--meas)"/>';
     if(mv[j]>=0.5)c+='<text x="'+(x+10.5)+'" y="'+(101-hm)+'" text-anchor="middle" style="font-size:9px">'+(mv[j]<10?mv[j].toFixed(1):Math.round(mv[j]))+'</text>'}
    else c+='<text x="'+(x+10.5)+'" y="101" text-anchor="middle" style="font-size:9px">–</text>'}
-  else{var op=pr!==null?(0.3+0.7*pr/100).toFixed(2):"1";
+  else{var op="1";
    c+='<rect x="'+x+'" y="'+(104-h)+'" width="21" height="'+Math.max(h,1)+'" rx="2" fill="var(--bar)" fill-opacity="'+op+'"/>';
-   if(pr!==null)c+='<text x="'+(x+10.5)+'" y="'+(101-h)+'" text-anchor="middle" style="font-size:9px">'+Math.round(pr)+'</text>'}
+   if(vals[j]>=0.1)c+='<text x="'+(x+10.5)+'" y="'+(101-h)+'" text-anchor="middle" style="font-size:9px">'+(vals[j]<10?(Math.round(vals[j]*10)/10):Math.round(vals[j]))+'</text>'}
   c+='<text x="'+(x+10.5)+'" y="118" text-anchor="middle" style="font-size:10.5px">'+(hh<10?"0":"")+hh+'</text>';
   if(hh==0&&j>0)c+='<path d="M'+(x-2.5)+' 16V122" stroke="var(--bar)" stroke-dasharray="3 3"/><text x="'+x+'" y="134">'+df(tt)+'</text>'}
  var xn=8+NP*25.5-2.5;
@@ -277,7 +277,7 @@ function render(a,b,hj,w,rj){
  $("chart").innerHTML=c;
  $("fsrc").innerHTML="ที่มา:<br>• แท่งพยากรณ์ = "+(a.src=="ECMWF"?"แบบจำลอง ECMWF ของศูนย์พยากรณ์อากาศระยะกลางแห่งยุโรป (ผ่าน Open-Meteo)":"แบบจำลองที่ Open-Meteo เลือกให้ (ดึงข้อมูล ECMWF ไม่สำเร็จในรอบนี้)")+"<br>• แท่งย้อนหลัง = เครื่องวัดฝนใน อ.หาดใหญ่ ผ่านคลังข้อมูลน้ำแห่งชาติ (ThaiWater) ใช้ค่าเฉลี่ยของ 2 สถานีที่ฝนตกมากที่สุด";
  $("today").textContent="วันนี้ "+new Date().toLocaleDateString("th-TH",{weekday:"long",day:"numeric",month:"long",year:"numeric",timeZone:"Asia/Bangkok"});
- $("fsum").textContent="พยากรณ์ 24 ชม. ข้างหน้า รวม "+f24+" มม."+(pTop!==null?" · โอกาสฝนตกสูงสุด "+Math.round(pTop)+"%":"");
+ $("fsum").textContent="พยากรณ์ 24 ชม. ข้างหน้า รวม "+f24+" มม.";
  // ระดับน้ำคลอง
  var wTop=0,wOK=false,col=["var(--g)","var(--y)","var(--r)"],wh="",ch="",stale=false,latest=0;
  if(ws){ws.forEach(function(s){

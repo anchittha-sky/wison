@@ -1,14 +1,14 @@
 {
- "updated": "2026-11-04T22:52:22+00:00",
+ "updated": "2026-11-04T23:47:40+00:00",
  "source": "https://api-v3.thaiwater.net/api/v1/thaiwater30/public/waterlevel_load",
  "count": 4,
  "records": [
   {
-   "id": 1336247573,
-   "waterlevel_datetime": "2026-11-05 04:00",
+   "id": 1336281223,
+   "waterlevel_datetime": "2026-11-05 05:00",
    "waterlevel_m": null,
    "waterlevel_msl": "4.78",
-   "waterlevel_msl_previous": "4.79",
+   "waterlevel_msl_previous": "4.78",
    "flow_rate": null,
    "discharge": "8.15",
    "storage_percent": "53.83",
@@ -88,8 +88,8 @@
    "river_name": "คลองหวะ"
   },
   {
-   "id": 1336247548,
-   "waterlevel_datetime": "2026-11-05 04:00",
+   "id": 1336281248,
+   "waterlevel_datetime": "2026-11-05 05:00",
    "waterlevel_m": null,
    "waterlevel_msl": "10.07",
    "waterlevel_msl_previous": "10.07",
@@ -172,14 +172,14 @@
    "river_name": "คลองอู่ตะเภา"
   },
   {
-   "id": 1336247540,
-   "waterlevel_datetime": "2026-11-05 04:00",
+   "id": 1336281256,
+   "waterlevel_datetime": "2026-11-05 05:00",
    "waterlevel_m": null,
-   "waterlevel_msl": "2.58",
-   "waterlevel_msl_previous": "2.57",
+   "waterlevel_msl": "2.59",
+   "waterlevel_msl_previous": "2.58",
    "flow_rate": null,
-   "discharge": "29.00",
-   "storage_percent": "33.86",
+   "discharge": "29.50",
+   "storage_percent": "33.96",
    "sort_order": null,
    "station_type": "tele_waterlevel",
    "situation_level": 3,
@@ -250,23 +250,23 @@
      "en": "Songkhla"
     }
    },
-   "diff_wl_bank": "6.76",
+   "diff_wl_bank": "6.75",
    "diff_wl_bank_text": "ต่ำกว่าตลิ่ง (ม.)",
    "river_gid": 227685,
    "river_name": "คลองอู่ตะเภา"
   },
   {
-   "id": 1336247532,
-   "waterlevel_datetime": "2026-11-05 04:00",
+   "id": 1336281264,
+   "waterlevel_datetime": "2026-11-05 05:00",
    "waterlevel_m": null,
-   "waterlevel_msl": "0.62",
-   "waterlevel_msl_previous": "0.64",
+   "waterlevel_msl": "0.60",
+   "waterlevel_msl_previous": "0.62",
    "flow_rate": null,
-   "discharge": "23.60",
-   "storage_percent": "30.19",
+   "discharge": "23.00",
+   "storage_percent": "29.98",
    "sort_order": null,
    "station_type": "tele_waterlevel",
-   "situation_level": 3,
+   "situation_level": 2,
    "agency": {
     "id": 12,
     "agency_name": {
@@ -334,7 +334,7 @@
      "en": "Songkhla"
     }
    },
-   "diff_wl_bank": "6.53",
+   "diff_wl_bank": "6.55",
    "diff_wl_bank_text": "ต่ำกว่าตลิ่ง (ม.)",
    "river_gid": 227404,
    "river_name": "คลองอู่ตะเภา"

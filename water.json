@@ -1,16 +1,16 @@
 {
- "updated": "2026-11-08T09:51:46+00:00",
+ "updated": "2026-11-08T10:48:42+00:00",
  "source": "https://api-v3.thaiwater.net/api/v1/thaiwater30/public/waterlevel_load",
  "count": 4,
  "records": [
   {
-   "id": 1337921132,
-   "waterlevel_datetime": "2026-11-08 15:00",
+   "id": 1337943372,
+   "waterlevel_datetime": "2026-11-08 16:00",
    "waterlevel_m": null,
-   "waterlevel_msl": "0.45",
-   "waterlevel_msl_previous": "0.63",
+   "waterlevel_msl": "10.35",
+   "waterlevel_msl_previous": "10.34",
    "flow_rate": null,
-   "discharge": "18.50",
+   "discharge": "11.25",
    "storage_percent": null,
    "sort_order": null,
    "station_type": "tele_waterlevel",
@@ -36,27 +36,27 @@
     }
    },
    "station": {
-    "id": 2591,
+    "id": 2585,
     "tele_station_name": {
-     "th": "บ้านหาดใหญ่ใน"
+     "th": "บ้านม่วงก็อง"
     },
-    "tele_station_lat": 7.00218,
-    "tele_station_long": 100.456062,
-    "tele_station_oldcode": "X.44",
+    "tele_station_lat": 6.79663,
+    "tele_station_long": 100.442337,
+    "tele_station_oldcode": "X.173A",
     "tele_station_type": "tele_waterlevel",
-    "left_bank": 8.68,
-    "right_bank": 8.661,
-    "min_bank": 7.15,
+    "left_bank": 16.955,
+    "right_bank": 16.944,
+    "min_bank": 16.13,
     "offset": null,
     "sub_basin_id": 330,
     "agency_id": 12,
-    "geocode_id": 7871,
+    "geocode_id": 7863,
     "hydro_id": 8,
-    "qmax": 481,
+    "qmax": 272.899994,
     "is_key_station": true,
     "warning_level_m": null,
-    "critical_level_m": 7.44,
-    "critical_level_msl": 7.44
+    "critical_level_m": null,
+    "critical_level_msl": null
    },
    "geocode": {
     "area_code": "5",
@@ -64,15 +64,15 @@
      "th": "ภาคใต้",
      "en": "South"
     },
-    "amphoe_code": "11",
+    "amphoe_code": "10",
     "amphoe_name": {
-     "th": "หาดใหญ่",
-     "en": "Hat Yai District"
+     "th": "สะเดา",
+     "en": "Sadao District"
     },
-    "tumbon_code": "01",
+    "tumbon_code": "03",
     "tumbon_name": {
-     "th": "หาดใหญ่",
-     "en": "Hat Yai"
+     "th": "พังลา",
+     "en": "Phang La"
     },
     "province_code": "90",
     "province_name": {
@@ -80,17 +80,17 @@
      "en": "Songkhla"
     }
    },
-   "diff_wl_bank": "6.70",
+   "diff_wl_bank": "5.78",
    "diff_wl_bank_text": "ต่ำกว่าตลิ่ง (ม.)",
-   "river_gid": 227404,
+   "river_gid": 228362,
    "river_name": "คลองอู่ตะเภา"
   },
   {
-   "id": 1337921140,
-   "waterlevel_datetime": "2026-11-08 15:00",
+   "id": 1337943364,
+   "waterlevel_datetime": "2026-11-08 16:00",
    "waterlevel_m": null,
    "waterlevel_msl": "2.48",
-   "waterlevel_msl_previous": "2.45",
+   "waterlevel_msl_previous": "2.48",
    "flow_rate": null,
    "discharge": "24.00",
    "storage_percent": null,
@@ -168,13 +168,13 @@
    "river_name": "คลองอู่ตะเภา"
   },
   {
-   "id": 1337921148,
-   "waterlevel_datetime": "2026-11-08 15:00",
+   "id": 1337943356,
+   "waterlevel_datetime": "2026-11-08 16:00",
    "waterlevel_m": null,
-   "waterlevel_msl": "10.34",
-   "waterlevel_msl_previous": "10.34",
+   "waterlevel_msl": "0.37",
+   "waterlevel_msl_previous": "0.45",
    "flow_rate": null,
-   "discharge": "11.10",
+   "discharge": "16.40",
    "storage_percent": null,
    "sort_order": null,
    "station_type": "tele_waterlevel",
@@ -200,27 +200,27 @@
     }
    },
    "station": {
-    "id": 2585,
+    "id": 2591,
     "tele_station_name": {
-     "th": "บ้านม่วงก็อง"
+     "th": "บ้านหาดใหญ่ใน"
     },
-    "tele_station_lat": 6.79663,
-    "tele_station_long": 100.442337,
-    "tele_station_oldcode": "X.173A",
+    "tele_station_lat": 7.00218,
+    "tele_station_long": 100.456062,
+    "tele_station_oldcode": "X.44",
     "tele_station_type": "tele_waterlevel",
-    "left_bank": 16.955,
-    "right_bank": 16.944,
-    "min_bank": 16.13,
+    "left_bank": 8.68,
+    "right_bank": 8.661,
+    "min_bank": 7.15,
     "offset": null,
     "sub_basin_id": 330,
     "agency_id": 12,
-    "geocode_id": 7863,
+    "geocode_id": 7871,
     "hydro_id": 8,
-    "qmax": 272.899994,
+    "qmax": 481,
     "is_key_station": true,
     "warning_level_m": null,
-    "critical_level_m": null,
-    "critical_level_msl": null
+    "critical_level_m": 7.44,
+    "critical_level_msl": 7.44
    },
    "geocode": {
     "area_code": "5",
@@ -228,15 +228,15 @@
      "th": "ภาคใต้",
      "en": "South"
     },
-    "amphoe_code": "10",
+    "amphoe_code": "11",
     "amphoe_name": {
-     "th": "สะเดา",
-     "en": "Sadao District"
+     "th": "หาดใหญ่",
+     "en": "Hat Yai District"
     },
-    "tumbon_code": "03",
+    "tumbon_code": "01",
     "tumbon_name": {
-     "th": "พังลา",
-     "en": "Phang La"
+     "th": "หาดใหญ่",
+     "en": "Hat Yai"
     },
     "province_code": "90",
     "province_name": {
@@ -244,19 +244,19 @@
      "en": "Songkhla"
     }
    },
-   "diff_wl_bank": "5.79",
+   "diff_wl_bank": "6.78",
    "diff_wl_bank_text": "ต่ำกว่าตลิ่ง (ม.)",
-   "river_gid": 228362,
+   "river_gid": 227404,
    "river_name": "คลองอู่ตะเภา"
   },
   {
-   "id": 1337921173,
-   "waterlevel_datetime": "2026-11-08 15:00",
+   "id": 1337943397,
+   "waterlevel_datetime": "2026-11-08 16:00",
    "waterlevel_m": null,
-   "waterlevel_msl": "4.80",
-   "waterlevel_msl_previous": "4.81",
+   "waterlevel_msl": "4.81",
+   "waterlevel_msl_previous": "4.80",
    "flow_rate": null,
-   "discharge": "8.50",
+   "discharge": "8.75",
    "storage_percent": null,
    "sort_order": null,
    "station_type": "tele_waterlevel",
@@ -326,7 +326,7 @@
      "en": "Songkhla"
     }
    },
-   "diff_wl_bank": "4.08",
+   "diff_wl_bank": "4.07",
    "diff_wl_bank_text": "ต่ำกว่าตลิ่ง (ม.)",
    "river_gid": 227421,
    "river_name": "คลองหวะ"

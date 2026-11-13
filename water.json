@@ -1,16 +1,16 @@
 {
- "updated": "2026-11-13T20:57:09+00:00",
+ "updated": "2026-11-13T21:52:12+00:00",
  "source": "https://api-v3.thaiwater.net/api/v1/thaiwater30/public/waterlevel_load",
  "count": 4,
  "records": [
   {
-   "id": 1340697019,
-   "waterlevel_datetime": "2026-11-14 02:00",
+   "id": 1340725986,
+   "waterlevel_datetime": "2026-11-14 03:00",
    "waterlevel_m": null,
-   "waterlevel_msl": "11.23",
-   "waterlevel_msl_previous": "11.21",
+   "waterlevel_msl": "11.24",
+   "waterlevel_msl_previous": "11.23",
    "flow_rate": null,
-   "discharge": "24.63",
+   "discharge": "24.84",
    "storage_percent": null,
    "sort_order": null,
    "station_type": "tele_waterlevel",
@@ -80,14 +80,14 @@
      "en": "Songkhla"
     }
    },
-   "diff_wl_bank": "4.90",
+   "diff_wl_bank": "4.89",
    "diff_wl_bank_text": "ต่ำกว่าตลิ่ง (ม.)",
    "river_gid": 228362,
    "river_name": "คลองอู่ตะเภา"
   },
   {
-   "id": 1340697044,
-   "waterlevel_datetime": "2026-11-14 02:00",
+   "id": 1340725965,
+   "waterlevel_datetime": "2026-11-14 03:00",
    "waterlevel_m": null,
    "waterlevel_msl": "5.05",
    "waterlevel_msl_previous": "5.05",
@@ -168,13 +168,13 @@
    "river_name": "คลองหวะ"
   },
   {
-   "id": 1340697012,
-   "waterlevel_datetime": "2026-11-14 02:00",
+   "id": 1340725991,
+   "waterlevel_datetime": "2026-11-14 03:00",
    "waterlevel_m": null,
-   "waterlevel_msl": "2.68",
-   "waterlevel_msl_previous": "2.69",
+   "waterlevel_msl": "2.67",
+   "waterlevel_msl_previous": "2.68",
    "flow_rate": null,
-   "discharge": "34.00",
+   "discharge": "33.50",
    "storage_percent": null,
    "sort_order": null,
    "station_type": "tele_waterlevel",
@@ -244,17 +244,17 @@
      "en": "Songkhla"
     }
    },
-   "diff_wl_bank": "6.66",
+   "diff_wl_bank": "6.67",
    "diff_wl_bank_text": "ต่ำกว่าตลิ่ง (ม.)",
    "river_gid": 227685,
    "river_name": "คลองอู่ตะเภา"
   },
   {
-   "id": 1340697004,
-   "waterlevel_datetime": "2026-11-14 02:00",
+   "id": 1340725997,
+   "waterlevel_datetime": "2026-11-14 03:00",
    "waterlevel_m": null,
    "waterlevel_msl": "1.03",
-   "waterlevel_msl_previous": "1.02",
+   "waterlevel_msl_previous": "1.03",
    "flow_rate": null,
    "discharge": "35.90",
    "storage_percent": null,

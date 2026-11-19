@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-19T17:36:16+00:00",
+ "updated": "2026-11-19T18:34:52+00:00",
  "source": "https://api-v3.thaiwater.net/api/v1/thaiwater30/public/waterlevel_load",
  "count": 4,
  "records": [
@@ -86,13 +86,13 @@
    "river_name": "คลองหวะ"
   },
   {
-   "id": 1343510402,
+   "id": 1343510394,
    "waterlevel_datetime": "2026-11-19 23:00",
    "waterlevel_m": null,
-   "waterlevel_msl": "10.67",
-   "waterlevel_msl_previous": "10.68",
+   "waterlevel_msl": "2.73",
+   "waterlevel_msl_previous": "2.73",
    "flow_rate": null,
-   "discharge": "16.05",
+   "discharge": "36.50",
    "storage_percent": null,
    "sort_order": null,
    "station_type": "tele_waterlevel",
@@ -118,23 +118,23 @@
     }
    },
    "station": {
-    "id": 2585,
+    "id": 2589,
     "tele_station_name": {
-     "th": "บ้านม่วงก็อง"
+     "th": "บ้านบางศาลา"
     },
-    "tele_station_lat": 6.79663,
-    "tele_station_long": 100.442337,
-    "tele_station_oldcode": "X.173A",
+    "tele_station_lat": 6.93124,
+    "tele_station_long": 100.439857,
+    "tele_station_oldcode": "X.90",
     "tele_station_type": "tele_waterlevel",
-    "left_bank": 16.955,
-    "right_bank": 16.944,
-    "min_bank": 16.13,
+    "left_bank": 11.247,
+    "right_bank": 11.25,
+    "min_bank": 9.34,
     "offset": null,
     "sub_basin_id": 330,
     "agency_id": 12,
-    "geocode_id": 7863,
+    "geocode_id": 7882,
     "hydro_id": 8,
-    "qmax": 272.899994,
+    "qmax": 777.799988,
     "is_key_station": true,
     "warning_level_m": null,
     "critical_level_m": null,
@@ -146,15 +146,15 @@
      "th": "ภาคใต้",
      "en": "South"
     },
-    "amphoe_code": "10",
+    "amphoe_code": "11",
     "amphoe_name": {
-     "th": "สะเดา",
-     "en": "Sadao District"
+     "th": "หาดใหญ่",
+     "en": "Hat Yai District"
     },
-    "tumbon_code": "03",
+    "tumbon_code": "16",
     "tumbon_name": {
-     "th": "พังลา",
-     "en": "Phang La"
+     "th": "บ้านพรุ",
+     "en": "Ban Phru"
     },
     "province_code": "90",
     "province_name": {
@@ -162,9 +162,9 @@
      "en": "Songkhla"
     }
    },
-   "diff_wl_bank": "5.46",
+   "diff_wl_bank": "6.61",
    "diff_wl_bank_text": "ต่ำกว่าตลิ่ง (ม.)",
-   "river_gid": 228362,
+   "river_gid": 227685,
    "river_name": "คลองอู่ตะเภา"
   },
   {
@@ -250,13 +250,13 @@
    "river_name": "คลองอู่ตะเภา"
   },
   {
-   "id": 1343510394,
+   "id": 1343510402,
    "waterlevel_datetime": "2026-11-19 23:00",
    "waterlevel_m": null,
-   "waterlevel_msl": "2.73",
-   "waterlevel_msl_previous": "2.73",
+   "waterlevel_msl": "10.67",
+   "waterlevel_msl_previous": "10.68",
    "flow_rate": null,
-   "discharge": "36.50",
+   "discharge": "16.05",
    "storage_percent": null,
    "sort_order": null,
    "station_type": "tele_waterlevel",
@@ -282,23 +282,23 @@
     }
    },
    "station": {
-    "id": 2589,
+    "id": 2585,
     "tele_station_name": {
-     "th": "บ้านบางศาลา"
+     "th": "บ้านม่วงก็อง"
     },
-    "tele_station_lat": 6.93124,
-    "tele_station_long": 100.439857,
-    "tele_station_oldcode": "X.90",
+    "tele_station_lat": 6.79663,
+    "tele_station_long": 100.442337,
+    "tele_station_oldcode": "X.173A",
     "tele_station_type": "tele_waterlevel",
-    "left_bank": 11.247,
-    "right_bank": 11.25,
-    "min_bank": 9.34,
+    "left_bank": 16.955,
+    "right_bank": 16.944,
+    "min_bank": 16.13,
     "offset": null,
     "sub_basin_id": 330,
     "agency_id": 12,
-    "geocode_id": 7882,
+    "geocode_id": 7863,
     "hydro_id": 8,
-    "qmax": 777.799988,
+    "qmax": 272.899994,
     "is_key_station": true,
     "warning_level_m": null,
     "critical_level_m": null,
@@ -310,15 +310,15 @@
      "th": "ภาคใต้",
      "en": "South"
     },
-    "amphoe_code": "11",
+    "amphoe_code": "10",
     "amphoe_name": {
-     "th": "หาดใหญ่",
-     "en": "Hat Yai District"
+     "th": "สะเดา",
+     "en": "Sadao District"
     },
-    "tumbon_code": "16",
+    "tumbon_code": "03",
     "tumbon_name": {
-     "th": "บ้านพรุ",
-     "en": "Ban Phru"
+     "th": "พังลา",
+     "en": "Phang La"
     },
     "province_code": "90",
     "province_name": {
@@ -326,9 +326,9 @@
      "en": "Songkhla"
     }
    },
-   "diff_wl_bank": "6.61",
+   "diff_wl_bank": "5.46",
    "diff_wl_bank_text": "ต่ำกว่าตลิ่ง (ม.)",
-   "river_gid": 227685,
+   "river_gid": 228362,
    "river_name": "คลองอู่ตะเภา"
   }
  ]

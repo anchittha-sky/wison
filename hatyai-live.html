@@ -62,6 +62,19 @@ details[open] summary:after{content:" ▴"}
 .nums small{display:block;font-size:.7rem;color:var(--mute)}
 .nums .rl{grid-column:1/-1;text-align:left;font-weight:600;font-size:.88rem;margin-top:4px}
 button{margin-top:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:8px 16px;font:600 .85rem "Prompt",sans-serif;cursor:pointer}
+.olk{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -4px;padding:0 4px}
+.olk-in{position:relative}
+.hrow{display:flex}
+.hcol{flex:none;width:56px;text-align:center;font-size:.8rem}
+.hcol .t{color:var(--mute)}
+.hcol .i{font-size:1.25rem;line-height:1.6}
+.pp{color:#2b8fd6;font-size:.78rem;white-space:nowrap}
+@media (prefers-color-scheme:dark){.pp{color:#7cc4ff}}
+.drow{display:grid;grid-template-columns:4.6em 1fr auto auto;gap:8px;align-items:center;padding:8px 0;border-top:1px solid var(--line);font-size:.92rem}
+.drow .i{font-size:1.2rem}
+.drow .tt{font-weight:600;white-space:nowrap}
+.drow .tt span{color:var(--mute);font-weight:400}
+.drow.past{opacity:.55}
 </style>
 </head>
 <body>
@@ -94,6 +107,15 @@ button{margin-top:10px;border:1px solid var(--line);background:var(--card);color
 <p class="note" id="radarerr" style="display:none">เปิดภาพเรดาร์ไม่ได้ในตอนนี้ · <a href="https://weather.tmd.go.th/stp.php" target="_blank" rel="noopener">ดูที่เว็บกรมอุตุนิยมวิทยา</a></p>
 <p class="note">ภาพจากเรดาร์สทิงพระ กรมอุตุนิยมวิทยา แสดงกลุ่มฝนที่กำลังตกอยู่ตอนนี้ในรัศมี 240 กม. ใช้ดูว่ามีกลุ่มฝนกำลังเคลื่อนเข้าหาดใหญ่ใน 1–2 ชม. ข้างหน้าไหม ส่วนกราฟด้านบนใช้ดูแนวโน้ม 24 ชม. · เวลาบนภาพเป็นเวลาสากล (UTC) บวก 7 ชม. = เวลาไทย · กดที่ภาพเพื่อดูภาพเคลื่อนไหว</p>
 <button id="re" type="button">รีเฟรชข้อมูล</button>
+</div>
+
+<div class="card" id="olcard">
+<h2>พยากรณ์อากาศหาดใหญ่</h2>
+<p class="note" style="margin:0 0 6px">รายชั่วโมง 24 ชม. · เลื่อนซ้าย-ขวาได้</p>
+<div class="olk"><div class="olk-in" id="olh"><p class="note">กำลังดึงข้อมูล...</p></div></div>
+<h2 style="margin-top:14px">ล่วงหน้า 7 วัน</h2>
+<div id="old"></div>
+<p class="note" id="olsrc"></p>
 </div>
 
 <div class="card hasmap" id="wcard">
@@ -339,7 +361,38 @@ function loadWx(){
  get(AURL+"?t="+Date.now()).then(function(a){var st=a&&a.station,t=st?Date.parse(st.date+"T"+String(st.time).slice(0,5)+":00+07:00"):NaN;
   if(!st||isNaN(t)||(Date.now()-t)/H>6||!showPm(st.pm25))throw new Error("no aqi")})
  .catch(function(){get("https://air-quality-api.open-meteo.com/v1/air-quality?latitude="+LAT+"&longitude="+LON+"&current=pm2_5&timezone=Asia%2FBangkok").then(function(d){showPm(d.current.pm2_5,true)}).catch(function(){})})}
+// ===== การ์ดพยากรณ์อากาศ (แบบ Samsung Weather): รายชั่วโมง + รายวัน จาก ECMWF ผ่าน Open-Meteo =====
+function wIcon(c,day){if(c==null)return "";if(c>=95)return "⛈️";if(c>=80)return day?"🌦️":"🌧️";if(c>=51)return "🌧️";if(c==45||c==48)return "🌫️";if(c==3)return "☁️";if(c>=1)return day?"⛅":"☁️";return day?"☀️":"🌙"}
+function olUrl(m){return "https://api.open-meteo.com/v1/forecast?latitude="+LAT+"&longitude="+LON+"&hourly=temperature_2m,precipitation,precipitation_probability,weather_code,is_day&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum&past_days=1&forecast_days=7&timezone=Asia%2FBangkok"+(m?"&models="+m:"")}
+function pick(a,b){if(!a)return b;if(!b)return a;return a.map(function(v,i){return v!=null?v:b[i]})}
+function loadOutlook(){
+ Promise.all([get(olUrl("ecmwf_ifs025")).catch(function(){return null}),get(olUrl()).catch(function(){return null})]).then(function(r){
+  var e=r[0],d=r[1],src=e?"ECMWF":"Open-Meteo";if(!e&&!d)throw new Error("x");var base=e||d,h=base.hourly,dl=base.daily,h2=(d||{}).hourly||{},d2=(d||{}).daily||{};
+  var T=h.time,tmp=pick(h.temperature_2m,h2.temperature_2m),pr=pick(h.precipitation,h2.precipitation),pp=pick(h.precipitation_probability,h2.precipitation_probability),wc=pick(h.weather_code,h2.weather_code),dy=pick(h.is_day,h2.is_day);
+  var off=base.utc_offset_seconds*1000,now=Date.now(),i0=0;
+  for(var i=0;i<T.length;i++)if(Date.parse(T[i]+":00Z")-off<=now)i0=i;
+  var N=24,CW=56,W=N*CW,cols="",ts=[],rs=[];
+  for(var k=0;k<N&&i0+k<T.length;k++){var j=i0+k,hr=+T[j].slice(11,13);ts.push(tmp[j]);rs.push(pr[j]||0);
+   cols+='<div class="hcol"><div class="t">'+(k==0?"ตอนนี้":(hr<10?"0":"")+hr+":00")+'</div><div class="i">'+wIcon(wc[j],dy[j])+'</div><div class="pp">'+(pp[j]!=null?"☂ "+Math.round(pp[j])+"%":"&nbsp;")+'</div></div>'}
+  var n=ts.length,lo=Math.min.apply(null,ts),hi=Math.max.apply(null,ts);if(hi-lo<2){hi+=1;lo-=1}
+  var Y=function(v){return 22+(hi-v)/(hi-lo)*36},X=function(k){return k*CW+CW/2},path="",dots="";
+  for(k=0;k<n;k++){path+=(k?"L":"M")+X(k)+" "+Y(ts[k]).toFixed(1);dots+='<circle cx="'+X(k)+'" cy="'+Y(ts[k]).toFixed(1)+'" r="3" fill="var(--card)" stroke="#e0a800" stroke-width="2"/><text x="'+X(k)+'" y="'+(Y(ts[k])-8).toFixed(1)+'" text-anchor="middle" style="font-size:12px;font-weight:600;fill:var(--ink)">'+Math.round(ts[k])+'°</text>'}
+  var tsvg='<svg width="'+(n*CW)+'" height="72" style="display:block"><path d="'+path+'" fill="none" stroke="#e0a800" stroke-width="2" stroke-linejoin="round"/>'+dots+'</svg>';
+  var rmx=Math.max.apply(null,rs.concat([2])),bars="";
+  for(k=0;k<n;k++){var bh=rs[k]/rmx*44;bars+='<rect x="'+(k*CW+8)+'" y="'+(50-bh).toFixed(1)+'" width="'+(CW-16)+'" height="'+Math.max(bh,1).toFixed(1)+'" rx="3" fill="#7fd3e6"/><text x="'+X(k)+'" y="66" text-anchor="middle" style="font-size:11px;fill:var(--ink)">'+(rs[k]<0.005?"0":rs[k].toFixed(2))+'</text>'}
+  var rsvg='<svg width="'+(n*CW)+'" height="72" style="display:block"><line x1="0" y1="50.5" x2="'+(n*CW)+'" y2="50.5" stroke="var(--line)"/>'+bars+'</svg>';
+  $("olh").style.width=(n*CW)+"px";
+  $("olh").innerHTML='<div class="hrow">'+cols+'</div>'+tsvg+'<p class="note" style="margin:6px 0 2px;position:sticky;left:0;display:inline-block">ปริมาณฝน (มม./ชม.)</p>'+rsvg;
+  // รายวัน
+  var DN=["อาทิตย์","จันทร์","อังคาร","พุธ","พฤหัสฯ","ศุกร์","เสาร์"],today=new Date(now+25200000).toISOString().slice(0,10),rows="";
+  var dpp=pick(dl.precipitation_probability_max,d2.precipitation_probability_max),dwc=pick(dl.weather_code,d2.weather_code),dmx=pick(dl.temperature_2m_max,d2.temperature_2m_max),dmn=pick(dl.temperature_2m_min,d2.temperature_2m_min);
+  dl.time.forEach(function(t,i){var past=t<today,lab=t==today?"วันนี้":past?"เมื่อวาน":DN[new Date(t+"T00:00:00Z").getUTCDay()];
+   rows+='<div class="drow'+(past?" past":"")+'"><b>'+lab+'</b><span class="pp">'+(!past&&dpp[i]!=null?"☂ "+Math.round(dpp[i])+"%":"")+'</span><span class="i">'+wIcon(dwc[i],1)+'</span><span class="tt">'+Math.round(dmx[i])+'° <span>'+Math.round(dmn[i])+'°</span></span></div>'});
+  $("old").innerHTML=rows;
+  $("olsrc").textContent="ที่มา: "+(src=="ECMWF"?"แบบจำลอง ECMWF ของศูนย์พยากรณ์อากาศระยะกลางแห่งยุโรป (ผ่าน Open-Meteo)":"แบบจำลองที่ Open-Meteo เลือกให้")+" · ☂ = โอกาสฝนตก · ตัวเลขใต้แท่ง = ปริมาณฝนที่คาดใน 1 ชม. (มม.)";
+ }).catch(function(){$("olh").innerHTML='<p class="note">ดึงข้อมูลพยากรณ์อากาศไม่สำเร็จ ลองกดรีเฟรชข้อมูล</p>'})}
 function load(){
+ loadOutlook();
  loadWx();$("radar").src="https://weather.tmd.go.th/stp/stp240_latest.jpg?t="+Date.now();
  Promise.all([fc(LAT,LON,3,4),fc(UP[0],UP[1],3,1),get(HURL+"?t="+Date.now()).catch(function(){return null}),get(WURL+"?t="+Date.now()).catch(function(){return null}),get(RURL+"?t="+Date.now()).catch(function(){return null})]).then(function(r){render(r[0],r[1],r[2],r[3],r[4])}).catch(function(){
   $("go").className="";$("go").textContent="ดึงข้อมูลไม่สำเร็จ";$("why").innerHTML="<li>ตรวจสอบอินเทอร์เน็ตแล้วกดรีเฟรชข้อมูล</li>";$("upd").textContent="ยังไม่ได้รับข้อมูลล่าสุด"})

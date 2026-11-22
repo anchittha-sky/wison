@@ -1,98 +1,16 @@
 {
- "updated": "2026-11-22T15:26:15+00:00",
+ "updated": "2026-11-22T16:26:16+00:00",
  "source": "https://api-v3.thaiwater.net/api/v1/thaiwater30/public/waterlevel_load",
  "count": 4,
  "records": [
   {
-   "id": 1345003064,
-   "waterlevel_datetime": "2026-11-22 21:00",
+   "id": 1345024709,
+   "waterlevel_datetime": "2026-11-22 22:00",
    "waterlevel_m": null,
-   "waterlevel_msl": "5.34",
-   "waterlevel_msl_previous": "5.40",
+   "waterlevel_msl": "3.04",
+   "waterlevel_msl_previous": "3.01",
    "flow_rate": null,
-   "discharge": "22.70",
-   "storage_percent": null,
-   "sort_order": null,
-   "station_type": "tele_waterlevel",
-   "agency": {
-    "id": 12,
-    "agency_name": {
-     "th": "กรมชลประทาน ",
-     "en": "Royal Irrigation Department",
-     "jp": ""
-    },
-    "agency_shortname": {
-     "th": "ชป.",
-     "en": "RID",
-     "jp": ""
-    }
-   },
-   "basin": {
-    "id": 24,
-    "basin_code": 20,
-    "basin_name": {
-     "th": "ลุ่มน้ำทะเลสาบสงขลา",
-     "en": "Thale Sap Songkhla Basin"
-    }
-   },
-   "station": {
-    "id": 2590,
-    "tele_station_name": {
-     "th": "บ้านคลองหวะ"
-    },
-    "tele_station_lat": 6.98637,
-    "tele_station_long": 100.481857,
-    "tele_station_oldcode": "X.174",
-    "tele_station_type": "tele_waterlevel",
-    "left_bank": 8.88,
-    "right_bank": 8.88,
-    "min_bank": 8.88,
-    "offset": null,
-    "sub_basin_id": 330,
-    "agency_id": 12,
-    "geocode_id": 7874,
-    "hydro_id": 8,
-    "qmax": 190.100006,
-    "is_key_station": true,
-    "warning_level_m": null,
-    "critical_level_m": null,
-    "critical_level_msl": null
-   },
-   "geocode": {
-    "area_code": "5",
-    "area_name": {
-     "th": "ภาคใต้",
-     "en": "South"
-    },
-    "amphoe_code": "11",
-    "amphoe_name": {
-     "th": "หาดใหญ่",
-     "en": "Hat Yai District"
-    },
-    "tumbon_code": "04",
-    "tumbon_name": {
-     "th": "คอหงส์",
-     "en": "Kho Hong"
-    },
-    "province_code": "90",
-    "province_name": {
-     "th": "สงขลา",
-     "en": "Songkhla"
-    }
-   },
-   "diff_wl_bank": "3.54",
-   "diff_wl_bank_text": "ต่ำกว่าตลิ่ง (ม.)",
-   "river_gid": 227421,
-   "river_name": "คลองหวะ"
-  },
-  {
-   "id": 1345003031,
-   "waterlevel_datetime": "2026-11-22 21:00",
-   "waterlevel_m": null,
-   "waterlevel_msl": "3.01",
-   "waterlevel_msl_previous": "3.00",
-   "flow_rate": null,
-   "discharge": "50.50",
+   "discharge": "52.00",
    "storage_percent": null,
    "sort_order": null,
    "station_type": "tele_waterlevel",
@@ -162,19 +80,101 @@
      "en": "Songkhla"
     }
    },
-   "diff_wl_bank": "6.33",
+   "diff_wl_bank": "6.30",
    "diff_wl_bank_text": "ต่ำกว่าตลิ่ง (ม.)",
    "river_gid": 227685,
    "river_name": "คลองอู่ตะเภา"
   },
   {
-   "id": 1345003023,
-   "waterlevel_datetime": "2026-11-22 21:00",
+   "id": 1345024742,
+   "waterlevel_datetime": "2026-11-22 22:00",
    "waterlevel_m": null,
-   "waterlevel_msl": "0.70",
-   "waterlevel_msl_previous": "0.68",
+   "waterlevel_msl": "5.29",
+   "waterlevel_msl_previous": "5.34",
    "flow_rate": null,
-   "discharge": "26.00",
+   "discharge": "21.20",
+   "storage_percent": null,
+   "sort_order": null,
+   "station_type": "tele_waterlevel",
+   "agency": {
+    "id": 12,
+    "agency_name": {
+     "th": "กรมชลประทาน ",
+     "en": "Royal Irrigation Department",
+     "jp": ""
+    },
+    "agency_shortname": {
+     "th": "ชป.",
+     "en": "RID",
+     "jp": ""
+    }
+   },
+   "basin": {
+    "id": 24,
+    "basin_code": 20,
+    "basin_name": {
+     "th": "ลุ่มน้ำทะเลสาบสงขลา",
+     "en": "Thale Sap Songkhla Basin"
+    }
+   },
+   "station": {
+    "id": 2590,
+    "tele_station_name": {
+     "th": "บ้านคลองหวะ"
+    },
+    "tele_station_lat": 6.98637,
+    "tele_station_long": 100.481857,
+    "tele_station_oldcode": "X.174",
+    "tele_station_type": "tele_waterlevel",
+    "left_bank": 8.88,
+    "right_bank": 8.88,
+    "min_bank": 8.88,
+    "offset": null,
+    "sub_basin_id": 330,
+    "agency_id": 12,
+    "geocode_id": 7874,
+    "hydro_id": 8,
+    "qmax": 190.100006,
+    "is_key_station": true,
+    "warning_level_m": null,
+    "critical_level_m": null,
+    "critical_level_msl": null
+   },
+   "geocode": {
+    "area_code": "5",
+    "area_name": {
+     "th": "ภาคใต้",
+     "en": "South"
+    },
+    "amphoe_code": "11",
+    "amphoe_name": {
+     "th": "หาดใหญ่",
+     "en": "Hat Yai District"
+    },
+    "tumbon_code": "04",
+    "tumbon_name": {
+     "th": "คอหงส์",
+     "en": "Kho Hong"
+    },
+    "province_code": "90",
+    "province_name": {
+     "th": "สงขลา",
+     "en": "Songkhla"
+    }
+   },
+   "diff_wl_bank": "3.59",
+   "diff_wl_bank_text": "ต่ำกว่าตลิ่ง (ม.)",
+   "river_gid": 227421,
+   "river_name": "คลองหวะ"
+  },
+  {
+   "id": 1345024701,
+   "waterlevel_datetime": "2026-11-22 22:00",
+   "waterlevel_m": null,
+   "waterlevel_msl": "0.73",
+   "waterlevel_msl_previous": "0.70",
+   "flow_rate": null,
+   "discharge": "26.90",
    "storage_percent": null,
    "sort_order": null,
    "station_type": "tele_waterlevel",
@@ -244,19 +244,19 @@
      "en": "Songkhla"
     }
    },
-   "diff_wl_bank": "6.45",
+   "diff_wl_bank": "6.42",
    "diff_wl_bank_text": "ต่ำกว่าตลิ่ง (ม.)",
    "river_gid": 227404,
    "river_name": "คลองอู่ตะเภา"
   },
   {
-   "id": 1345003039,
-   "waterlevel_datetime": "2026-11-22 21:00",
+   "id": 1345024717,
+   "waterlevel_datetime": "2026-11-22 22:00",
    "waterlevel_m": null,
-   "waterlevel_msl": "11.87",
-   "waterlevel_msl_previous": "11.85",
+   "waterlevel_msl": "11.91",
+   "waterlevel_msl_previous": "11.87",
    "flow_rate": null,
-   "discharge": "38.61",
+   "discharge": "39.53",
    "storage_percent": null,
    "sort_order": null,
    "station_type": "tele_waterlevel",
@@ -326,7 +326,7 @@
      "en": "Songkhla"
     }
    },
-   "diff_wl_bank": "4.26",
+   "diff_wl_bank": "4.22",
    "diff_wl_bank_text": "ต่ำกว่าตลิ่ง (ม.)",
    "river_gid": 228362,
    "river_name": "คลองอู่ตะเภา"

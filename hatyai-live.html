@@ -391,9 +391,9 @@ function loadOutlook(){
   $("old").innerHTML=rows;
   $("olsrc").textContent="ที่มา: "+(src=="ECMWF"?"แบบจำลอง ECMWF ของศูนย์พยากรณ์อากาศระยะกลางแห่งยุโรป (ผ่าน Open-Meteo)":"แบบจำลองที่ Open-Meteo เลือกให้")+" · ☂ = โอกาสฝนตก · ตัวเลขใต้แท่ง = ปริมาณฝนที่คาดใน 1 ชม. (มม.)";
  }).catch(function(){$("olh").innerHTML='<p class="note">ดึงข้อมูลพยากรณ์อากาศไม่สำเร็จ ลองกดรีเฟรชข้อมูล</p>'})}
-// ย่อหน้าเรดาร์ของกรมอุตุฯ ทั้งหน้า (กว้าง 1500) ให้พอดีความกว้างกรอบ แล้วตัดเหลือแค่เมนูบน + แผนที่
-var RW=1500,RH=RW*0.95+80;
-function fitRadar(){var rw=$("radarwrap"),f=$("radar");if(!rw||!f||!rw.clientWidth)return;var k=rw.clientWidth/RW;f.style.transform="scale("+k+")";rw.style.height=Math.round(RH*k)+"px"}
+// ส่วนแผนที่ในหน้ากรมอุตุฯ (เมื่อเปิดกว้าง 1500): x 271–1229, y 0–826 → ขยายส่วนนี้ให้เต็มกรอบ
+var RX=271,RMW=958,RMH=826;
+function fitRadar(){var rw=$("radarwrap"),f=$("radar");if(!rw||!f||!rw.clientWidth)return;var k=rw.clientWidth/RMW;f.style.transform="translate("+(-RX*k)+"px,0) scale("+k+")";rw.style.height=Math.round(RMH*k)+"px"}
 window.addEventListener("resize",fitRadar);
 function load(){
  loadOutlook();
